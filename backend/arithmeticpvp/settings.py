@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'arithmeticpvp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'arithmetic_pvp',
-        'HOST': 'localhost',
+        'NAME': 'd4b73jsv154ia9',
+        'HOST': 'ec2-54-155-61-133.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
-        'PASSWORD': 'QAZwsxEDC_PORCH',
-        'USER': 'postgres'
+        'PASSWORD': '4ee43d37a9527ba5b61d527e80ac860d201526109ad4bd932ea64105abe5ef28',
+        'USER': 'jznhvjvrmawztn'
     }
 }
 
