@@ -102,7 +102,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- CONTACTS -->
 ## Contacts
 
-Collaborators - Kamil Agliullin, Aidar Khuzin, Dmitrii Shabalin, Evgeniy Petrashko
+Collaborators - Kamil Agliullin, Aidar Khuzin, Dmitrii Shabalin, Evgeny Petrashko
 
 Project Link: [https://github.com/shabalin13/Arithmetic-PvP](https://github.com/shabalin13/Arithmetic-PvP)
 
