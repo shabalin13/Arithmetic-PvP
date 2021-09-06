@@ -32,10 +32,8 @@
 <br />
 <p align="center">
   <a href="https://github.com/shabalin13/Arithmetic-PvP">
-    <img src="logo.png" alt="Logo" width="83.1" height="95.5">
+    <img src="logo.png" alt="Logo" width="300" height="171">
   </a>
-
-  <h3 align="center">Arithmetic PvP</h3>
 
   <p align="center">
     project_description
