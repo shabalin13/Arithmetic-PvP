@@ -28,6 +28,7 @@
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
+  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
@@ -46,7 +47,6 @@
     <li><a href="#contacts">Contact</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
-  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
 </details>
 
 
