@@ -53,6 +53,12 @@
 
 Arithmetic PvP is a verbal counting online game. Players compete in calculating various expressions, starting from primitive ones, such as 2+2, ending with extremely hard containing several-digit numbers. There is also a single-player mode, where you can run the endless mode and constantly improve your skill, or play campain which has levels of increasing complexity. 
 
+Play our game if you want to:
+
+* Improve your arithmetic skills
+* Find new friends with same interests
+* Compete!
+
 
 ### Built With
 
@@ -86,18 +92,13 @@ This is an example of how to list things you need to use the software and how to
    npm install
    ```
 
-
-
-<!-- USAGE EXAMPLES -->
+<!-- USAGE -->
 ## Usage
 
-Play our game if you want to:
+_Please refer to the [Documentation](https://docs.google.com/document/d/1IW7qtScCkux4zSTebuYHjDHVmJViEZk8az48_3F7OXM/edit)_
 
-* Improve your arithmetic skills
-* Find new friends with same interests
-* Compete!
 
-_For more examples, please refer to the [Documentation](https://docs.google.com/document/d/1IW7qtScCkux4zSTebuYHjDHVmJViEZk8az48_3F7OXM/edit)_
+
 
 
 <!-- CONTACTS -->
