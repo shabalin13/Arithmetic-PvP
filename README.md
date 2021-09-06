@@ -44,10 +44,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contacts">Contact</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
@@ -102,30 +99,12 @@ Use this space to show useful examples of how a project can be used. Additional 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
 
-
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/shabalin13/Arithmetic-PvP/issues) for a list of proposed features (and known issues).
-
-
-<!-- CONTACT -->
+<!-- CONTACTS -->
 ## Contacts
 
 Collaborators - Kamil Agliullin, Aidar Khuzin, Dmitrii Shabalin, Evgeniy Petrashko
 
 Project Link: [https://github.com/shabalin13/Arithmetic-PvP](https://github.com/shabalin13/Arithmetic-PvP)
-
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* []()
-* []()
-* []()
-
-
 
 
 
