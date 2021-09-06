@@ -94,9 +94,9 @@ This is an example of how to list things you need to use the software and how to
 
 Play our game if you want to:
 
-* A
-* B
-* C
+* Improve your arithmetic skills
+* Find new friends with same interests
+* Compete!
 
 _For more examples, please refer to the [Documentation](https://docs.google.com/document/d/1IW7qtScCkux4zSTebuYHjDHVmJViEZk8az48_3F7OXM/edit)_
 
