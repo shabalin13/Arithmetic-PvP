@@ -57,9 +57,9 @@ Arithmetic PvP is a verbal counting online game. Players compete in calculating 
 
 ### Built With
 
-* []()
-* []()
-* []()
+* [Bootstrap]()
+* [Vue.js]()
+* [Django REST API]()
 
 
 
