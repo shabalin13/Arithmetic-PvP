@@ -9,7 +9,7 @@
   </a>
 
   <p align="center">
-    project_description
+    Multiplayer verbal counting game
     <br />
     <a href="https://github.com/shabalin13/Arithmetic-PvP"><strong>Explore the docs »</strong></a>
     <br />
