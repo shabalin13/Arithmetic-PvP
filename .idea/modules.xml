@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ArithmeticPvP.iml" filepath="$PROJECT_DIR$/.idea/ArithmeticPvP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Arithmetic-PvP.iml" filepath="$PROJECT_DIR$/.idea/Arithmetic-PvP.iml" />
     </modules>
   </component>
 </project>
