@@ -4,12 +4,13 @@ body{
   height:100vh;
   margin: 0;
   padding: 0;
-  background-color: yellow;
+  background-color: white;
 }
 
 .wrapper {
     flex: 1;
-    background: linear-gradient(124deg, #ff4f32, #ec4a4a, #e8b71d, #e3e81d, #1de840, #1ddde8, #7f77f1, #ea66f7, #ea66f7);
+    background: linear-gradient(124deg, #ff4f32, #ec4a4a, #e8b71d, #e3e81d, #1de840, #1ddde8, #7f77f1, #ea66f7);
+
     background-size: 1800% 1800%;
 
     -webkit-animation: rainbow 30s ease infinite;
@@ -39,9 +40,9 @@ body{
 }
 
 a:hover svg {
-    color: darkorange; /* Цвет ссылок */
+    color: lightseagreen; /* Цвет ссылок */
 }
 
 a:hover .links{
-    color: darkorange; /* Цвет ссылок */
+    color: lightseagreen; /* Цвет ссылок */
 }
