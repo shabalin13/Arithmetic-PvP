@@ -11,6 +11,12 @@ export default {
   name: 'App',
   components: {
 
+  },
+  created() {
+
+  },
+  beforeCreate() {
+    document.title = "ArithmeticPvP"
   }
 }
 </script>
@@ -18,6 +24,7 @@ export default {
 <style>
 @import "assets/static/styles/style.css";
 @import "https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css";
+@import "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css";
 #app{
   display: flex;
   flex-direction: column;

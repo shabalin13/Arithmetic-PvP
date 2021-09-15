@@ -4,6 +4,11 @@
 ```
 npm install
 ```
+### Libraries
+```
+npm install vue-router
+npm install axios
+```
 
 ### Compiles and hot-reloads for development
 ```
