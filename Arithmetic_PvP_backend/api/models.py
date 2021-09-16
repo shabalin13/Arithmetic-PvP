@@ -10,31 +10,34 @@ class RoomManager(models.Manager):
         creation_ts = timezone.now()
         start_ts = creation_ts + timezone.timedelta(minutes=1)
         end_ts = start_ts + timezone.timedelta(minutes=5)
-        room = self.create(type='RT', create_time=creation_ts, start_time=start_ts, end_time=end_ts)
+        tasks_num = 10
+        room = self.create(type='RT', create_time=creation_ts, start_time=start_ts, end_time=end_ts, tasks_num=tasks_num)
         return room
 
 
 class Room(models.Model):
     class RoomType(models.TextChoices):
         PRIVATE = 'PR', _('Private room')
-        OPEN = 'OP', _('Open room')
-        RATING = 'RT', _('Ranked room')
+        OPEN = 'OR', _('Open room')
+        RATING = 'RR', _('Ranked room')
+        CAMPAIGN = 'CR', _('Campaign room')
 
     type = models.CharField(max_length=2, choices=RoomType.choices)
     create_time = models.DateTimeField()
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
+    tasks_num = models.SmallIntegerField()
 
     objects = RoomManager()
 
 
 class TaskManager(models.Manager):
-    def create_easy_task(self, room):
+    def create_easy_task(self, room, index):
         nums_range = 20
         n1, n2, n3 = randint(1, nums_range), randint(1, nums_range), randint(1, nums_range)
         content = "({} + {}) * {}".format(n1, n2, n3)
         answer = (n1 + n2) * n3
-        task = self.create(content=content, answer=answer, room=room)
+        task = self.create(content=content, answer=answer, room=room, index=index)
         return task
 
 
@@ -42,6 +45,7 @@ class Task(models.Model):
     content = models.CharField(max_length=32)
     answer = models.IntegerField()
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    index = models.IntegerField()
 
     objects = TaskManager()
 
@@ -51,10 +55,19 @@ class Task(models.Model):
 
 class Player(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    # speed in seconds per task
     avg_speed = models.FloatField(default=0)
     avg_accuracy = models.IntegerField(default=100)
+    tasks_solved = models.IntegerField(default=0)
+    rating_tasks_solved = models.IntegerField(default=0)
+    rating = models.IntegerField(default=500)
 
-    room = models.ForeignKey(Room, on_delete=models.SET_NULL, null=True)
-    task = models.OneToOneField(Task, on_delete=models.SET_NULL, null=True)
-    in_game_speed = models.FloatField(default=0)
-    in_game_accuracy = models.IntegerField(default=100)
+
+class PlayerInRoom(models.Model):
+    player = models.OneToOneField(Player, on_delete=models.CASCADE)
+    place = models.IntegerField(blank=True)
+    # actual only for one game
+    room = models.ForeignKey(Room, on_delete=models.CASCADE,  blank=True)
+    task_index = models.IntegerField(default=0)
+    attempts = models.IntegerField(default=0)
+    last_activity = models.DateTimeField(default=timezone.now)
