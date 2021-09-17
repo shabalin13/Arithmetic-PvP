@@ -52,6 +52,6 @@ class IsInRankedRoom(IsPlayer):
         player = Player.objects.get(user=request.user)
         if player.room is None:
             return False
-        if player.room.type != 'PR':
+        if player.room.type != 'RR':
             return False
         return True

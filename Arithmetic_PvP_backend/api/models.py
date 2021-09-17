@@ -6,12 +6,13 @@ from django.utils import timezone
 
 
 class RoomManager(models.Manager):
+    # TODO: create different room types with different difficulties
     def create_ranked_room(self):
         creation_ts = timezone.now()
         start_ts = creation_ts + timezone.timedelta(minutes=1)
         end_ts = start_ts + timezone.timedelta(minutes=5)
         tasks_num = 10
-        room = self.create(type='RT', create_time=creation_ts, start_time=start_ts, end_time=end_ts, tasks_num=tasks_num)
+        room = self.create(type='RR', create_time=creation_ts, start_time=start_ts, end_time=end_ts, tasks_num=tasks_num)
         return room
 
 
@@ -57,15 +58,15 @@ class Player(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     # speed in seconds per task
     avg_speed = models.FloatField(default=0)
-    avg_accuracy = models.IntegerField(default=100)
+    avg_accuracy = models.FloatField(default=1)
     tasks_solved = models.IntegerField(default=0)
     rating_tasks_solved = models.IntegerField(default=0)
     rating = models.IntegerField(default=500)
+    matches_played = models.IntegerField(default=0)
 
 
 class PlayerInRoom(models.Model):
-    player = models.OneToOneField(Player, on_delete=models.CASCADE)
-    place = models.IntegerField(blank=True)
+    player = models.ForeignKey(Player, on_delete=models.CASCADE)
     # actual only for one game
     room = models.ForeignKey(Room, on_delete=models.CASCADE,  blank=True)
     task_index = models.IntegerField(default=0)

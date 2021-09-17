@@ -17,7 +17,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -28,7 +27,6 @@ SECRET_KEY = 'django-insecure-^urg11&xd4vk5aj!1(&-p6%pck!1k4pnv5jk2d!8u3y#(gm-*v
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -80,24 +78,44 @@ WSGI_APPLICATION = 'Arithmetic_PvP_backend.wsgi.application'
 
 DATABASES = {
 
-    'default': {
+   'default': {
 
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+       'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': 'dbf9a9l2lq419o',
+       'NAME': 'dbf9a9l2lq419o',
 
-        'USER': 'zoccnipaqvysex',
+       'USER': 'zoccnipaqvysex',
 
-        'PASSWORD': 'fed5ef3177414d664a8ce297716de24140d807a00d6406ac0aea586d17a4106e',
+       'PASSWORD': 'fed5ef3177414d664a8ce297716de24140d807a00d6406ac0aea586d17a4106e',
 
-        'HOST': 'ec2-54-220-14-54.eu-west-1.compute.amazonaws.com',
+       'HOST': 'ec2-54-220-14-54.eu-west-1.compute.amazonaws.com',
 
-        'PORT': '5432',
+       'PORT': '5432',
 
-    }
+   }
 
 }
 
+# TODO: delete local database settings
+# DATABASES = {
+#
+#     'default': {
+#
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#
+#         'NAME': 'Arithmetic-PvP',
+#
+#         'USER': 'postgres',
+#
+#         'PASSWORD': '12345678',
+#
+#         'HOST': '127.0.0.1',
+#
+#         'PORT': '5432',
+#
+#     }
+#
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -117,7 +135,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -130,7 +147,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
