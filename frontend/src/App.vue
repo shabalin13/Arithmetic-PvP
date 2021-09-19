@@ -7,6 +7,8 @@
 
 <script>
 
+import axios from "axios";
+
 export default {
   name: 'App',
   components: {
@@ -17,6 +19,17 @@ export default {
   },
   beforeCreate() {
     document.title = "ArithmeticPvP"
+    this.$store.commit("initializeStore")
+
+    const access = this.$store.state.access_token
+
+    if (access){
+      axios.defaults.headers.common['Authorization'] = "JWT " + access
+    }else{
+      axios.defaults.headers.common['Authorization'] = ''
+    }
+
+
   }
 }
 </script>
@@ -25,6 +38,7 @@ export default {
 @import "assets/static/styles/style.css";
 @import "https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css";
 @import "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css";
+@import "assets/static/styles/signin.css";
 #app{
   display: flex;
   flex-direction: column;

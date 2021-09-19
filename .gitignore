@@ -1,2 +1,10 @@
 /frontend/node_modules/*
 /frontend/.idea/*
+/Arithmetic_PvP_backend/.idea/*
+/Arithmetic_PvP_backend/api/migrations/*
+/Arithmetic_PvP_backend/api/__pycache__/*
+#.idea/misc.xml
+#/Arithmetic_PvP_backend/.idea/Arithmetic_PvP_backend.iml
+Arithmetic_PvP_backend/.idea/Arithmetic_PvP_backend.iml
+Arithmetic_PvP_backend/.idea/misc.xml
+.idea/misc.xml

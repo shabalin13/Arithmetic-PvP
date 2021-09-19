@@ -1,0 +1,20 @@
+POST http://localhost:8000/api/v1/jwt/refresh
+Content-Type: application/json
+
+{"refresh":  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYzMTgyNDA1MCwianRpIjoiMDEyMzc0OGJiMWMzNDc1ZmI4ZTgzNWJmN2VmZDMwMjgiLCJ1c2VyX2lkIjozfQ.8OsDnic0_eecp65LyyvmNp-qpzF0yQIjkLBuWJkVivM"}
+
+### Get the information about user based on access token
+GET http://localhost:8000/api/v1/users/me
+Accept: application/json
+Authorization: JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMxNzM4MDAxLCJqdGkiOiJkOWE0ZjJkOGVhYmI0Y2YzOTRkMTViODI5NjVlNjllNyIsInVzZXJfaWQiOjN9.pTwxpV6wcWCiDWEVVkhi5mn-97uaWIWH-7FcJdOntw0
+
+### Create Jwt token for the particular user
+POST http://localhost:8000/api/v1/jwt/create/
+Content-Type: application/json
+
+{"username": "admin", "password": "nagibator228"}
+
+###
+
+
+

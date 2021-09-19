@@ -42,6 +42,10 @@ export default {
     }
   },
   methods:{
+    login(resp){
+      resp.Zi
+      this.$a
+    }
   },
   created() {
     axios.get("", {
