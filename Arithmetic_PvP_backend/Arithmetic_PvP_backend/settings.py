@@ -45,21 +45,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_crontab',
     'api',
     'authentication',
     'rest_framework',
     'rest_framework_simplejwt',
     'djoser',
     'corsheaders',
-
-    # 'corsheaders',
-    # 'rest_framework',
-    # 'rest_framework.authtoken',
-    # 'rest_auth',
-    # 'allauth',
-    # 'allauth.account',
-    # 'allauth.socialaccount',
-    # 'allauth.socialaccount.providers.google'
 ]
 
 # AUTHENTICATION_BACKENDS = [
@@ -93,7 +85,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    # 'django.middleware.common.CommonMiddleware',
 ]
 
 # CORS_ORIGIN_ALLOW_ALL = True
@@ -126,23 +117,44 @@ WSGI_APPLICATION = 'Arithmetic_PvP_backend.wsgi.application'
 
 DATABASES = {
 
-    'default': {
+   'default': {
 
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+       'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': 'dbf9a9l2lq419o',
+       'NAME': 'dbf9a9l2lq419o',
 
-        'USER': 'zoccnipaqvysex',
+       'USER': 'zoccnipaqvysex',
 
-        'PASSWORD': 'fed5ef3177414d664a8ce297716de24140d807a00d6406ac0aea586d17a4106e',
+       'PASSWORD': 'fed5ef3177414d664a8ce297716de24140d807a00d6406ac0aea586d17a4106e',
 
-        'HOST': 'ec2-54-220-14-54.eu-west-1.compute.amazonaws.com',
+       'HOST': 'ec2-54-220-14-54.eu-west-1.compute.amazonaws.com',
 
-        'PORT': '5432',
+       'PORT': '5432',
 
-    }
+   }
 
 }
+
+# TODO: delete local database settings
+# DATABASES = {
+#
+#     'default': {
+#
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#
+#         'NAME': 'Arithmetic-PvP',
+#
+#         'USER': 'postgres',
+#
+#         'PASSWORD': '12345678',
+#
+#         'HOST': '127.0.0.1',
+#
+#         'PORT': '5432',
+#
+#     }
+#
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -194,5 +206,10 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
+
+CRONJOBS = [
+    ('*/5 * * * *', 'api.cron.exit_ranked_rooms')
+]
+
 
 # REST_USE_JWT = True
