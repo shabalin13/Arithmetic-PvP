@@ -8,6 +8,8 @@
 <script>
 
 import axios from "axios";
+import store from "./vuex/store";
+//import store from "./vuex/store";
 
 export default {
   name: 'App',
@@ -19,9 +21,10 @@ export default {
   },
   beforeCreate() {
     document.title = "ArithmeticPvP"
-    this.$store.commit("initializeStore")
+    // this.$store.commit("initializeStore")
+    store.commit("initializeStore")
 
-    const access = this.$store.state.access_token
+    const access = store.state.access_token
 
     if (access){
       axios.defaults.headers.common['Authorization'] = "JWT " + access
@@ -30,6 +33,27 @@ export default {
     }
 
 
+  }, mounted() {
+
+    setInterval(() => {this.getAccess()}, 50000)
+  },
+  methods: {
+    getAccess(){
+      const accessData = {
+        refresh: store.state.refresh_token
+      }
+
+      axios.post("/api/v1/jwt/refresh/", accessData)
+      .then(response => {
+        const access = response.data.access
+
+        localStorage.setItem("access_token", access)
+        store.commit("setAccess", access)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    }
   }
 }
 </script>

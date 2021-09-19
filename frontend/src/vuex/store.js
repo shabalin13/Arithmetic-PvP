@@ -13,12 +13,17 @@ let store = new Vuex.Store({
         initializeStore(state){
             if (localStorage.getItem("access_token")){
                 state.access_token = localStorage.getItem("access_token")
+                state.refresh_token = localStorage.getItem("refresh_token")
             }else{
                 state.access_token = ''
+                state.refresh_token = ''
             }
         },
         setAccess(state, access){
             state.access_token = access
+        },
+        setRefresh(state, refresh){
+            state.refresh_token = refresh
         }
     }, actions: {
 

@@ -26,7 +26,7 @@
 
 <script>
 //var color = 0
-import axios from 'axios'
+// import axios from 'axios'
 import Header from "./Header"
 export default {
   name: 'HelloWorld',
@@ -42,22 +42,8 @@ export default {
     }
   },
   methods:{
-    login(resp){
-      resp.Zi
-      this.$a
-    }
-  },
-  created() {
-    axios.get("", {
-      params: {
 
-      }
-    }).catch(e => {
-      this.errors.push(e)
-    }).then(response => {
-      print(response)
-    })
-  }
+  },
 }
 </script>
 
