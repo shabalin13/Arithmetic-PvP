@@ -2,14 +2,13 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.generics import RetrieveAPIView
 from rest_framework.decorators import api_view, permission_classes
+from rest_framework.exceptions import NotFound
+from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Count
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
 from django.http import Http404
-from rest_framework.exceptions import NotFound
-from django.core.exceptions import ObjectDoesNotExist
 
-from . import permissions
 from .models import Player, Room, Task, PlayerInRoom
 from .serializers import PlayerSerializer, RoomSerializer, TaskSerializer
 from .cron import exit_ranked_rooms
@@ -21,6 +20,7 @@ DIAMOND_END = 2499
 PlAYERS_NUM = 4
 
 
+# single responsibility
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def join_ranked_room(request):
@@ -42,6 +42,7 @@ def join_ranked_room(request):
         return Response(RoomSerializer(room).data)
 
 
+# single responsibility
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_task_rr(request, room_pk):
@@ -57,6 +58,7 @@ def get_task_rr(request, room_pk):
         return Response(TaskSerializer(task).data)
 
 
+# single responsibility
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def submit_answer_rr(request, room_pk, answer):

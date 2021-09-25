@@ -5,6 +5,8 @@ from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 
 
+# open/closed principle
+# to create a room differently one can just add new function
 class RoomManager(models.Manager):
     # TODO: create different room types with different difficulties
     def create_ranked_room(self):
@@ -32,6 +34,7 @@ class Room(models.Model):
     objects = RoomManager()
 
 
+# open/closed principle
 class TaskManager(models.Manager):
     def create_easy_task(self, room, index):
         nums_range = 20
