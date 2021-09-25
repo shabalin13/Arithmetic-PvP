@@ -1,4 +1,5 @@
 /frontend/node_modules/*
+/Arithmetic_PvP_backend/venv/*
 /frontend/.idea/*
 /Arithmetic_PvP_backend/.idea/*
 /Arithmetic_PvP_backend/api/migrations/*
