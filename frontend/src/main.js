@@ -3,9 +3,15 @@ import App from './App.vue'
 import router from './router/router';
 import axios from "axios";
 import store from "./vuex/store";
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+
 Vue.config.productionTip = false
 
 axios.defaults.baseURL = "http://127.0.0.1:8000"
+
+Vue.use(BootstrapVue)
+
+Vue.use(IconsPlugin)
 
 new Vue({
    router,

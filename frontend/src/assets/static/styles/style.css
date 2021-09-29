@@ -11,6 +11,10 @@ body{
     flex: 1;
 }
 
+.game_canvas {
+    flex: 1;
+}
+
 .wrapper {
     flex: 1;
     background: linear-gradient(124deg, #ff4f32, #ec4a4a, #e8b71d, #e3e81d, #1de840, #1ddde8, #7f77f1, #ea66f7);
