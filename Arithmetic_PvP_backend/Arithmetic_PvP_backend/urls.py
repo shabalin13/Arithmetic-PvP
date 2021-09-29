@@ -17,6 +17,8 @@ urlpatterns = [
 
     path('api/v1/', include('djoser.urls')),
     path('api/v1/', include('djoser.urls.jwt')),
+    path('api/v1/', include('djoser.urls.authtoken')),
+    path('activate/', include('authentication.urls'))
     #path('api/v1/users', include('djoser'))
 
 ]

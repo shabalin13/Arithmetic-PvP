@@ -46,6 +46,7 @@ export default {
       submitForm(){
         const formData = {
           username: this.email,
+          email: this.email,
           password: this.password,
         }
         axios.post("/api/v1/users/", formData)
