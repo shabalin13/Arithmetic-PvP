@@ -14,6 +14,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import email
+# from api.email_verif import ActivationEmail
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,6 +37,22 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('JWT',)
 }
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'arithmetic.pvp.main@gmail.com'
+EMAIL_HOST_PASSWORD = 'KamilHuesos_210_forever'
+EMAIL_PORT = 587
+
+DJOSER = {
+    'PASSWORD_RESET_CONFIRM_URL': '/password/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': 'activate/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': True,
+    'SERIALIZERS': {},
+    'EMAIL': {
+            'activation': 'authentication.email_verif.ActivationEmail'
+    }
+}
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -54,7 +72,7 @@ INSTALLED_APPS = [
     'corsheaders',
 ]
 
-SITE_ID = 1
+SITE_ID = 3
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

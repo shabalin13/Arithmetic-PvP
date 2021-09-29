@@ -1,3 +1,9 @@
+POST http://127.0.0.1:8000/api/v1/users/activation/
+Content-Type: application/json
+
+{"uid": "MzU", "token":  "5ug-ebb31527622555a6ae39"}
+
+###
 POST http://localhost:8000/api/v1/jwt/refresh
 Content-Type: application/json
 
