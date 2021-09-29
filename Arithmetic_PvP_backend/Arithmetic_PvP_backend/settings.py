@@ -47,11 +47,15 @@ DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': '/password/reset/confirm/{uid}/{token}',
     'ACTIVATION_URL': 'activate/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL': True,
-    'SERIALIZERS': {},
+    'SERIALIZERS': {
+        'user_create': 'authentication.serializers.UserRegistrationSerializer'
+    },
     'EMAIL': {
-            'activation': 'authentication.email_verif.ActivationEmail'
+            'activation': 'authentication.email_verif.ActivationEmail',
     }
 }
+
+AUTHENTICATION_BACKENDS = ['authentication.auth_backend.EmailBackend']
 
 # Application definition
 

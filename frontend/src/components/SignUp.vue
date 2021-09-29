@@ -90,7 +90,7 @@
                 </div>
 
                 <div class="form-check mb-4 col-12 text-start mx-1">
-                    <input class="form-check-input" type="checkbox" id="seePassword">
+                    <input class="form-check-input" type="checkbox" id="seePassword" @click="showPasswords">
                     <label class="form-check-label" for="seePassword">Show password</label>
                 </div>
 
@@ -118,15 +118,16 @@ export default {
       nickname: "",
       email: "",
       password: "",
-      password2: ""
+      password2: "",
+      see: false,
     }
   }, methods: {
       submitForm(){
         if (this.password === this.password2){
           const formData = {
           username: this.nickname,
-          // first_name: this.name,
-          // last_name: this.surname,
+          first_name: this.name,
+          last_name: this.surname,
           email: this.email,
           password: this.password,
           }
@@ -143,6 +144,23 @@ export default {
           alert("Passwords doesn't match");
         }
 
+      }, showPasswords(){
+        const passwordField1 = document.querySelector('#floatingPassword1')
+        const passwordField2 = document.querySelector('#floatingPassword2')
+        if (this.see){
+          passwordField1.setAttribute('type', 'password')
+          passwordField2.setAttribute('type', 'password')
+        }else{
+          passwordField1.setAttribute('type', 'text')
+          passwordField2.setAttribute('type', 'text')
+        }
+        this.see = !this.see
+    }, makeToast(variant = null) {
+        this.$bvToast.toast('Toast body content', {
+          title: `Variant ${variant || 'default'}`,
+          variant: variant,
+          solid: true
+        })
       }
   }, beforeCreate() {
     document.title = "Sign Up"

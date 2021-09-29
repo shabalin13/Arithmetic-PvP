@@ -9,9 +9,9 @@
 
 import axios from "axios";
 import store from "./vuex/store";
-// import VueToast from 'vue-toast-notification';
-// import Vue from "vue";
-//import store from "./vuex/store";
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 
 export default {
   name: 'App',
@@ -65,7 +65,6 @@ export default {
 @import "assets/static/styles/style.css";
 @import "https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css";
 @import "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css";
-
 @import "assets/static/styles/signin.css";
 /*@import "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js";*/
 #app{

@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Waiting Room</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../static/styles/style.css">
-    <link rel="stylesheet" href="../static/styles/burger.css">
-</head>
-<body class="wrapper">
+<template>
+  <div id="waitingRoomScreen" class="wrapper">
+      <Header></Header>
 
 
-<div class="container-fluid bg-dark">
+<!--
+      <div class="container-fluid bg-dark">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark text-light px-3 py-2">
         <div class="me-auto">
@@ -46,8 +39,9 @@
         </div>
     </nav>
 </div>
+-->
 
-<div class="container pt-5 mt-5">
+      <div class="container pt-5 mt-5">
 
     <h1 class="pb-5 text-uppercase text-center">Waiting for the rest of the participants</h1>
 
@@ -62,7 +56,7 @@
 
 </div>
 
-<div class="container overflow-auto">
+      <div class="container overflow-auto">
     <table class="table table-hover table-light">
         <thead class="table-success sticky-top">
         <tr class="">
@@ -82,18 +76,21 @@
         </tbody>
     </table>
 </div>
-<div class="container pb-4">
+      <div class="container pb-4">
     <a class="btn btn-success" href="#" role="button">START GAME</a>
 <!--    <a class="btn btn-success" href="#" role="button">ПРИСОЕДИНИТЬСЯ</a>-->
 </div>
+  </div>
+</template>
 
+<script>
+import Header from "./Header";
+export default {
+  name: "WaitingRoom",
+  components: {Header}
+}
+</script>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
-        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
-        crossorigin="anonymous"></script>
+<style scoped>
 
-</body>
-</html>
+</style>
