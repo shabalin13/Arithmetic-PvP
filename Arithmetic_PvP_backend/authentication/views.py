@@ -1,29 +1,20 @@
-#from django.shortcuts import render
 from rest_framework.decorators import api_view, permission_classes
-import logging
-
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from rest_framework.permissions import AllowAny
-import requests
-from django.utils.encoding import force_bytes, force_str
-from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from api.models import Player
+from django.utils.encoding import force_str
+from django.utils.http import urlsafe_base64_decode
 
 
 @api_view(["GET"])
 @permission_classes([AllowAny])
-def ActivateUser(request, uid, token):
-    """
-    Intermediate view to activate a user's email.
-    """
-    post_url = "http://127.0.0.1:8000/api/v1/users/activation/"
-    post_data = {"uid": uid, "token": token}
+def activate_user(request, uid, token):
     pk = force_str(urlsafe_base64_decode(uid))
-    logging.warning(f"PrimaryKey for the user {pk}")
-    user = request.user
-    users = User.objects.all()
-    result = requests.post(post_url, json=post_data)
-    content = result.text
-    logging.warning(result.text)
-    return Response(content)
+    user = User.objects.get(pk=pk)
+    user.is_active = True
+    user.save()
+    player = Player(user=user)
+    player.save()
+    return Response("User has been created")
 
