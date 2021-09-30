@@ -7,6 +7,7 @@ import SignUp from "../components/SignUp";
 import WaitingRoom from "../components/WaitingRoom";
 import NewGame from "../components/NewGame";
 import Community from "../components/Community";
+import Game from "@/components/Game";
 Vue.use(Router)
 
 
@@ -39,6 +40,10 @@ let router = new Router({
         name: "community",
         path: "/community",
         component: Community
+    }, {
+        name: "game",
+        path: "/game",
+        component: Game
     }
     ],
     mode: 'history'
