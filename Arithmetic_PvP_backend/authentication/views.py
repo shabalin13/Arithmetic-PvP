@@ -20,10 +20,7 @@ def ActivateUser(request, uid, token):
     post_data = {"uid": uid, "token": token}
     pk = force_str(urlsafe_base64_decode(uid))
     logging.warning(f"PrimaryKey for the user {pk}")
-    user = request.user
-    users = User.objects.all()
-    result = requests.post(post_url, json=post_data)
-    content = result.text
-    logging.warning(result.text)
-    return Response(content)
+    user = User.objects.get(pk=pk)
+    user.is_active = True
+    return Response("User has been created")
 
