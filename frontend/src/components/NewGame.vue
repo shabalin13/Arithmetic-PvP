@@ -1,7 +1,7 @@
 <template>
-  <div id="newGameScreen" class="wrapper">
-        <Header></Header>
-        <div class="d-flex flex-column">
+       <b-overlay :show="show" class="d-flex flex-column h-100">
+            <Header></Header>
+            <div class="d-flex flex-column wrapper" :aria-hidden="show ? 'true' : null">
     <div class="d-md-flex flex-md-column my-md-3 ps-md-3">
         <div class="me-md-3 pt-3 px-3  px-md-5 text-center overflow-hidden">
             <div class="my-3 p-3">
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col my-2" onclick="location.href='/waiting';">
+                <div class="col my-2" onclick="location.href='#';">
                     <div class="card rounded-3">
                         <div class="card-body" style="height: 16rem">
                             <svg xmlns="http://www.w3.org/2000/svg" style="width: 5rem"
@@ -53,7 +53,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col my-2" onclick="location.href='/waiting';">
+                <div class="col my-2" @click="createRankedRoom">
                     <div class="card rounded-3">
                         <div class="card-body" style="height: 16rem">
                             <svg xmlns="http://www.w3.org/2000/svg" style="width: 5rem"
@@ -74,14 +74,40 @@
         </div>
     </div>
 </div>
-  </div>
+       </b-overlay>
 </template>
 
 <script>
 import Header from "./Header";
+import axios from "axios";
+
 export default {
   name: "NewGame",
-  components: {Header}
+  components: {Header},
+  data(){
+    return{
+          show: false
+    }
+  },
+  methods: {
+    createRankedRoom(){
+      this.show = true
+       axios.put("/api/ranked_room/join/")
+          .then(response =>{
+            console.log(response)
+            console.log(response.data.id)
+            this.$router.push({ name: "waitingRoom", params: {room_id: response.data.id, start_time: response.data.start_time, end_time: response.data.end_time}})
+          })
+          .catch(error =>{
+            this.show = false
+            if (error.response.status === 401){
+              this.$router.push("/signIn")
+            }
+            alert(error);
+            console.log(error)
+          })
+    }
+  }
 }
 </script>
 

@@ -38,6 +38,16 @@
 </div>-->
   <div id="signInScreen" class="wrapper">
     <Header></Header>
+
+    <b-alert
+      v-model="showBottom"
+      class="position-fixed fixed-bottom m-0 rounded-0 w-50"
+      style="z-index: 2000;"
+      variant="danger"
+      dismissible>
+      <b>Can't find user with the given credentials (Did you already sign up? If no, then go to your own email and activate your account)</b>
+    </b-alert>
+
     <div class="container con d-flex flex-column justify-content-center">
     <div class="card text-center bg-transparent border-0">
         <div class="card-body border-0">
@@ -89,7 +99,8 @@ export default {
   data() {
     return{
       email: "",
-      password: ""
+      password: "",
+      showBottom: false
     }
   }, methods: {
     submitForm() {
@@ -118,6 +129,9 @@ export default {
 
         router.push("/")
       }).catch(error => {
+        if (error.response.status === 401){
+          this.showBottom = true
+        }
         console.log(error)
       })
     }

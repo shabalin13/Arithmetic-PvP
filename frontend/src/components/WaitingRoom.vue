@@ -77,7 +77,7 @@
     </table>
 </div>
       <div class="container pb-4">
-    <a class="btn btn-success" href="#" role="button">START GAME</a>
+    <a class="btn btn-success" href="#" role="button" @click="startTheGame()">START GAME</a>
 <!--    <a class="btn btn-success" href="#" role="button">ПРИСОЕДИНИТЬСЯ</a>-->
 </div>
   </div>
@@ -85,9 +85,59 @@
 
 <script>
 import Header from "./Header";
+import axios from "axios";
 export default {
   name: "WaitingRoom",
-  components: {Header}
+  components: {Header},
+  data(){
+    return{
+          room_id:  null,
+          start_time: null,
+          players: [],
+          peopleTimer: null,
+          startGameTimeout: null,
+          end_time: null
+    }
+  },
+  created() {
+    this.room_id = this.$router.currentRoute.params.room_id
+    this.start_time = this.$router.currentRoute.params.start_time
+    this.end_time = this.$router.currentRoute.params.end_time
+    console.log(this.room_id)
+    console.log(this.start_time)
+    if (this.room_id !== undefined && this.start_time !== undefined && this.end_time !== undefined){
+        this.peopleTimer = setInterval(this.updateNewPeople, 1000)
+        var myDate = new Date(this.start_time);
+        var result = myDate.getTime();
+        console.log("Time of the start: " + result.toString());
+        var timeLeft = (result - Date.now())
+        console.log("Time left: " + timeLeft.toString())
+        this.startGameTimeout = setTimeout(this.startTheGame, timeLeft)
+        this.updateNewPeople()
+    }
+  },
+  methods: {
+    updateNewPeople() {
+      axios.get("/api/get_players_num/" + this.room_id.toString() + "/")
+          .then(response => {
+            console.log(response)
+          })
+          .catch(error => {
+            if (error.response.status === 401) {
+              clearInterval(this.peopleTimer)
+              this.$router.push("/signIn")
+            }
+            alert(error);
+            console.log(error)
+          })
+    },
+    startTheGame(){
+      console.log("Game will start in a second")
+      clearInterval(this.peopleTimer)
+      clearTimeout(this.startGameTimeout)
+      this.$router.push({ name: "game", params: {room_id: this.room_id, end_time: this.end_time}})
+    }
+  }
 }
 </script>
 

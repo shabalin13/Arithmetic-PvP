@@ -31,7 +31,10 @@ let router = new Router({
     }, {
         name: "waitingRoom",
         path: "/waiting",
-        component: WaitingRoom
+        component: WaitingRoom,
+        props: {
+            room_id: Number
+        }
     }, {
         name: "newGame",
         path: "/newGame",
