@@ -174,6 +174,11 @@ export default {
     console.log("RoomId " + this.room_id.toString())
     this.end_time = this.$router.currentRoute.params.end_time
     console.log("End Time " + this.end_time)
+    let myDate = new Date(this.end_time);
+    let result = myDate.getTime();
+    let timeLeft = (result - Date.now());
+    console.log("Time left: " + timeLeft.toString())
+    setTimeout(this.gameIsOver, timeLeft)
     if (this.room_id !== undefined && this.end_time !== undefined){
       this.getQuestion()
     }
@@ -283,8 +288,11 @@ export default {
               console.log(error)
             })
       }
+    },
+    gameIsOver(){
+      alert("Game is over")
+      this.$router.push("/")
     }
-
 
   }
 }

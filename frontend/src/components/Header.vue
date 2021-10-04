@@ -143,9 +143,6 @@ export default {
 ::v-deep .dropdown-menu{
     background-color: #292b2c;;
 }
-::v-deep li:hover{
-  background-color: #ff4f32;
-}
 /*@import "../assets/static/styles/style.css";*/
 /*@import "https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css";*/
 </style>

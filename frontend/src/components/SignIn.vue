@@ -36,10 +36,12 @@
     </main>
 
 </div>-->
-  <div id="signInScreen" class="wrapper">
-    <Header></Header>
+<!--  <div id="signInScreen" class="wrapper">-->
+  <b-overlay :show="showLoading" class="d-flex flex-column h-100">
+      <Header></Header>
 
-    <b-alert
+      <div class="d-flex flex-column wrapper" :aria-hidden="showLoading ? 'true' : null">
+        <b-alert
       v-model="showBottom"
       class="position-fixed fixed-bottom m-0 rounded-0 w-50"
       style="z-index: 2000;"
@@ -47,8 +49,7 @@
       dismissible>
       <b>Can't find user with the given credentials (Did you already sign up? If no, then go to your own email and activate your account)</b>
     </b-alert>
-
-    <div class="container con d-flex flex-column justify-content-center">
+        <div class="container con d-flex flex-column justify-content-center">
     <div class="card text-center bg-transparent border-0">
         <div class="card-body border-0">
 
@@ -84,7 +85,9 @@
         </div>
     </div>
 </div>
-  </div>
+      </div>
+  </b-overlay>
+<!--  </div>-->
 </template>
 
 <script>
@@ -100,10 +103,12 @@ export default {
     return{
       email: "",
       password: "",
-      showBottom: false
+      showBottom: false,
+      showLoading: false
     }
   }, methods: {
     submitForm() {
+      this.showLoading = true
       axios.defaults.headers.common["Authorization"] = ""
       localStorage.removeItem("access_token")
 
@@ -114,6 +119,7 @@ export default {
 
       axios.post("/api/v1/jwt/create/", formData)
       .then(response => {
+        this.showLoading = false
         console.log(response)
 
         const access = response.data.access
@@ -129,6 +135,7 @@ export default {
 
         router.push("/")
       }).catch(error => {
+        this.showLoading = false
         if (error.response.status === 401){
           this.showBottom = true
         }
