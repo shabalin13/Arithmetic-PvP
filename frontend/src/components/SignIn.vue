@@ -69,6 +69,9 @@
         <div class="card-footer bg-transparent border-0">
             <a href="">Forgot password</a>
         </div>
+      <div class="card-footer bg-transparent border-0">
+            <a href="/signUp">Still not registered?</a>
+        </div>
     </div>
 </div>
   </div>

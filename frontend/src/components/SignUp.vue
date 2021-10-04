@@ -1,6 +1,14 @@
 <template>
   <div id="signUpScreen" class="wrapper">
     <Header></Header>
+    <b-alert
+      v-model="showBottom"
+      class="position-fixed fixed-bottom m-0 rounded-0 w-50"
+      style="z-index: 2000;"
+      variant="danger"
+      dismissible>
+      <b>Passwords doesn't match</b>
+    </b-alert>
 <!--    <div class="wrapper d-flex flex-column">
     <main class="form-signin">
         <form @submit.prevent="submitForm">
@@ -120,9 +128,11 @@ export default {
       password: "",
       password2: "",
       see: false,
+      showBottom: false,
     }
   }, methods: {
       submitForm(){
+        this.showBottom = false
         if (this.password === this.password2){
           const formData = {
           username: this.nickname,
@@ -141,7 +151,7 @@ export default {
             console.log(error)
           })
         }else{
-          alert("Passwords doesn't match");
+          this.showBottom = true
         }
 
       }, showPasswords(){
@@ -155,11 +165,13 @@ export default {
           passwordField2.setAttribute('type', 'text')
         }
         this.see = !this.see
-    }, makeToast(variant = null) {
-        this.$bvToast.toast('Toast body content', {
+    }, makeToast(variant = null, message) {
+        this.$bvToast.toast(message, {
           title: `Variant ${variant || 'default'}`,
           variant: variant,
-          solid: true
+          solid: true,
+          noAutoHide: true,
+          noCloseButton: true
         })
       }
   }, beforeCreate() {
