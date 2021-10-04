@@ -96,3 +96,10 @@ def get_players_num(request, pk):
         room = get_object_or_404(Room, pk=pk)
         players = room.playerinroom_set.count()
         return Response({'players_num': players})
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def get_user_info(request):
+    user = request.user
+    return Response({"name": user.first_name, "surname": user.last_name})
