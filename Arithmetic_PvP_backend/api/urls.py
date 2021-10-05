@@ -10,6 +10,9 @@ urlpatterns = [
     path('ranked_room/join/', views.join_ranked_room),
     path('ranked_room/get_task/<int:room_pk>/', views.get_task_rr),
     path('ranked_room/submit_task/<int:room_pk>/<int:answer>/', views.submit_answer_rr),
+
+
+    path('get_user_info/', views.get_user_info)
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
