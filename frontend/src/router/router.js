@@ -8,6 +8,7 @@ import WaitingRoom from "../components/WaitingRoom";
 import NewGame from "../components/NewGame";
 import Community from "../components/Community";
 import Game from "@/components/Game";
+import Activation from "../components/Activation";
 Vue.use(Router)
 
 
@@ -47,6 +48,11 @@ let router = new Router({
         name: "game",
         path: "/game",
         component: Game
+    }, {
+        name: "activation",
+        path: "/activate/:userId/:token",
+        component: Activation,
+        props: true
     }
     ],
     mode: 'history'
