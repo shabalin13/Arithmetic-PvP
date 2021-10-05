@@ -3,6 +3,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Player
 from django.utils import timezone
+from django.shortcuts import get_object_or_404
 
 
 class IsPlayer(permissions.BasePermission):
@@ -53,5 +54,20 @@ class IsInRankedRoom(IsPlayer):
         if player.room is None:
             return False
         if player.room.type != 'RR':
+            return False
+        return True
+
+
+class IsInActiveRankedRoom(permissions.BasePermission):
+    message = "This room is not active ranked room or player is not in this room"
+
+    def has_object_permission(self, request, view, obj):
+        player = Player.objects.get(user=request.user)
+        p_in_r = get_object_or_404(obj.playerinroom_set, player=player)
+        if obj.type != 'RR':
+            return False
+        if obj.end_time <= timezone.now():
+            return False
+        if obj.start_time > timezone.now():
             return False
         return True

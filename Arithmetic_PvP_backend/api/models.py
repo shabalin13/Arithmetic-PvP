@@ -37,7 +37,7 @@ class Room(models.Model):
 # open/closed principle
 class TaskManager(models.Manager):
     def create_easy_task(self, room, index):
-        nums_range = 20
+        nums_range = 10
         n1, n2, n3 = randint(1, nums_range), randint(1, nums_range), randint(1, nums_range)
         content = "({} + {}) * {}".format(n1, n2, n3)
         answer = (n1 + n2) * n3
