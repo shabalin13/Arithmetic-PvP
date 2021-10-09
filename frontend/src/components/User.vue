@@ -118,10 +118,33 @@
 
 <script>
 import Header from "@/components/Header";
+import axios from "axios";
 
 export default {
   name: "User",
-  components: {Header}
+  components: {Header},
+  created() {
+    this.getUserInfo()
+  },
+  methods: {
+    getUserInfo(){
+      axios.get("/api/get_player_overall_stats/")
+          .then(response => {
+            // this.users_top = response.data
+            // console.log(this.users_top)
+            console.log(response.data)
+            // this.formTable(response.data)
+          })
+          .catch(error => {
+            if (error.response.status === 401) {
+              // clearInterval(this.peopleTimer)
+              this.$router.push("/signIn")
+            }
+            alert(error);
+            console.log(error)
+          })
+    }
+  }
 }
 </script>
 

@@ -6,7 +6,7 @@ from django.utils import timezone
 from django.shortcuts import get_object_or_404
 
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 from .models import Player, Room, Task, PlayerInRoom
 from .serializers import RoomSerializer, TaskSerializer, UsernameSerializer, PlayerNameSerializer, \
     PlayerInRoomProgressSerializer, PlayerInRoomResultsSerializer, PlayerSerializer
@@ -124,10 +124,14 @@ def get_player_stats_in_rr(request, room_pk):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_player_overall_stats(request, player_pk):
+def get_player_overall_stats(request):
     if request.method == 'GET':
-        player = get_object_or_404(Player, pk=player_pk)
-        return Response(PlayerSerializer(player).data)
+        user = request.user
+        if user.is_active:
+            player = get_object_or_404(Player, user=user)
+            return Response(PlayerSerializer(player).data)
+        else:
+            return Response(status=401)
 
 
 @api_view(['DELETE'])

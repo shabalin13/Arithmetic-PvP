@@ -77,6 +77,7 @@ export default {
       third_person: null,
       start_time: null,
       avg_speeds: null,
+      topPlayersTimer: null
     }
   },
   methods: {
@@ -90,7 +91,7 @@ export default {
           })
           .catch(error => {
             if (error.response.status === 401) {
-              clearInterval(this.peopleTimer)
+              // clearInterval(this.peopleTimer)
               this.$router.push("/signIn")
             }
             alert(error);
@@ -121,8 +122,10 @@ export default {
     // this.start_time = this.$router.currentRoute.params.start_time
     // this.last_activities = this.$router.currentRoute.params.last_activities
     if (this.room_id !== undefined){
-      setInterval(this.getTop, 1000)
+      this.topPlayersTimer = setInterval(this.getTop, 1000)
     }
+  }, destroyed() {
+    clearInterval(this.topPlayersTimer)
   }
 }
 </script>
