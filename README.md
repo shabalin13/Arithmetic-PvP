@@ -45,13 +45,8 @@
       </ul>
     </li>
     <li>
-      <a href="#requirments">Usage</a>
-      <ul>
-        <li><a href="#glossary">Glossary</a></li>
-        <li><a href="#stakeholders">Stakeholders roles</a></li>
-        <li><a href="#userstories">User Stories</a></li>
-        <li><a href="#nonfunc">Non-functional requirments</a></li>
-      </ul>
+      <a href="#requirements">Requirements</a>
+      [Documentation link](https://docs.google.com/document/d/11nH57RBb3P8kg8YbvVq6oROE2ZD4-rsxhh4cOgugfFU/edit?usp=sharing)
     </li>
     <li><a href="#contacts">Contact</a></li>
   </ol>
