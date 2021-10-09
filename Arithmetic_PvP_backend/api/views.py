@@ -1,19 +1,15 @@
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.generics import RetrieveAPIView
-from rest_framework.views import APIView
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.exceptions import NotFound
-from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Count
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
-from django.http import Http404
+
 
 from django.contrib.auth.models import User
 from .models import Player, Room, Task, PlayerInRoom
-from .permissions import IsInActiveRankedRoom
-from .serializers import PlayerSerializer, RoomSerializer, TaskSerializer, UserSerializer, PlayerInRoomSerializer
+from .serializers import RoomSerializer, TaskSerializer, UsernameSerializer, PlayerNameSerializer, \
+    PlayerInRoomProgressSerializer, PlayerInRoomResultsSerializer, PlayerSerializer
 from .cron import exit_ranked_rooms
 
 BRONZE_END = 999
@@ -85,7 +81,7 @@ def submit_answer_rr(request, room_pk, answer):
             return Response({'error': 'This room is not rating'})
         if room.end_time <= timezone.now():
             return Response({'error': 'This room already expired'})
-        task = Task.objects.get(room__id=room_pk, index=p_in_r.task_index)
+        task = get_object_or_404(Task, index=p_in_r.task_index)
 
         p_in_r.attempts += 1
         p_in_r.last_activity = timezone.now()
@@ -105,7 +101,7 @@ def get_nicknames(request, room_pk):
         room = get_object_or_404(Room, pk=room_pk)
         # users_in_r = User.objects.filter(player__playerinroom__room=room).exclude(pk=request.user.pk)
         users_in_r = User.objects.filter(player__playerinroom__room=room)
-        return Response(UserSerializer(users_in_r, many=True).data)
+        return Response(UsernameSerializer(users_in_r, many=True).data)
 
 
 @api_view(['GET'])
@@ -114,7 +110,24 @@ def get_players_progress(request, room_pk):
     if request.method == 'GET':
         room = get_object_or_404(Room, id=room_pk)
         players_in_r = PlayerInRoom.objects.filter(room=room)
-        return Response(PlayerInRoomSerializer(players_in_r, many=True).data)
+        return Response(PlayerInRoomProgressSerializer(players_in_r, many=True).data)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_player_stats_in_rr(request, room_pk):
+    if request.method == 'GET':
+        room = get_object_or_404(Room, id=room_pk)
+        players_in_r = PlayerInRoom.objects.filter(room=room)
+        return Response(PlayerInRoomResultsSerializer(players_in_r, many=True, context={'request': request}).data)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_player_overall_stats(request, player_pk):
+    if request.method == 'GET':
+        player = get_object_or_404(Player, pk=player_pk)
+        return Response(PlayerSerializer(player).data)
 
 
 @api_view(['DELETE'])
@@ -122,18 +135,3 @@ def delete_expired_rooms(request):
     if request.method == 'DELETE':
         exit_ranked_rooms()
         return Response({'deleted': 'True'})
-
-
-@api_view(['GET'])
-def get_players_num(request, pk):
-    if request.method == 'GET':
-        room = get_object_or_404(Room, pk=pk)
-        players = room.playerinroom_set.count()
-        return Response({'players_num': players})
-
-
-@api_view(["GET"])
-@permission_classes([IsAuthenticated])
-def get_user_info(request):
-    user = request.user
-    return Response({"name": user.first_name, "surname": user.last_name})

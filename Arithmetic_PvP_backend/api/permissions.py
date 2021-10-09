@@ -1,5 +1,4 @@
 from rest_framework import permissions
-from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Player
 from django.utils import timezone

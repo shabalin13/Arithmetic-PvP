@@ -7,6 +7,8 @@ urlpatterns = [
     path('get_players_num/<int:pk>/', views.get_players_num),
     path('get_nicknames/<int:room_pk>/', views.get_nicknames),
     path('get_rr_progress/<int:room_pk>/', views.get_players_progress),
+    path('get_rr_stats/<int:room_pk>/', views.get_player_stats_in_rr),
+    path('get_player_overall_stats/<int:player_pk>/', views.get_player_overall_stats),
     path('ranked_room/join/', views.join_ranked_room),
     path('ranked_room/get_task/<int:room_pk>/', views.get_task_rr),
     path('ranked_room/submit_task/<int:room_pk>/<int:answer>/', views.submit_answer_rr),
