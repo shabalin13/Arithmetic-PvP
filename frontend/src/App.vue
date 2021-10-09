@@ -19,7 +19,8 @@ export default {
 
   },
   created() {
-
+    this.getAccess()
+    setInterval(this.getAccess, 30000)
   },
   beforeCreate() {
     // Vue.use(VueToast)
@@ -37,7 +38,6 @@ export default {
 
   }, mounted() {
 
-    setInterval(() => {this.getAccess()}, 50000)
   },
   methods: {
     getAccess(){
@@ -51,6 +51,7 @@ export default {
 
         localStorage.setItem("access_token", access)
         store.commit("setAccess", access)
+        axios.defaults.headers.common['Authorization'] = "JWT " + access
       })
       .catch(error => {
         console.log(error)
