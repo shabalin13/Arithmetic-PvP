@@ -99,7 +99,17 @@
             </div>
             <div
                 class="border rounded-1 border-warning bg-light text-warning fs-6 d-flex align-items-center justify-content-center">
-              <span>9.10.2021</span>
+              <span>86156723</span>
+            </div>
+          </div>
+
+          <div class="stat4 flex-fill pb-4">
+            <div class="fw-light fs-6 text-muted pb-2">
+              <span>Total number of games:</span>
+            </div>
+            <div
+                class="border rounded-1 border-warning bg-light text-warning fs-6 d-flex align-items-center justify-content-center">
+              <span>86156723</span>
             </div>
           </div>
 
