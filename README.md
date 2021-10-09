@@ -45,7 +45,7 @@
       </ul>
     </li>
     <li>
-      <a href="#requirements">Requirements</a>
+      <a href="#usage">Usage</a>
     </li>
     <li><a href="#contacts">Contact</a></li>
   </ol>
@@ -98,8 +98,8 @@ This is an example of how to list things you need to use the software and how to
    npm install
    ```
 
-<!-- REQUIREMENTS -->
-## Requirements
+<!-- USAGE -->
+## USAGE
 
 _Please refer to the [Documentation](https://docs.google.com/document/d/11nH57RBb3P8kg8YbvVq6oROE2ZD4-rsxhh4cOgugfFU/edit?usp=sharing)_
 
