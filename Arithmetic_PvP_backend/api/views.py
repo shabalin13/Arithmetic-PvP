@@ -81,7 +81,7 @@ def submit_answer_rr(request, room_pk, answer):
             return Response({'error': 'This room is not rating'})
         if room.end_time <= timezone.now():
             return Response({'error': 'This room already expired'})
-        task = get_object_or_404(Task, index=p_in_r.task_index)
+        task = get_object_or_404(Task, room_pk=room.pk, index=p_in_r.task_index)
 
         p_in_r.attempts += 1
         p_in_r.last_activity = timezone.now()
