@@ -46,7 +46,6 @@
     </li>
     <li>
       <a href="#requirements">Requirements</a>
-      [Documentation link](https://docs.google.com/document/d/11nH57RBb3P8kg8YbvVq6oROE2ZD4-rsxhh4cOgugfFU/edit?usp=sharing)
     </li>
     <li><a href="#contacts">Contact</a></li>
   </ol>
@@ -99,10 +98,10 @@ This is an example of how to list things you need to use the software and how to
    npm install
    ```
 
-<!-- USAGE -->
-## Usage
+<!-- REQUIRMENTS -->
+## Requirments
 
-_Please refer to the [Documentation](https://docs.google.com/document/d/16F3ch2XpANgdRCMAg9ElKJBEdig4YcJ8fgwX25WzNJU/edit?usp=sharing)_
+_Please refer to the [Documentation](https://docs.google.com/document/d/11nH57RBb3P8kg8YbvVq6oROE2ZD4-rsxhh4cOgugfFU/edit?usp=sharing)_
 
 
 
