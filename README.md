@@ -99,7 +99,7 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE -->
 ## Usage
 
-_Please refer to the [Documentation](https://docs.google.com/document/d/1IW7qtScCkux4zSTebuYHjDHVmJViEZk8az48_3F7OXM/edit)_
+_Please refer to the [Documentation](https://docs.google.com/document/d/16F3ch2XpANgdRCMAg9ElKJBEdig4YcJ8fgwX25WzNJU/edit?usp=sharing)_
 
 
 
