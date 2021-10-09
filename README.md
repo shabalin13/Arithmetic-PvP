@@ -44,7 +44,15 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li>
+      <a href="#requirments">Usage</a>
+      <ul>
+        <li><a href="#glossary">Glossary</a></li>
+        <li><a href="#stakeholders">Stakeholders roles</a></li>
+        <li><a href="#userstories">User Stories</a></li>
+        <li><a href="#nonfunc">Non-functional requirments</a></li>
+      </ul>
+    </li>
     <li><a href="#contacts">Contact</a></li>
   </ol>
 
@@ -99,7 +107,7 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE -->
 ## Usage
 
-_Please refer to the [Documentation](https://docs.google.com/document/d/1IW7qtScCkux4zSTebuYHjDHVmJViEZk8az48_3F7OXM/edit)_
+_Please refer to the [Documentation](https://docs.google.com/document/d/16F3ch2XpANgdRCMAg9ElKJBEdig4YcJ8fgwX25WzNJU/edit?usp=sharing)_
 
 
 
