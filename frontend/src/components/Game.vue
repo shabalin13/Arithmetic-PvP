@@ -90,58 +90,58 @@
 
     </div>
 
-    <div class="equation_canvas px-4 mb-3 d-flex flex-grow-1">
-      <div class="card bg-light text-dark flex-grow-1 center" id="eq">
+    <div class="equation_canvas px-4 d-flex flex-fill">
+      <div class="card bg-light text-dark flex-fill center" id="eq">
           <h1 style="text-align: center; vertical-align: middle; line-height: 90px;">{{ current_task }} {{ input_number }}</h1>
       </div>
     </div>
 
-    <div class="keyboard d-flex flex-column px-4 mb-3">
-      <div class="row my-1">
+    <div class="keyboard d-flex flex-column flex-fill px-4 my-3">
+      <div class="row my-1 flex-fill">
         <div class="d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('7')"><span>7</span></button>
+          <button type="button" class="btn btn-outline-dark" @click="changeInput('7')"><span class="fs-4 fw-bold">7</span></button>
         </div>
         <div class=" d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('8')"><span>8</span></button>
+          <button type="button" class="btn btn-outline-dark" @click="changeInput('8')"><span class="fs-4 fw-bold">8</span></button>
         </div>
         <div class=" d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('9')"><span>9</span></button>
+          <button type="button" class="btn btn-outline-dark" @click="changeInput('9')"><span class="fs-4 fw-bold">9</span></button>
         </div>
       </div>
 
-      <div class="row my-1">
+      <div class="row my-1 flex-fill">
         <div class="d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('4')"><span>4</span></button>
+          <button type="button" class="btn btn-outline-dark" @click="changeInput('4')"><span class="fs-4 fw-bold">4</span></button>
         </div>
         <div class="d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('5')"><span>5</span></button>
+          <button type="button" class="btn btn-outline-dark" @click="changeInput('5')"><span class="fs-4 fw-bold">5</span></button>
         </div>
         <div class="d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('6')"><span>6</span></button>
-        </div>
-      </div>
-
-      <div class="row my-1">
-        <div class="d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('1')"><span>1</span></button>
-        </div>
-        <div class="d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('2')"><span>2</span></button>
-        </div>
-        <div class="d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('3')"><span>3</span></button>
+          <button type="button" class="btn btn-outline-dark" @click="changeInput('6')"><span class="fs-4 fw-bold">6</span></button>
         </div>
       </div>
 
-      <div class="row my-1">
+      <div class="row my-1 flex-fill">
         <div class="d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('-')"><span>-</span></button>
+          <button type="button" class="btn btn-outline-dark" @click="changeInput('1')"><span class="fs-4 fw-bold">1</span></button>
         </div>
         <div class="d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('0')"><span>0</span></button>
+          <button type="button" class="btn btn-outline-dark" @click="changeInput('2')"><span class="fs-4 fw-bold">2</span></button>
         </div>
         <div class="d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('Backspace')"><span>Del</span></button>
+          <button type="button" class="btn btn-outline-dark" @click="changeInput('3')"><span class="fs-4 fw-bold">3</span></button>
+        </div>
+      </div>
+
+      <div class="row my-1 flex-fill">
+        <div class="d-grid col-4 mx-auto">
+          <button type="button" class="btn btn-outline-dark" @click="changeInput('-')"><span class="fs-4 fw-bold">-</span></button>
+        </div>
+        <div class="d-grid col-4 mx-auto">
+          <button type="button" class="btn btn-outline-dark" @click="changeInput('0')"><span class="fs-4 fw-bold">0</span></button>
+        </div>
+        <div class="d-grid col-4 mx-auto">
+          <button type="button" class="btn btn-outline-dark" @click="changeInput('Backspace')"><span class="fs-4 fw-bold">Del</span></button>
         </div>
       </div>
 
