@@ -39,7 +39,7 @@ class PlayerInRoomResultsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PlayerInRoom
-        fields = ['id', 'player', 'task_index', 'attempts', 'place']
+        fields = ['id', 'player', 'task_index', 'attempts', 'last_activity', 'place']
 
     def get_place(self, obj):
         return obj.room.playerinroom_set.filter(task_index__gte=obj.task_index).filter(
