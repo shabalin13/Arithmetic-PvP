@@ -65,14 +65,11 @@
         </tr>
         </thead>
         <tbody id="players_container">
-            <tr>
-                <th scope="row">1</th>
-                <td>troHaN</td>
+            <tr v-for="(item, index) in users_list" v-bind:key="item">
+                <th scope="row">{{ index }}</th>
+                <td>{{ item.username }}</td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>DIMbI4</td>
-            </tr>
+
         </tbody>
     </table>
 </div>
@@ -96,16 +93,20 @@ export default {
           players: [],
           peopleTimer: null,
           startGameTimeout: null,
-          end_time: null
+          end_time: null,
+          users_list: []
     }
   },
   created() {
     this.room_id = this.$router.currentRoute.params.room_id
     this.start_time = this.$router.currentRoute.params.start_time
     this.end_time = this.$router.currentRoute.params.end_time
+
     console.log(this.room_id)
     console.log(this.start_time)
+
     if (this.room_id !== undefined && this.start_time !== undefined && this.end_time !== undefined){
+
         this.peopleTimer = setInterval(this.updateNewPeople, 1000)
         var myDate = new Date(this.start_time);
         var result = myDate.getTime();
@@ -114,13 +115,15 @@ export default {
         console.log("Time left: " + timeLeft.toString())
         this.startGameTimeout = setTimeout(this.startTheGame, timeLeft)
         this.updateNewPeople()
+
     }
   },
   methods: {
     updateNewPeople() {
-      axios.get("/api/get_players_num/" + this.room_id.toString() + "/")
+      axios.get("/api/get_nicknames/" + this.room_id.toString() + "")
           .then(response => {
             console.log(response)
+            this.users_list =  response.data
           })
           .catch(error => {
             if (error.response.status === 401) {

@@ -41,7 +41,7 @@ def join_ranked_room(request):
                 for task in tasks:
                     task.save()
 
-            if room.objects.count('playerinroom') == PlAYERS_IN_RR_NUM:
+            if room.playerinroom_set.count() == PlAYERS_IN_RR_NUM:
                 room.start_time = timezone.now()
             room.save()
         player_in_room = PlayerInRoom(player=player, room=room)
@@ -102,8 +102,9 @@ def submit_answer_rr(request, room_pk, answer):
 @permission_classes([IsAuthenticated])
 def get_nicknames(request, room_pk):
     if request.method == 'GET':
-        room = get_object_or_404(Room, id=room_pk)
-        users_in_r = User.objects.filter(player__playerinroom__room__in=room).exclude(request.user)
+        room = get_object_or_404(Room, pk=room_pk)
+        # users_in_r = User.objects.filter(player__playerinroom__room=room).exclude(pk=request.user.pk)
+        users_in_r = User.objects.filter(player__playerinroom__room=room)
         return Response(UserSerializer(users_in_r, many=True).data)
 
 

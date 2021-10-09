@@ -166,6 +166,8 @@ export default {
       current_task: "",
       input_number: "",
       current_index: 0,
+      peopleScoreInterval: null,
+      user_list: []
     }
   },
   created() {
@@ -179,6 +181,8 @@ export default {
     let timeLeft = (result - Date.now());
     console.log("Time left: " + timeLeft.toString())
     setTimeout(this.gameIsOver, timeLeft)
+    this.peopleScoreInterval = setInterval(this.updatePeopleScore, 1000)
+
     if (this.room_id !== undefined && this.end_time !== undefined){
       this.getQuestion()
     }
@@ -291,7 +295,23 @@ export default {
     },
     gameIsOver(){
       alert("Game is over")
+      clearInterval(this.peopleScoreInterval)
       this.$router.push("/")
+    },
+    updatePeopleScore(){
+      axios.get("/api/get_rr_progress/" + this.room_id.toString() + "")
+          .then(response => {
+            console.log(response)
+            this.users_list =  response.data
+          })
+          .catch(error => {
+            if (error.response.status === 401) {
+              clearInterval(this.peopleTimer)
+              this.$router.push("/signIn")
+            }
+            alert(error);
+            console.log(error)
+          })
     }
 
   }
