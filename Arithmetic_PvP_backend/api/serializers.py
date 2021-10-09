@@ -36,14 +36,18 @@ class PlayerInRoomProgressSerializer(serializers.ModelSerializer):
 class PlayerInRoomResultsSerializer(serializers.ModelSerializer):
     player = PlayerNameSerializer(read_only=True)
     place = serializers.SerializerMethodField()
+    start_time = serializers.SerializerMethodField()
 
     class Meta:
         model = PlayerInRoom
-        fields = ['id', 'player', 'task_index', 'attempts', 'place']
+        fields = ['id', 'player', 'task_index', 'attempts', 'last_activity', 'place', 'start_time']
 
     def get_place(self, obj):
         return obj.room.playerinroom_set.filter(task_index__gte=obj.task_index).filter(
             last_activity__lte=obj.last_activity).filter(attempts__lt=obj.attempts).count() + 1
+    
+    def get_start_time(self, obj):
+        return obj.room.start_time
 
 
 class PlayerSerializer(serializers.ModelSerializer):

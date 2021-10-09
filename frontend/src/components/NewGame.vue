@@ -159,6 +159,7 @@
           <div class="ms-auto" v-show="smallScreen">
 
             <div class="row d-flex flex-lg-column text-center my-2">
+
               <div class="col my-2">
                 <div class="card bg-light rounded-3">
                   <div class="card-body" style="height: 18rem">
@@ -173,22 +174,28 @@
                   </div>
                 </div>
               </div>
-              <div class="col my-2">
+
+              <div class="col my-2" @click="createRankedRoom">
                 <div class="card bg-light rounded-3">
                   <div class="card-body" style="height: 18rem">
-                    <img src="../assets/static/images/infinity.svg" alt="levels"
-                         style="width: 5rem">
-                    <h4 class="my-3 fw-normal">Endless</h4>
-                    <p>Infinite mode for continuous improvement</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" style="width: 5rem" fill="currentColor"
+                         class="bi bi-graph-up" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                            d="M0 0h1v15h15v1H0V0zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                    <h4 class="my-3 fw-normal">Rating room</h4>
+                    <p>Compete with other players and update your rating</p>
 
                     <button type="button" class="bg-transparent stretched-link"
                             style="border: none; color: transparent"></button>
                   </div>
                 </div>
               </div>
+
             </div>
 
             <div class="row d-flex flex-lg-column text-center my-2">
+
               <div class="col my-2" onclick="location.href='#';">
                 <div class="card bg-light rounded-3">
                   <div class="card-body" style="height: 18rem">
@@ -208,7 +215,8 @@
                   </div>
                 </div>
               </div>
-              <div class="col my-2" @click="createRankedRoom">
+
+              <div class="col my-2" onclick="location.href='#';">
                 <div class="card bg-light rounded-3">
                   <div class="card-body" style="height: 18rem">
                     <svg xmlns="http://www.w3.org/2000/svg" style="width: 5rem"
@@ -217,14 +225,16 @@
                       <path
                           d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
                     </svg>
-                    <h4 class="my-3 fw-normal">Public room</h4>
+                    <h4 class="my-3 fw-normal">Open room</h4>
                     <p>Create an open room to meet new gamers and get experience</p>
 
                     <button type="button" class="bg-transparent stretched-link"
-                            style="border: none; color: transparent"></button>
+                            style="border: none; color: transparent">
+                    </button>
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
 
@@ -244,19 +254,24 @@
                   </div>
                 </div>
               </div>
-              <div class="col my-2">
+
+              <div class="col my-2" @click="createRankedRoom">
                 <div class="card bg-light rounded-3">
                   <div class="card-body" style="height: 18rem">
-                    <img src="../assets/static/images/infinity.svg" alt="levels"
-                         style="width: 5rem">
-                    <h4 class="my-3 fw-normal">Endless</h4>
-                    <p>Infinite mode for continuous improvement</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" style="width: 5rem" fill="currentColor"
+                         class="bi bi-graph-up" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                            d="M0 0h1v15h15v1H0V0zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                    <h4 class="my-3 fw-normal">Rating room</h4>
+                    <p>Compete with other players and update your rating</p>
 
                     <button type="button" class="bg-transparent stretched-link"
                             style="border: none; color: transparent"></button>
                   </div>
                 </div>
               </div>
+
               <div class="col my-2" onclick="location.href='#';">
                 <div class="card bg-light rounded-3">
                   <div class="card-body" style="height: 18rem">
@@ -276,7 +291,8 @@
                   </div>
                 </div>
               </div>
-              <div class="col my-2" @click="createRankedRoom">
+
+              <div class="col my-2" onclick="location.href='#';">
                 <div class="card bg-light rounded-3">
                   <div class="card-body" style="height: 18rem">
                     <svg xmlns="http://www.w3.org/2000/svg" style="width: 5rem"
@@ -285,11 +301,12 @@
                       <path
                           d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
                     </svg>
-                    <h4 class="my-3 fw-normal">Public room</h4>
+                    <h4 class="my-3 fw-normal">Open room</h4>
                     <p>Create an open room to meet new gamers and get experience</p>
 
                     <button type="button" class="bg-transparent stretched-link"
-                            style="border: none; color: transparent"></button>
+                            style="border: none; color: transparent">
+                    </button>
                   </div>
                 </div>
               </div>
@@ -309,50 +326,50 @@
 import Header from "./Header";
 import axios from "axios";
 
-  export default {
-        name: "NewGame",
-        components: {Header},
-        data() {
-            return {
-                show: false,
-                smallScreen: window.innerWidth < 810
-            }
-        },
-        created() {
-            window.addEventListener("resize", this.myEventHandler);
-        },
-        methods: {
-          // eslint-disable-next-line no-unused-vars
-            myEventHandler(e) {
-                // console.log(e)
-                this.smallScreen = window.innerWidth < 810;
-            },
-            createRankedRoom() {
-                this.show = true
-                axios.put("/api/ranked_room/join/")
-                    .then(response => {
-                        console.log(response)
-                        console.log(response.data.id)
-                        this.$router.push({
-                            name: "waitingRoom",
-                            params: {
-                                room_id: response.data.id,
-                                start_time: response.data.start_time,
-                                end_time: response.data.end_time
-                            }
-                        })
-                    })
-                    .catch(error => {
-                        this.show = false
-                        if (error.response.status === 401) {
-                            this.$router.push("/signIn")
-                        }
-                        alert(error);
-                        console.log(error)
-                    })
-            }
-        }
+export default {
+  name: "NewGame",
+  components: {Header},
+  data() {
+    return {
+      show: false,
+      smallScreen: window.innerWidth < 810
     }
+  },
+  created() {
+    window.addEventListener("resize", this.myEventHandler);
+  },
+  methods: {
+    // eslint-disable-next-line no-unused-vars
+    myEventHandler(e) {
+      // console.log(e)
+      this.smallScreen = window.innerWidth < 810;
+    },
+    createRankedRoom() {
+      this.show = true
+      axios.put("/api/ranked_room/join/")
+          .then(response => {
+            console.log(response)
+            console.log(response.data.id)
+            this.$router.push({
+              name: "waitingRoom",
+              params: {
+                room_id: response.data.id,
+                start_time: response.data.start_time,
+                end_time: response.data.end_time
+              }
+            })
+          })
+          .catch(error => {
+            this.show = false
+            if (error.response.status === 401) {
+              this.$router.push("/signIn")
+            }
+            alert(error);
+            console.log(error)
+          })
+    }
+  }
+}
 </script>
 
 <style scoped>
