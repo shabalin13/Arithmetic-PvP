@@ -10,6 +10,7 @@ import Community from "../components/Community";
 import Game from "@/components/Game";
 import Activation from "../components/Activation";
 import Statistics from "../components/Statistics";
+import User from "../components/User";
 Vue.use(Router)
 
 
@@ -53,6 +54,10 @@ let router = new Router({
         name: "statistics",
         path: "/statistics",
         component: Statistics
+    }, {
+        name: "user",
+        path: "/user",
+        component: User
     }, {
         name: "activation",
         path: "/activate/:userId/:token",
