@@ -7,7 +7,7 @@
 
       <div class="row d-flex flex-row align-items-center justify-content-center" v-for="(item, key) in user_list" v-bind:key="key" aria-valuenow="10">
         <div class="col-3">
-          <div class="me-2"><span class="fw-light">{{ item.player.user.username }}</span></div>
+          <div class="text-truncate"><span class="fw-light">{{ item.player.user.username }}</span></div>
         </div>
         <div class="col-9">
           <div class="progress flex-fill">
@@ -22,7 +22,7 @@
       <div class="equation_canvas px-4 d-flex flex-fill">
         <div class="card bg-light flex-fill text-dark border-0 m-0 p-0" id="eq">
           <div class="card-body d-flex align-items-center justify-content-center">
-            <span class="m-0 p-0 fs-1">- {{ current_task }} {{ input_number }} -</span>
+            <span class="m-0 p-0 fs-1"> {{ current_task }} {{ input_number }} </span>
           </div>
         </div>
       </div>
