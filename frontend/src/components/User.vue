@@ -65,7 +65,7 @@
 
           <div class="stat1 flex-fill pb-4">
             <div class="fw-light fs-6 text-muted pb-2">
-              <span>Wins in Rating rooms:</span>
+              <span>Total average speed:</span>
             </div>
             <div
                 class="border rounded-1 border-warning bg-light text-warning fs-6 d-flex align-items-center justify-content-center">
@@ -75,7 +75,7 @@
 
           <div class="stat2 flex-fill pb-4">
             <div class="fw-light fs-6 text-muted pb-2">
-              <span>Total number of games:</span>
+              <span>Total average accuracy:</span>
             </div>
             <div
                 class="border rounded-1 border-warning bg-light text-warning fs-6 d-flex align-items-center justify-content-center">
@@ -85,17 +85,17 @@
 
           <div class="stat3 flex-fill pb-4">
             <div class="fw-light fs-6 text-muted pb-2">
-              <span>Total average speed:</span>
+              <span>Total solved tasks:</span>
             </div>
             <div
                 class="border rounded-1 border-warning bg-light text-warning fs-6 d-flex align-items-center justify-content-center">
-              <span>1.34</span>
+              <span>1124124</span>
             </div>
           </div>
 
           <div class="stat4 flex-fill pb-4">
             <div class="fw-light fs-6 text-muted pb-2">
-              <span>Registration:</span>
+              <span>Total rating solved tasks:</span>
             </div>
             <div
                 class="border rounded-1 border-warning bg-light text-warning fs-6 d-flex align-items-center justify-content-center">
