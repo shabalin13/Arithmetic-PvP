@@ -1,9 +1,10 @@
 <template>
 
   <div class="body-con">
-    <Header></Header>
+    <b-overlay class="body-con" :show="showLoading">
+      <Header></Header>
 
-    <div class="main-con">
+     <div class="main-con" :aria-hidden="showLoading ? 'true' : null">
 
       <div class="d-flex flex-row px-2 py-2">
 
@@ -21,7 +22,7 @@
             <p>Newbie</p>
           </div>
           <div class="user-name">
-            <h3>DIMbI4</h3>
+            <h3>{{ username }}</h3>
           </div>
         </div>
 
@@ -31,7 +32,7 @@
           </div>
           <div
               class="border rounded-3 border-info bg-info text-dark fs-6 d-flex align-items-center justify-content-center flex-fill">
-            <span>1312</span>
+            <span>{{ rating }}</span>
           </div>
         </div>
 
@@ -69,7 +70,7 @@
             </div>
             <div
                 class="border rounded-1 border-warning bg-light text-warning fs-6 d-flex align-items-center justify-content-center">
-              <span>2136125</span>
+              <span> {{ avg_speed }}</span>
             </div>
           </div>
 
@@ -79,7 +80,7 @@
             </div>
             <div
                 class="border rounded-1 border-warning bg-light text-warning fs-6 d-flex align-items-center justify-content-center">
-              <span>123</span>
+              <span>{{ avg_accuracy }}</span>
             </div>
           </div>
 
@@ -89,7 +90,7 @@
             </div>
             <div
                 class="border rounded-1 border-warning bg-light text-warning fs-6 d-flex align-items-center justify-content-center">
-              <span>1124124</span>
+              <span>{{ tasks_solved }}</span>
             </div>
           </div>
 
@@ -99,7 +100,7 @@
             </div>
             <div
                 class="border rounded-1 border-warning bg-light text-warning fs-6 d-flex align-items-center justify-content-center">
-              <span>86156723</span>
+              <span>{{ rating_tasks_solved }}</span>
             </div>
           </div>
 
@@ -109,7 +110,7 @@
             </div>
             <div
                 class="border rounded-1 border-warning bg-light text-warning fs-6 d-flex align-items-center justify-content-center">
-              <span>86156723</span>
+              <span>{{ matches_played }}</span>
             </div>
           </div>
 
@@ -122,6 +123,8 @@
 
     </div>
 
+  </b-overlay>
+
   </div>
 
 </template>
@@ -133,17 +136,36 @@ import axios from "axios";
 export default {
   name: "User",
   components: {Header},
+  data(){
+    return{
+      username: "",
+      rating: "",
+      avg_accuracy: "",
+      avg_speed: "",
+      matches_played: "",
+      rating_tasks_solved: "",
+      tasks_solved: "",
+      showLoading: false
+    }
+  },
   created() {
     this.getUserInfo()
   },
   methods: {
     getUserInfo(){
+      this.showLoading = true
       axios.get("/api/get_player_overall_stats/")
           .then(response => {
-            // this.users_top = response.data
-            // console.log(this.users_top)
             console.log(response.data)
-            // this.formTable(response.data)
+            let parse_data = response.data
+            this.username = parse_data.user.username
+            this.rating = parse_data.rating
+            this.avg_accuracy = parse_data.avg_accuracy
+            this.avg_speed = parse_data.avg_speed
+            this.matches_played = parse_data.matches_played
+            this.rating_tasks_solved = parse_data.rating_tasks_solved
+            this.tasks_solved = parse_data.tasks_solved
+            this.showLoading = false
           })
           .catch(error => {
             if (error.response.status === 401) {
