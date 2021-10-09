@@ -1,6 +1,6 @@
 <template>
 
-  <div class="container-fluid bg-dark">
+  <header class="bg-dark">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark text-light px-3 py-2">
       <div class="me-auto">
@@ -107,7 +107,7 @@
 
     </nav>
 
-  </div>
+  </header>
 
 </template>
 

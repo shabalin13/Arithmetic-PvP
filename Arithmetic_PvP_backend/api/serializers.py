@@ -3,12 +3,6 @@ from .models import Player, Room, Task, PlayerInRoom
 from django.contrib.auth.models import User
 
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['id', 'username']
-
-
 # single responsibility
 class RoomSerializer(serializers.ModelSerializer):
     class Meta:
@@ -16,21 +10,49 @@ class RoomSerializer(serializers.ModelSerializer):
         fields = ['id', 'create_time', 'start_time', 'end_time', 'tasks_num']
 
 
-# single responsibility
-class PlayerSerializer(serializers.ModelSerializer):
-    user = UserSerializer(read_only=True)
+class UsernameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username']
+
+
+#
+class PlayerNameSerializer(serializers.ModelSerializer):
+    user = UsernameSerializer(read_only=True)
 
     class Meta:
         model = Player
         fields = ['id', 'user']
 
 
-class PlayerInRoomSerializer(serializers.ModelSerializer):
-    player = PlayerSerializer(read_only=True)
+class PlayerInRoomProgressSerializer(serializers.ModelSerializer):
+    player = PlayerNameSerializer(read_only=True)
 
     class Meta:
         model = PlayerInRoom
         fields = ['id', 'task_index', 'player']
+
+
+class PlayerInRoomResultsSerializer(serializers.ModelSerializer):
+    player = PlayerNameSerializer(read_only=True)
+    place = serializers.SerializerMethodField()
+
+    class Meta:
+        model = PlayerInRoom
+        fields = ['id', 'player', 'task_index', 'attempts', 'place']
+
+    def get_place(self, obj):
+        return obj.room.playerinroom_set.filter(task_index__gte=obj.task_index).filter(
+            last_activity__lte=obj.last_activity).filter(attempts__lt=obj.attempts).count() + 1
+
+
+class PlayerSerializer(serializers.ModelSerializer):
+    user = UsernameSerializer(read_only=True)
+
+    class Meta:
+        model = Player
+        fields = ['user', 'avg_speed', 'avg_accuracy', 'tasks_solved', 'rating_tasks_solved', 'rating',
+                  'matches_played']
 
 
 # single responsibility

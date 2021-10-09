@@ -1,18 +1,10 @@
-body{
-  display: flex;
-  flex-direction: column;
-  height:100vh;
-  margin: 0;
-  padding: 0;
-  background-color: white;
-}
-
-.con {
-    flex: 1;
+body {
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }
 
 .wrapper {
-    flex: 1;
     background: linear-gradient(124deg, #ff4f32, #ec4a4a, #e8b71d, #e3e81d, #1de840, #1ddde8, #7f77f1, #ea66f7);
 
     background-size: 100% 1200%;
@@ -20,33 +12,76 @@ body{
     -webkit-animation: rainbow 30s ease infinite;
     -z-animation: rainbow 30s ease infinite;
     -o-animation: rainbow 30s ease infinite;
-      animation: rainbow 30s ease infinite;}
+    animation: rainbow 30s ease infinite;
+}
 
 @-webkit-keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
+    0% {
+        background-position: 0% 82%
+    }
+    50% {
+        background-position: 100% 19%
+    }
+    100% {
+        background-position: 0% 82%
+    }
 }
+
 @-moz-keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
+    0% {
+        background-position: 0% 82%
+    }
+    50% {
+        background-position: 100% 19%
+    }
+    100% {
+        background-position: 0% 82%
+    }
 }
+
 @-o-keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
+    0% {
+        background-position: 0% 82%
+    }
+    50% {
+        background-position: 100% 19%
+    }
+    100% {
+        background-position: 0% 82%
+    }
 }
+
 @keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
+    0% {
+        background-position: 0% 82%
+    }
+    50% {
+        background-position: 100% 19%
+    }
+    100% {
+        background-position: 0% 82%
+    }
+}
+
+.body-con {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.main-con {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
 }
 
 a:hover svg {
     color: lightseagreen; /* Цвет ссылок */
 }
 
-a:hover .links{
+a:hover .links {
     color: lightseagreen; /* Цвет ссылок */
 }

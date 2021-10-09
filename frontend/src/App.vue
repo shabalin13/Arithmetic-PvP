@@ -15,11 +15,6 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 export default {
   name: 'App',
-  data() {
-    return{
-      windowHeight: window.innerHeight
-    }
-  },
   components: {
 
   },
@@ -80,7 +75,7 @@ export default {
 #app{
   display: flex;
   flex-direction: column;
-  height:100vh;
+  height: 100%;
   margin: 0;
   padding: 0;
 }

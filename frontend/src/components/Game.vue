@@ -1,8 +1,9 @@
 <template>
-  <div class="wrapper d-flex flex-column justify-content-between">
+  <div class="body-con wrapper">
     <Header></Header>
 
-    <div class="progress_bars px-4 my-3">
+    <div class="main-con">
+      <div class="progress_bars px-4 my-3">
 
       <div class="row d-flex flex-row align-items-center justify-content-center" v-for="(item, key) in user_list" v-bind:key="key" aria-valuenow="10">
         <div class="col-3">
@@ -18,59 +19,75 @@
 
     </div>
 
-    <div class="equation_canvas px-4 d-flex flex-fill">
-      <div class="card bg-light text-dark flex-fill center" id="eq">
-          <h1 style="text-align: center; vertical-align: middle; line-height: 90px;">{{ current_task }} {{ input_number }}</h1>
-      </div>
-    </div>
-
-    <div class="keyboard d-flex flex-column flex-fill px-4 my-3">
-      <div class="row my-1 flex-fill">
-        <div class="d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('7')"><span class="fs-4 fw-bold">7</span></button>
-        </div>
-        <div class=" d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('8')"><span class="fs-4 fw-bold">8</span></button>
-        </div>
-        <div class=" d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('9')"><span class="fs-4 fw-bold">9</span></button>
+      <div class="equation_canvas px-4 d-flex flex-fill">
+        <div class="card bg-light flex-fill text-dark border-0 m-0 p-0" id="eq">
+          <div class="card-body d-flex align-items-center justify-content-center">
+            <span class="m-0 p-0 fs-1">- {{ current_task }} {{ input_number }} -</span>
+          </div>
         </div>
       </div>
 
-      <div class="row my-1 flex-fill">
-        <div class="d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('4')"><span class="fs-4 fw-bold">4</span></button>
+      <div class="keyboard d-flex flex-column flex-fill px-4 my-3">
+        <div class="row my-1 flex-fill">
+          <div class="d-grid col-4 mx-auto">
+            <button type="button" class="btn btn-outline-dark" @click="changeInput('7')"><span
+                class="fs-4 fw-bold">7</span></button>
+          </div>
+          <div class=" d-grid col-4 mx-auto">
+            <button type="button" class="btn btn-outline-dark" @click="changeInput('8')"><span
+                class="fs-4 fw-bold">8</span></button>
+          </div>
+          <div class=" d-grid col-4 mx-auto">
+            <button type="button" class="btn btn-outline-dark" @click="changeInput('9')"><span
+                class="fs-4 fw-bold">9</span></button>
+          </div>
         </div>
-        <div class="d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('5')"><span class="fs-4 fw-bold">5</span></button>
-        </div>
-        <div class="d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('6')"><span class="fs-4 fw-bold">6</span></button>
-        </div>
-      </div>
 
-      <div class="row my-1 flex-fill">
-        <div class="d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('1')"><span class="fs-4 fw-bold">1</span></button>
+        <div class="row my-1 flex-fill">
+          <div class="d-grid col-4 mx-auto">
+            <button type="button" class="btn btn-outline-dark" @click="changeInput('4')"><span
+                class="fs-4 fw-bold">4</span></button>
+          </div>
+          <div class="d-grid col-4 mx-auto">
+            <button type="button" class="btn btn-outline-dark" @click="changeInput('5')"><span
+                class="fs-4 fw-bold">5</span></button>
+          </div>
+          <div class="d-grid col-4 mx-auto">
+            <button type="button" class="btn btn-outline-dark" @click="changeInput('6')"><span
+                class="fs-4 fw-bold">6</span></button>
+          </div>
         </div>
-        <div class="d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('2')"><span class="fs-4 fw-bold">2</span></button>
-        </div>
-        <div class="d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('3')"><span class="fs-4 fw-bold">3</span></button>
-        </div>
-      </div>
 
-      <div class="row my-1 flex-fill">
-        <div class="d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('-')"><span class="fs-4 fw-bold">-</span></button>
+        <div class="row my-1 flex-fill">
+          <div class="d-grid col-4 mx-auto">
+            <button type="button" class="btn btn-outline-dark" @click="changeInput('1')"><span
+                class="fs-4 fw-bold">1</span></button>
+          </div>
+          <div class="d-grid col-4 mx-auto">
+            <button type="button" class="btn btn-outline-dark" @click="changeInput('2')"><span
+                class="fs-4 fw-bold">2</span></button>
+          </div>
+          <div class="d-grid col-4 mx-auto">
+            <button type="button" class="btn btn-outline-dark" @click="changeInput('3')"><span
+                class="fs-4 fw-bold">3</span></button>
+          </div>
         </div>
-        <div class="d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('0')"><span class="fs-4 fw-bold">0</span></button>
+
+        <div class="row my-1 flex-fill">
+          <div class="d-grid col-4 mx-auto">
+            <button type="button" class="btn btn-outline-dark" @click="changeInput('-')"><span
+                class="fs-4 fw-bold">-</span></button>
+          </div>
+          <div class="d-grid col-4 mx-auto">
+            <button type="button" class="btn btn-outline-dark" @click="changeInput('0')"><span
+                class="fs-4 fw-bold">0</span></button>
+          </div>
+          <div class="d-grid col-4 mx-auto">
+            <button type="button" class="btn btn-outline-dark" @click="changeInput('Backspace')"><span
+                class="fs-4 fw-bold">Del</span></button>
+          </div>
         </div>
-        <div class="d-grid col-4 mx-auto">
-          <button type="button" class="btn btn-outline-dark" @click="changeInput('Backspace')"><span class="fs-4 fw-bold">Del</span></button>
-        </div>
+
       </div>
 
     </div>
