@@ -65,7 +65,7 @@
         </tr>
         </thead>
         <tbody id="players_container">
-            <tr v-for="(item, index) in users_list" v-bind:key="item">
+            <tr v-for="(item, index) in users_list" v-bind:key="item.pk">
                 <th scope="row">{{ index }}</th>
                 <td>{{ item.username }}</td>
             </tr>
@@ -122,7 +122,7 @@ export default {
   },
   methods: {
     updateNewPeople() {
-      axios.get("/api/get_nicknames/" + this.room_id.toString() + "")
+      axios.get("/api/get_nicknames/" + this.room_id.toString() + "/")
           .then(response => {
             console.log(response)
             this.users_list =  response.data

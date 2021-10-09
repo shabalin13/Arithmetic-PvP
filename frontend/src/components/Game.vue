@@ -4,89 +4,17 @@
 
     <div class="progress_bars px-4 my-3">
 
-      <div class="row d-flex flex-row align-items-center justify-content-center">
+      <div class="row d-flex flex-row align-items-center justify-content-center" v-for="(item, key) in user_list" v-bind:key="key" aria-valuenow="10">
         <div class="col-3">
-          <div class="me-2"><span class="fw-light">DIMbI4</span></div>
+          <div class="me-2"><span class="fw-light">{{ item.player.user.username }}</span></div>
         </div>
         <div class="col-9">
           <div class="progress flex-fill">
-            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10"
-                 aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar progress-bar-striped" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="100" v-bind:style="{width: (item.task_index) * 10 + '%'}"></div>
           </div>
         </div>
       </div>
-
-      <div class="row d-flex flex-row align-items-center justify-content-center">
-        <div class="col-3">
-          <div class="text-truncate"><span class="fw-light">troHaN</span></div>
-        </div>
-        <div class="col-9">
-          <div class="progress flex-fill">
-            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%"
-                 aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row d-flex flex-row align-items-center justify-content-center">
-        <div class="col-3">
-          <div class="text-truncate"><span class="fw-light">KamilAin</span></div>
-        </div>
-        <div class="col-9">
-          <div class="progress flex-fill">
-            <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%"
-                 aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row d-flex flex-row align-items-center justify-content-center">
-        <div class="col-3">
-          <div class="text-truncate"><span class="fw-light ">qwertyasdfawbvaerberb</span></div>
-        </div>
-        <div class="col-9">
-          <div class="progress flex-fill">
-            <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%"
-                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-      </div>
-
-
-
-
-      <!--<div class="d-flex flex-row align-items-center">
-        <div class="me-2"><span class="fw-light">DIMbI4</span></div>
-        <div class="progress flex-fill">
-          <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10"
-               aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-      </div>
-
-      <div class="d-flex flex-row align-items-center">
-        <div class="me-2"><span class="fw-light">troHaN</span></div>
-        <div class="progress flex-fill">
-          <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%"
-               aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-      </div>
-
-      <div class="d-flex flex-row align-items-center">
-        <div class="me-2"><span class="fw-light">aerilvbaerwivbewqrivbceivbcqe</span></div>
-        <div class="progress flex-fill">
-          <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%"
-               aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-      </div>
-
-      <div class="d-flex flex-row align-items-center">
-        <div class="me-2"><span class="fw-light">troHaN</span></div>
-        <div class="progress flex-fill">
-          <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%"
-               aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-      </div>-->
-
 
     </div>
 
@@ -167,7 +95,7 @@ export default {
       input_number: "",
       current_index: 0,
       peopleScoreInterval: null,
-      user_list: []
+      user_list: [],
     }
   },
   created() {
@@ -204,7 +132,7 @@ export default {
             console.log(error)
           })
       }else{
-        alert("Game for you is over pidoras!")
+        this.$router.push("/statistics")
       }
     },
     changeInput(key){
@@ -294,15 +222,15 @@ export default {
       }
     },
     gameIsOver(){
-      alert("Game is over")
+      //alert("Game is over")
       clearInterval(this.peopleScoreInterval)
-      this.$router.push("/")
+      this.$router.push("/statistics")
     },
     updatePeopleScore(){
-      axios.get("/api/get_rr_progress/" + this.room_id.toString() + "")
+      axios.get("/api/get_rr_progress/" + this.room_id.toString() + "/")
           .then(response => {
-            console.log(response)
-            this.users_list =  response.data
+            this.user_list = response.data
+            console.log(this.user_list)
           })
           .catch(error => {
             if (error.response.status === 401) {
@@ -312,8 +240,7 @@ export default {
             alert(error);
             console.log(error)
           })
-    }
-
+    },
   }
 }
 </script>

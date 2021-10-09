@@ -15,6 +15,11 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 export default {
   name: 'App',
+  data() {
+    return{
+      windowHeight: window.innerHeight
+    }
+  },
   components: {
 
   },
@@ -34,7 +39,6 @@ export default {
     }else{
       axios.defaults.headers.common['Authorization'] = ''
     }
-
 
   }, mounted() {
 
@@ -70,6 +74,9 @@ export default {
 @import "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css";
 @import "assets/static/styles/signin.css";
 /*@import "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js";*/
+
+
+
 #app{
   display: flex;
   flex-direction: column;

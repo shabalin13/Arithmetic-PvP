@@ -1,5 +1,5 @@
 <template>
-    <b-overlay :show="show" class="d-flex flex-column h-100">
+    <b-overlay :show="show" class="d-flex flex-column h-100" fixed>
         <Header></Header>
         <div class="d-flex flex-column wrapper" :aria-hidden="show ? 'true' : null">
             <div class="d-md-flex flex-md-column my-md-3 ps-md-3">
@@ -158,15 +158,16 @@
         data() {
             return {
                 show: false,
-                smallScreen: false
+                smallScreen: window.innerWidth < 810
             }
         },
         created() {
             window.addEventListener("resize", this.myEventHandler);
         },
         methods: {
+          // eslint-disable-next-line no-unused-vars
             myEventHandler(e) {
-                console.log(e)
+                // console.log(e)
                 this.smallScreen = window.innerWidth < 810;
             },
             createRankedRoom() {
