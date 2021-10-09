@@ -7,7 +7,7 @@
 
       <div class="row d-flex flex-row align-items-center justify-content-center" v-for="(item, key) in user_list" v-bind:key="key" aria-valuenow="10">
         <div class="col-3">
-          <div class="me-2"><span class="fw-light">{{ item.player.user.username }}</span></div>
+          <div class="text-truncate"><span class="fw-light">{{ item.player.user.username }}</span></div>
         </div>
         <div class="col-9">
           <div class="progress flex-fill">
