@@ -135,3 +135,10 @@ def delete_expired_rooms(request):
     if request.method == 'DELETE':
         exit_ranked_rooms()
         return Response({'deleted': 'True'})
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def get_user_info(request):
+    user = request.user
+    return Response({"name": user.first_name, "surname": user.last_name})
