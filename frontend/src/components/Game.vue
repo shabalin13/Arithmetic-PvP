@@ -7,7 +7,7 @@
 
         <div class="row d-flex flex-row align-items-center justify-content-center">
           <div class="col-3">
-            <div class="me-2"><span class="fw-light">DIMbI4</span></div>
+            <div class="text-truncate"><span class="fw-light">DIMbI4</span></div>
           </div>
           <div class="col-9">
             <div class="progress flex-fill">

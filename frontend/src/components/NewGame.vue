@@ -146,22 +146,21 @@
           </div>
       </div>
   </b-overlay>-->
-
-
   <b-overlay class="body-con" :show="show">
     <Header></Header>
 
     <div class="main-con" :aria-hidden="show ? 'true' : null">
-      <div class="d-md-flex flex-md-column my-md-3 ps-md-3 wrapper">
+      <div class="d-md-flex flex-md-column my-md-3 ps-md-3">
         <div class="me-md-3 pt-3 px-3  px-md-5 text-center overflow-hidden">
           <div class="p-3">
             <h2 class="display-5">Choose the mode</h2>
             <p class="lead">Play with friends and meet new people.</p>
           </div>
           <div class="ms-auto" v-show="smallScreen">
+
             <div class="row d-flex flex-lg-column text-center my-2">
               <div class="col my-2">
-                <div class="card rounded-3">
+                <div class="card bg-light rounded-3">
                   <div class="card-body" style="height: 18rem">
 
                     <img src="../assets/static/images/levels.svg" alt="levels"
@@ -175,7 +174,7 @@
                 </div>
               </div>
               <div class="col my-2">
-                <div class="card rounded-3">
+                <div class="card bg-light rounded-3">
                   <div class="card-body" style="height: 18rem">
                     <img src="../assets/static/images/infinity.svg" alt="levels"
                          style="width: 5rem">
@@ -188,9 +187,10 @@
                 </div>
               </div>
             </div>
+
             <div class="row d-flex flex-lg-column text-center my-2">
               <div class="col my-2" onclick="location.href='#';">
-                <div class="card rounded-3">
+                <div class="card bg-light rounded-3">
                   <div class="card-body" style="height: 18rem">
                     <svg xmlns="http://www.w3.org/2000/svg" style="width: 5rem"
                          fill="currentColor"
@@ -209,7 +209,7 @@
                 </div>
               </div>
               <div class="col my-2" @click="createRankedRoom">
-                <div class="card rounded-3">
+                <div class="card bg-light rounded-3">
                   <div class="card-body" style="height: 18rem">
                     <svg xmlns="http://www.w3.org/2000/svg" style="width: 5rem"
                          fill="currentColor"
@@ -231,7 +231,7 @@
           <div class="ms-auto" v-show="!smallScreen">
             <div class="row text-center my-2">
               <div class="col my-2">
-                <div class="card rounded-3">
+                <div class="card bg-light rounded-3">
                   <div class="card-body" style="height: 18rem">
 
                     <img src="../assets/static/images/levels.svg" alt="levels"
@@ -245,7 +245,7 @@
                 </div>
               </div>
               <div class="col my-2">
-                <div class="card rounded-3">
+                <div class="card bg-light rounded-3">
                   <div class="card-body" style="height: 18rem">
                     <img src="../assets/static/images/infinity.svg" alt="levels"
                          style="width: 5rem">
@@ -258,7 +258,7 @@
                 </div>
               </div>
               <div class="col my-2" onclick="location.href='#';">
-                <div class="card rounded-3">
+                <div class="card bg-light rounded-3">
                   <div class="card-body" style="height: 18rem">
                     <svg xmlns="http://www.w3.org/2000/svg" style="width: 5rem"
                          fill="currentColor"
@@ -277,7 +277,7 @@
                 </div>
               </div>
               <div class="col my-2" @click="createRankedRoom">
-                <div class="card rounded-3">
+                <div class="card bg-light rounded-3">
                   <div class="card-body" style="height: 18rem">
                     <svg xmlns="http://www.w3.org/2000/svg" style="width: 5rem"
                          fill="currentColor"
