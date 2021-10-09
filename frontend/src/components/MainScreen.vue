@@ -1,45 +1,24 @@
 <template>
-  <div class="wrapper d-flex flex-column">
+
+  <div class="body-con wrapper">
     <Header></Header>
 
-    <!--    <div class="wrapper d-flex flex-column" style="flex: 1;">-->
-    <!--      -->
-    <!--    </div>-->
-
-    <div class="d-flex flex-column flex-grow-1">
-      <div class="fw-light pt-5 pb-3 px-5 d-flex flex-column align-items-start justify-content-center flex-fill">
+    <div class="main-con">
+      <div class="fw-light pt-3 pb-3 px-5 d-flex flex-column align-items-start justify-content-center">
         <h1 class="py-2">Verbal math battles.</h1>
         <h1 class="py-2">Compete with anyone.</h1>
         <h1 class="py-2">Anywhere.</h1>
       </div>
 
-      <div class="align-items-center pt-5 pb-3 px-5 flex-fill">
+      <div class="align-items-center pt-3 px-5 flex-grow-1">
         <div class="card bg-transparent border-0">
           <img src="../assets/static/images/image.png" class="card-img-top" alt="first-image">
         </div>
       </div>
     </div>
 
-    <!--    <div class="container pt-5 m-5">-->
-    <!--        <div class="row">-->
-    <!--          <div class="col-1"></div>-->
-    <!--          <div class="col-5 fw-light p-5 d-flex flex-column align-items-start justify-content-center">-->
-    <!--            <h1 class="py-2">Verbal math battles.</h1>-->
-    <!--            <h1 class="py-2">Compete with anyone.</h1>-->
-    <!--            <h1 class="py-2">Anywhere.</h1>-->
-    <!--          </div>-->
-    <!--          <div class="col-1"></div>-->
-
-    <!--          <div class="col-5 d-flex align-items-center">-->
-    <!--            <div class="card bg-transparent border-0">-->
-    <!--              <img src="../assets/static/images/image.png" alt="first-image">-->
-    <!--            </div>-->
-
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--      </div>-->
-
   </div>
+
 </template>
 
 <script>

@@ -70,10 +70,11 @@ export default {
 @import "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css";
 @import "assets/static/styles/signin.css";
 /*@import "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js";*/
-#app{
+
+#app {
   display: flex;
   flex-direction: column;
-  height:100vh;
+  height: 100%;
   margin: 0;
   padding: 0;
 }
