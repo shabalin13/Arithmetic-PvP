@@ -108,6 +108,7 @@ export default {
     return{
       room_id: null,
       end_time: null,
+      start_time: null,
       current_task: "",
       input_number: "",
       current_index: 0,
@@ -121,6 +122,8 @@ export default {
     console.log("RoomId " + this.room_id.toString())
     this.end_time = this.$router.currentRoute.params.end_time
     console.log("End Time " + this.end_time)
+    this.start_time = this.$router.currentRoute.params.start_time
+    console.log("Start Time " + this.start_time)
     let myDate = new Date(this.end_time);
     let result = myDate.getTime();
     let timeLeft = (result - Date.now());

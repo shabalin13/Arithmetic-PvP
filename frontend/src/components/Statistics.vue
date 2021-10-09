@@ -39,15 +39,15 @@
             <tr>
               <th class="border-0" scope="col">#</th>
               <th class="border-0" scope="col">Nickname</th>
-<!--              <th class="border-0" scope="col">Avg speed(eq/s)</th>-->
+              <th class="border-0" scope="col">Avg speed(eq/s)</th>
 <!--              <th class="border-0" scope="col">Total accuracy</th>-->
             </tr>
             </thead>
             <tbody>
             <tr v-for="(item, index) in sorted_user_top" v-bind:key="item.pk">
-                <th scope="row">{{ index }}</th>
+                <th scope="row">{{ index + 1 }}</th>
                 <td>{{ item.player.user.username }}</td>
-<!--                <td>1</td>-->
+                <td>{{ item.avg_speed }}</td>
             </tr>
             </tbody>
           </table>
@@ -74,7 +74,9 @@ export default {
       sorted_user_top: [],
       first_person: null,
       second_person: null,
-      third_person: null
+      third_person: null,
+      start_time: null,
+      avg_speeds: null,
     }
   },
   methods: {
@@ -104,10 +106,20 @@ export default {
       if (this.sorted_user_top.length >= 3){
         document.getElementById("third_place_player").innerText = this.sorted_user_top[2].player.user.username
       }
+      for (let i = 0; i < this.sorted_user_top.length; i ++){
+        var myDate1 = new Date(this.sorted_user_top[i].start_time);
+        var myDate2 = new Date(this.sorted_user_top[i].last_activity);
+        var result1 = myDate1.getTime();
+        console.log("Start time: " + result1.toString())
+        var result2 = myDate2.getTime();
+        console.log("Last activity time: " + result2.toString())
+        this.sorted_user_top[i]['avg_speed'] = ((this.sorted_user_top[i].task_index) * 1000) / (result2 - result1)
+      }
     }
   }, created() {
     this.room_id = this.$router.currentRoute.params.room_id
-    console.log("RoomId " + this.room_id.toString())
+    // this.start_time = this.$router.currentRoute.params.start_time
+    // this.last_activities = this.$router.currentRoute.params.last_activities
     if (this.room_id !== undefined){
       setInterval(this.getTop, 1000)
     }

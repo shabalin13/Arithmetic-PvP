@@ -30,7 +30,7 @@
           </thead>
           <tbody id="players_container">
           <tr v-for="(item, index) in users_list" v-bind:key="item.pk">
-            <th scope="row">{{ index }}</th>
+            <th scope="row">{{ index + 1 }}</th>
             <td>{{ item.username }}</td>
           </tr>
           </tbody>
@@ -38,7 +38,7 @@
       </div>
 
       <div class="container d-flex flex-row justify-content-around align-items-center">
-        <a class="mx-1 w-100 btn btn-success" href="#" role="button" @click="startTheGame()">START GAME</a>
+        <a class="mx-1 w-100 btn btn-success" href="#" role="button" @click="startTheGame('click')">START GAME</a>
       </div>
 
     </div>
@@ -80,7 +80,7 @@ export default {
       console.log("Time of the start: " + result.toString());
       var timeLeft = (result - Date.now())
       console.log("Time left: " + timeLeft.toString())
-      this.startGameTimeout = setTimeout(this.startTheGame, timeLeft)
+      this.startGameTimeout = setTimeout(this.startTheGame, timeLeft, "")
       this.updateNewPeople()
 
     }
@@ -101,11 +101,18 @@ export default {
             console.log(error)
           })
     },
-    startTheGame(){
-      console.log("Game will start in a second")
-      clearInterval(this.peopleTimer)
-      clearTimeout(this.startGameTimeout)
-      this.$router.push({name: "game", params: {room_id: this.room_id, end_time: this.end_time}})
+    startTheGame(event){
+      if (this.room_id !== undefined && this.start_time !== undefined && this.end_time !== undefined && (event === "" || (event === "click" && this.users_list.length === 4))) {
+        console.log("Game will start in a second")
+        clearInterval(this.peopleTimer)
+        clearTimeout(this.startGameTimeout)
+        this.$router.push({
+          name: "game",
+          params: {room_id: this.room_id, end_time: this.end_time, start_time: this.start_time}
+        })
+      }else{
+        // this.$router.push("/")
+      }
     }
   }
 }
