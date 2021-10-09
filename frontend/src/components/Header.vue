@@ -120,7 +120,7 @@ export default {
   data() {
     return {
       isOpen: false, // closed by default
-      smallScreen: false,
+      smallScreen: window.innerWidth < 800,
       isAuthorized: false,
       first_name: "Ivan",
       second_name: "Ivanov"
@@ -153,7 +153,7 @@ export default {
           this.isAuthorized = false
         })
   }, destroyed() {
-      window.removeEventListener("resize", this.myEventHandler);
+      //window.removeEventListener("resize", this.myEventHandler);
   }
 }
 </script>

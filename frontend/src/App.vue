@@ -35,7 +35,6 @@ export default {
       axios.defaults.headers.common['Authorization'] = ''
     }
 
-
   }, mounted() {
 
     setInterval(() => {this.getAccess()}, 50000)
@@ -71,7 +70,9 @@ export default {
 @import "assets/static/styles/signin.css";
 /*@import "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js";*/
 
-#app {
+
+
+#app{
   display: flex;
   flex-direction: column;
   height: 100%;

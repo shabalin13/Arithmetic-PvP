@@ -4,7 +4,6 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
     path('delete_expired_rooms/', views.delete_expired_rooms),
-    path('get_players_num/<int:pk>/', views.get_players_num),
     path('get_nicknames/<int:room_pk>/', views.get_nicknames),
     path('get_rr_progress/<int:room_pk>/', views.get_players_progress),
     path('get_rr_stats/<int:room_pk>/', views.get_player_stats_in_rr),

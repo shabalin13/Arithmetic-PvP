@@ -65,7 +65,7 @@ def get_task_rr(request, room_pk):
             return Response({'error': 'This room already expired'})
         if room.start_time > timezone.now():
             return Response({})
-        task = get_object_or_404(Task, room__id=room_pk, index=p_in_r.task_index)
+        task = get_object_or_404(Task, room__id=room.pk, index=p_in_r.task_index)
         return Response(TaskSerializer(task).data)
 
 
@@ -81,7 +81,7 @@ def submit_answer_rr(request, room_pk, answer):
             return Response({'error': 'This room is not rating'})
         if room.end_time <= timezone.now():
             return Response({'error': 'This room already expired'})
-        task = get_object_or_404(Task, index=p_in_r.task_index)
+        task = get_object_or_404(Task, room__id=room.pk, index=p_in_r.task_index)
 
         p_in_r.attempts += 1
         p_in_r.last_activity = timezone.now()
@@ -135,3 +135,10 @@ def delete_expired_rooms(request):
     if request.method == 'DELETE':
         exit_ranked_rooms()
         return Response({'deleted': 'True'})
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def get_user_info(request):
+    user = request.user
+    return Response({"name": user.first_name, "surname": user.last_name})

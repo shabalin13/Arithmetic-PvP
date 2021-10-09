@@ -309,49 +309,50 @@
 import Header from "./Header";
 import axios from "axios";
 
-export default {
-  name: "NewGame",
-  components: {Header},
-  data() {
-    return {
-      show: false,
-      smallScreen: false
-    }
-  },
-  created() {
-    window.addEventListener("resize", this.myEventHandler);
-  },
-  methods: {
-    myEventHandler(e) {
-      console.log(e)
-      this.smallScreen = window.innerWidth < 810;
-    },
-    createRankedRoom() {
-      this.show = true
-      axios.put("/api/ranked_room/join/")
-          .then(response => {
-            console.log(response)
-            console.log(response.data.id)
-            this.$router.push({
-              name: "waitingRoom",
-              params: {
-                room_id: response.data.id,
-                start_time: response.data.start_time,
-                end_time: response.data.end_time
-              }
-            })
-          })
-          .catch(error => {
-            this.show = false
-            if (error.response.status === 401) {
-              this.$router.push("/signIn")
+  export default {
+        name: "NewGame",
+        components: {Header},
+        data() {
+            return {
+                show: false,
+                smallScreen: window.innerWidth < 810
             }
-            alert(error);
-            console.log(error)
-          })
+        },
+        created() {
+            window.addEventListener("resize", this.myEventHandler);
+        },
+        methods: {
+          // eslint-disable-next-line no-unused-vars
+            myEventHandler(e) {
+                // console.log(e)
+                this.smallScreen = window.innerWidth < 810;
+            },
+            createRankedRoom() {
+                this.show = true
+                axios.put("/api/ranked_room/join/")
+                    .then(response => {
+                        console.log(response)
+                        console.log(response.data.id)
+                        this.$router.push({
+                            name: "waitingRoom",
+                            params: {
+                                room_id: response.data.id,
+                                start_time: response.data.start_time,
+                                end_time: response.data.end_time
+                            }
+                        })
+                    })
+                    .catch(error => {
+                        this.show = false
+                        if (error.response.status === 401) {
+                            this.$router.push("/signIn")
+                        }
+                        alert(error);
+                        console.log(error)
+                    })
+            }
+        }
     }
-  }
-}
 </script>
 
 <style scoped>
