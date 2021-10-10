@@ -106,7 +106,7 @@ _Please refer to the [Documentation](https://docs.google.com/document/d/11nH57RB
 
 ## Requirements
 
-All development documentation can be found here [link]
+All development documentation can be found here [Requirements](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Requirements.pdf)
 
 #### Content of the Requirements
 
