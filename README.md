@@ -164,7 +164,7 @@ All diagrams about architecture of application can be found by following links b
 
 ### Demonstration
 
-You can see video demostration of our app on [YouTube](https://www.youtube.com/watch?v=YBOpn10ter0)
+You can see video demonstration of our app on [YouTube](https://www.youtube.com/watch?v=YBOpn10ter0)
 
 
 ## Code
