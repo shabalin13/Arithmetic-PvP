@@ -131,11 +131,15 @@ All development documentation can be found here [Requirements](https://github.co
 * [Class Diagram]()
 * [Sequence Diagram]()
 * [Use Case Diagram]()
-* [Database Diagram]()
+* [Database Diagram](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Database_diagram.png)
 
 ### SOLID principles and Design patterns
 
-
+* Single responsibility - 
+* Open-closed - 
+* Liskov substitution - we did not use this principle in our project.
+* Interface segregation - 
+* Dependency inversion - 
 
 ## Architecture
 
@@ -146,7 +150,7 @@ All diagrams about architecture of application can be found by following links b
 
 ## Demo
 
-Можно вставить GIF 
+![Demo](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Demo.png)
 
 ## Code
 
