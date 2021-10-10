@@ -43,9 +43,12 @@ class PlayerInRoomResultsSerializer(serializers.ModelSerializer):
         fields = ['id', 'player', 'task_index', 'attempts', 'last_activity', 'place', 'start_time']
 
     def get_place(self, obj):
-        return obj.room.playerinroom_set.filter(task_index__gte=obj.task_index).filter(
-            last_activity__lte=obj.last_activity).filter(attempts__lt=obj.attempts).count() + 1
-    
+        return obj.room.playerinroom_set.filter(task_index__gt=obj.task_index).count() + \
+               obj.room.playerinroom_set.filter(task_index=obj.task_index).filter(
+                   last_activity__lt=obj.last_activity).count() +\
+               obj.room.playerinroom_set.filter(task_index=obj.task_index).filter(
+            last_activity=obj.last_activity).filter(attempts__lt=obj.attempts).count() + 1
+
     def get_start_time(self, obj):
         return obj.room.start_time
 
