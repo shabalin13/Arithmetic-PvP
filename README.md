@@ -150,7 +150,7 @@ All diagrams about architecture of application can be found by following links b
 
 ## Demo
 
-![Demo](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Demo.png)
+![Demo]()
 
 ## Code
 
