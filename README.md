@@ -79,27 +79,27 @@ Play our game if you want to:
 
 1) Download the Node.js from [source](https://nodejs.org/en/download/)
 2) Clone the repo
-```
-git clone https://github.com/shabalin13/Arithmetic-PvP.git
-```
+    ```
+    git clone https://github.com/shabalin13/Arithmetic-PvP.git
+    ```
 3) Go to the backend directory (Arithmetic-PvP/Arithmetic_PvP_backend)
-4) Make sure you have already installed Django, otherwise
-```
-pip install django
-```
+4) Install all Requirements
+    ```
+    pip install -r requirements.txt
+    ```
 5) Start the local server
-```
-python3 manage.py runserver
-```
+    ```
+    python3 manage.py runserver
+    ```
 6) Go to the frontend directory (Arithmetic-PvP/frontend)
 7) Install NPM packages
-```
-npm install
-```
+    ```
+    npm install
+    ```
 8) Start Vue.js
-```
-npm run serve
-```
+    ```
+    npm run serve
+    ```
 
 ### Installation
 
@@ -111,12 +111,6 @@ npm run serve
    ```sh
    npm install
    ```
-
-<!-- USAGE -->
-## Usage
-
-_Please refer to the [Documentation](https://docs.google.com/document/d/11nH57RBb3P8kg8YbvVq6oROE2ZD4-rsxhh4cOgugfFU/edit?usp=sharing)_
-
 
 ## Requirements
 
