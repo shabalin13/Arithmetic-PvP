@@ -136,14 +136,14 @@ All development documentation can be found here [Requirements](https://github.co
 
 ### Diagrams
 
-* [Class Diagram](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Class_diagram.png) for Django Models that are connected to database. So this is core of our backend side.
+* [Class Diagram](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Class_diagram.png) for Django Models that are connected to database. So this is core of our backend side. However other parts of our project are not completely based on objects. So class diagram is not useful in our case.
 * [Sequence Diagram](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Sequence_diagram.png)
 * [Use Case Diagram](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Use_case_diagram.png)
 
 ### SOLID principles and Design patterns
 
 * *Single responsibility* - All classes have only one responsibility (only one purpose).
-* *Open-closed* - each entity is **Opened** for extension and **Closed** for modification.
+* *Open-closed* - There are many examples of using open/closed principle in our project. For example, permissions for views are easily modifiable changing only one line before the function. Another example is the room and task constructors. Constructors for these models are implemented inside model managers and one can easily add new constructor. We will definitely use it when creating new task generators.
 * *Liskov substitution* - 
 * *Interface segregation* - Large interfaces are splitted into smaller ones. Implementing classes concerned only about the methods that are of interest to them.
 * *Dependency inversion* - All classes use other classes through interfaces.
@@ -152,8 +152,8 @@ All development documentation can be found here [Requirements](https://github.co
 
 All diagrams about architecture of application can be found by following links below
 
-* [Static View]()
-* [Dynamic View]()
+* [Static View](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Static_diagram.png)
+* [Dynamic View](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Dynamic_diagram.png)
 
 ## Demo
 
