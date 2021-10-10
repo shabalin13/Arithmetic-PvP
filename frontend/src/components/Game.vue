@@ -22,7 +22,7 @@
       <div class="equation_canvas px-4 d-flex flex-fill">
         <div class="card bg-light flex-fill text-dark border-0 m-0 p-0" id="eq">
           <div class="card-body d-flex align-items-center justify-content-center">
-            <span class="m-0 p-0 fs-1"> {{ current_task }} {{ input_number }} </span>
+            <span class="m-0 p-0 fs-1">{{ current_task }} {{ input_number }} </span>
           </div>
         </div>
       </div>
@@ -108,6 +108,7 @@ export default {
     return{
       room_id: null,
       end_time: null,
+      start_time: null,
       current_task: "",
       input_number: "",
       current_index: 0,
@@ -121,6 +122,8 @@ export default {
     console.log("RoomId " + this.room_id.toString())
     this.end_time = this.$router.currentRoute.params.end_time
     console.log("End Time " + this.end_time)
+    this.start_time = this.$router.currentRoute.params.start_time
+    console.log("Start Time " + this.start_time)
     let myDate = new Date(this.end_time);
     let result = myDate.getTime();
     let timeLeft = (result - Date.now());
@@ -149,7 +152,8 @@ export default {
             console.log(error)
           })
       }else{
-        this.$router.push("/statistics")
+        // this.$router.push("/statistics")
+        this.$router.push({name: "statistics", params: {room_id: this.room_id}})
       }
     },
     changeInput(key){
@@ -241,7 +245,8 @@ export default {
     gameIsOver(){
       //alert("Game is over")
       clearInterval(this.peopleScoreInterval)
-      this.$router.push("/statistics")
+      // this.$router.push("/statistics")
+      this.$router.push({name: "statistics", params: {room_id: this.room_id}})
     },
     updatePeopleScore(){
       axios.get("/api/get_rr_progress/" + this.room_id.toString() + "/")
