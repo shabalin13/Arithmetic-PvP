@@ -168,8 +168,10 @@ You can see video demonstration of our app on [YouTube](https://www.youtube.com/
 
 ## Code
 
-*  Here is the link of our linter worlflow: [lint.yml](https://github.com/shabalin13/Arithmetic-PvP/actions/workflows/linter.yml)
-*  Test coverage
+* **Static analyzer results:**
+Here is the link of our linter worlflow: [lint.yml](https://github.com/shabalin13/Arithmetic-PvP/actions/workflows/linter.yml). ([NOTICE]   All file(s) linted successfully with no errors detected)
+* **Testing:**
+At this stage of development, we only performed manual testing. Since our project is still in the development stage, we think that it makes no sense to add tests for code that changes quite often.
 
 
 <!-- CONTACTS -->
