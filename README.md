@@ -39,15 +39,23 @@
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
     </li>
     <li>
-      <a href="#usage">Usage</a>
+      <a href="#requirements">Requirements</a>
     </li>
-    <li><a href="#contacts">Contact</a></li>
+    <li>
+      <a href="#design">Design</a>
+      <ul>
+        <li><a href="#diagrams">Diagrams</a></li>
+      </ul>
+      <ul>
+        <li><a href="#solid-principles-and-design-patterns">SOLID principles and Design patterns</a></li>
+      </ul>
+    </li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#demo">Demo</a></li>
+    <li><a href="#code">Code</a></li>
+    <li><a href="#contacts">Contacts</a></li>
   </ol>
 
 
@@ -74,7 +82,7 @@ Play our game if you want to:
 
 
 
-
+<!-- GETTING STARTED -->
 ## Getting Started
 
 1) Download the Node.js from [source](https://nodejs.org/en/download/)
