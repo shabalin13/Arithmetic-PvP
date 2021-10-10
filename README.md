@@ -136,18 +136,17 @@ All development documentation can be found here [Requirements](https://github.co
 
 ### Diagrams
 
-* [Class Diagram]()
-* [Sequence Diagram]()
-* [Use Case Diagram]()
-* [Database Diagram](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Database_diagram.png)
+* [Class Diagram](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Class_diagram.png) for Django Models that are connected to database. So this is core of our backend side.
+* [Sequence Diagram](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Sequence_diagram.png)
+* [Use Case Diagram](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Use_case_diagram.png)
 
 ### SOLID principles and Design patterns
 
-* Single responsibility - 
-* Open-closed - 
-* Liskov substitution - we did not use this principle in our project.
-* Interface segregation - 
-* Dependency inversion - 
+* *Single responsibility* - All classes have only one responsibility (only one purpose).
+* *Open-closed* - each entity is **Opened** for extension and **Closed** for modification.
+* *Liskov substitution* - 
+* *Interface segregation* - Large interfaces are splitted into smaller ones. Implementing classes concerned only about the methods that are of interest to them.
+* *Dependency inversion* - All classes use other classes through interfaces.
 
 ## Architecture
 
