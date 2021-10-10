@@ -1,7 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router"
 import MainScreen from "../components/MainScreen"
-import LobbyScreen from "../components/LobbyScreen";
 import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
 import WaitingRoom from "../components/WaitingRoom";
@@ -19,10 +18,6 @@ let router = new Router({
         name: "home",
         path: "/",
         component: MainScreen,
-    },{
-        name: "lobby",
-        path: "/lobby",
-        component: LobbyScreen
     },{
         name: "signIn",
         path: "/signIn",

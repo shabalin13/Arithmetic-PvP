@@ -152,6 +152,7 @@ export default {
     this.getUserInfo()
   },
   methods: {
+    // get info about myself (username, rating, average speed/accuracy ans so on)
     getUserInfo(){
       this.showLoading = true
       axios.get("/api/get_player_overall_stats/")
@@ -169,7 +170,6 @@ export default {
           })
           .catch(error => {
             if (error.response.status === 401) {
-              // clearInterval(this.peopleTimer)
               this.$router.push("/signIn")
             }
             alert(error);

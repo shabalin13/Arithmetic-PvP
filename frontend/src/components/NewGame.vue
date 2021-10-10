@@ -339,11 +339,12 @@ export default {
     window.addEventListener("resize", this.myEventHandler);
   },
   methods: {
+    // Resize page listener
     // eslint-disable-next-line no-unused-vars
     myEventHandler(e) {
-      // console.log(e)
       this.smallScreen = window.innerWidth < 810;
     },
+    // Here we create ranked room on the sever, if the user in the system, otherwise go to the login page
     createRankedRoom() {
       this.show = true
       axios.put("/api/ranked_room/join/")

@@ -11,10 +11,10 @@
   <p align="center">
     Multiplayer verbal counting game
     <br />
-    <a href="https://github.com/shabalin13/Arithmetic-PvP"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/shabalin13/Arithmetic-PvP/tree/main/Documentation"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/shabalin13/Arithmetic-PvP">View Demo</a>
+    <a href="#demo">View Demo</a>
     ·
     <a href="https://github.com/shabalin13/Arithmetic-PvP/issues">Report Bug</a>
     ·
@@ -39,15 +39,31 @@
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
     </li>
     <li>
-      <a href="#usage">Usage</a>
+      <a href="#requirements">Requirements</a>
     </li>
-    <li><a href="#contacts">Contact</a></li>
+    <li>
+      <a href="#design">Design</a>
+      <ul>
+        <li><a href="#diagrams">Diagrams</a></li>
+      </ul>
+      <ul>
+        <li><a href="#solid-principles-and-design-patterns">SOLID principles and Design patterns</a></li>
+      </ul>
+    </li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li>
+       <a href="#demo">Demo</a>
+      <ul>
+        <li><a href="#demo-screens">Demo screens</a></li>
+      </ul>
+      <ul>
+        <li><a href="#demonstration">Demonstration</a></li>
+      </ul>
+    </li>
+    <li><a href="#code">Code</a></li>
+    <li><a href="#contacts">Contacts</a></li>
   </ol>
 
 
@@ -77,38 +93,35 @@ Play our game if you want to:
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Clone the repo
-   ```sh
-   git clone https://github.com/shabalin13/Arithmetic-PvP.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
-
-<!-- USAGE -->
-## Usage
-
-_Please refer to the [Documentation](https://docs.google.com/document/d/11nH57RBb3P8kg8YbvVq6oROE2ZD4-rsxhh4cOgugfFU/edit?usp=sharing)_
-
+1) Download the Node.js from [source](https://nodejs.org/en/download/)
+2) Clone the repo
+    ```
+    git clone https://github.com/shabalin13/Arithmetic-PvP.git
+    ```
+3) Go to the backend directory (Arithmetic-PvP/Arithmetic_PvP_backend)
+4) Install all Requirements
+    ```
+    pip install -r requirements.txt
+    ```
+5) Start the local server
+    ```
+    python3 manage.py runserver
+    ```
+6) Go to the frontend directory (Arithmetic-PvP/frontend)
+7) Install NPM packages
+    ```
+    npm install
+    ```
+8) Start Vue.js
+    ```
+    npm run serve
+    ```
 
 ## Requirements
 
 All development documentation can be found here [Requirements](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Requirements.pdf)
 
-#### Content of the Requirements
+### Content of the Requirements
 
 1.  Glossary
 2.  Business Goals and Objectives
@@ -119,6 +132,46 @@ All development documentation can be found here [Requirements](https://github.co
 7.  Software Development plan
 
 
+## Design
+
+### Diagrams
+
+* [Class Diagram](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Class_diagram.png) for Django Models that are connected to database. So this is core of our backend side.
+* [Sequence Diagram](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Sequence_diagram.png)
+* [Use Case Diagram](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Use_case_diagram.png)
+
+### SOLID principles and Design patterns
+
+* *Single responsibility* - All classes have only one responsibility (only one purpose).
+* *Open-closed* - each entity is **Opened** for extension and **Closed** for modification.
+* *Liskov substitution* - 
+* *Interface segregation* - Large interfaces are splitted into smaller ones. Implementing classes concerned only about the methods that are of interest to them.
+* *Dependency inversion* - All classes use other classes through interfaces.
+
+## Architecture
+
+All diagrams about architecture of application can be found by following links below
+
+* [Static View]()
+* [Dynamic View]()
+
+## Demo
+
+### Demo screens
+
+![Demo](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Demo-screens.png)
+
+### Demonstration
+
+You can see video demonstration of our app on [YouTube](https://www.youtube.com/watch?v=YBOpn10ter0)
+
+
+## Code
+
+* **Static analyzer results:**
+Here is the link of our linter worlflow: [lint.yml](https://github.com/shabalin13/Arithmetic-PvP/actions/workflows/linter.yml). ([NOTICE]   All file(s) linted successfully with no errors detected)
+* **Testing:**
+At this stage of development, we only performed manual testing. Since our project is still in the development stage, we think that it makes no sense to add tests for code that changes quite often.
 
 
 <!-- CONTACTS -->

@@ -1,8 +1,8 @@
 <template>
 
-    <div class="wrapper">
+    <div class="body-con wrapper">
        <b-overlay :show="showLoading" class="d-flex flex-column h-100">
-         <div class="d-flex flex-column wrapper" :aria-hidden="showLoading ? 'true' : null">
+         <div class="d-flex flex-column main-con" :aria-hidden="showLoading ? 'true' : null">
         <div class="m-5 p-5 text-center">
             <h1 class="my-5">Congrats, you have successfully activated your account via Email!</h1>
             <button class="btn btn-lg btn-dark center" type="submit">Go to Main Page</button>

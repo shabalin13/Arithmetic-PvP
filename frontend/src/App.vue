@@ -23,9 +23,7 @@ export default {
     setInterval(this.getAccess, 30000)
   },
   beforeCreate() {
-    // Vue.use(VueToast)
     document.title = "ArithmeticPvP"
-    // this.$store.commit("initializeStore")
     store.commit("initializeStore")
 
     const access = store.state.access_token
@@ -36,10 +34,9 @@ export default {
       axios.defaults.headers.common['Authorization'] = ''
     }
 
-  }, mounted() {
-
   },
   methods: {
+    // Asks the server the access token in order to be authorized
     getAccess(){
       const accessData = {
         refresh: store.state.refresh_token
@@ -69,7 +66,6 @@ export default {
 @import "https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css";
 @import "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css";
 @import "assets/static/styles/signin.css";
-/*@import "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js";*/
 
 
 
@@ -80,13 +76,5 @@ export default {
   margin: 0;
   padding: 0;
 }
-/*#app {*/
-/*  font-family: Avenir, Helvetica, Arial, sans-serif;*/
-/*  -webkit-font-smoothing: antialiased;*/
-/*  -moz-osx-font-smoothing: grayscale;*/
-/*  text-align: center;*/
-/*  color: #2c3e50;*/
-/*  margin-top: 60px;*/
-/*}*/
 </style>
 

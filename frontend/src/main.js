@@ -8,6 +8,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 Vue.config.productionTip = false
 
 axios.defaults.baseURL = "http://127.0.0.1:8000"
+// axios.defaults.baseURL = "http://192.168.8.105:8000"
 
 Vue.use(BootstrapVue)
 

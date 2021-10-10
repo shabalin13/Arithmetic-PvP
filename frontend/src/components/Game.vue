@@ -23,6 +23,11 @@
         <div class="card bg-light flex-fill text-dark border-0 m-0 p-0" id="eq">
           <div class="card-body d-flex align-items-center justify-content-center">
             <span class="m-0 p-0 fs-1">{{ current_task }} {{ input_number }} </span>
+
+            <b-spinner label="Spinning" v-if="checking === 0"></b-spinner>
+            <b-spinner type="grow" label="Spinning" v-else-if="checking === 1" variant="danger"></b-spinner>
+            <b-spinner type="grow" label="Spinning" v-else-if="checking === 2" variant="success"></b-spinner>
+
           </div>
         </div>
       </div>
@@ -114,21 +119,23 @@ export default {
       current_index: 0,
       peopleScoreInterval: null,
       user_list: [],
+      checking: -1,
+      gameTimer: null
     }
   },
   created() {
     document.addEventListener('keydown', (event) => { this.changeInput(event.key)});
     this.room_id = this.$router.currentRoute.params.room_id
-    console.log("RoomId " + this.room_id.toString())
+    // console.log("RoomId " + this.room_id.toString())
     this.end_time = this.$router.currentRoute.params.end_time
-    console.log("End Time " + this.end_time)
+    // console.log("End Time " + this.end_time)
     this.start_time = this.$router.currentRoute.params.start_time
-    console.log("Start Time " + this.start_time)
+    // console.log("Start Time " + this.start_time)
     let myDate = new Date(this.end_time);
     let result = myDate.getTime();
     let timeLeft = (result - Date.now());
-    console.log("Time left: " + timeLeft.toString())
-    setTimeout(this.gameIsOver, timeLeft)
+    // console.log("Time left: " + timeLeft.toString())
+    this.gameTimer = setTimeout(this.gameIsOver, timeLeft)
     this.peopleScoreInterval = setInterval(this.updatePeopleScore, 1000)
 
     if (this.room_id !== undefined && this.end_time !== undefined){
@@ -136,26 +143,33 @@ export default {
     }
   },
   methods: {
+    // get the next question in the queue, if no questions left, then game is over, go to the statistics page
     getQuestion(){
       if (this.current_index < QUESTIONS - 1){
         axios.get("/api/ranked_room/get_task/" + this.room_id.toString() + "/")
           .then(response =>{
-            console.log(response)
-            this.current_task = response.data.content + " = "
-            this.current_index = response.data.index
+            // console.log(response)
+            if (response.data.content !== undefined){
+              this.checking = -1
+              this.current_task = response.data.content + " = "
+              this.current_index = response.data.index
+            }else{
+              console.log("Rerun")
+              this.getQuestion()
+            }
           })
           .catch(error =>{
             if (error.response.status === 401){
               this.$router.push("/signIn")
             }
-            alert(error);
-            console.log(error)
+            // alert(error);
+            // console.log(error)
           })
       }else{
-        // this.$router.push("/statistics")
         this.$router.push({name: "statistics", params: {room_id: this.room_id}})
       }
     },
+    // keyboard listener
     changeInput(key){
       console.log(key)
       let input_changed = false;
@@ -219,9 +233,11 @@ export default {
           break
       }
       if (input_changed){
+        this.checking = 0
         this.submitAnswer()
       }
     },
+    // submit answer on the current question, if the answer is correct, then next question loading, otherwise try another answer
     submitAnswer(){
       let num = parseInt(this.input_number)
       if (!isNaN(num)){
@@ -229,41 +245,63 @@ export default {
             .then(response =>{
               let correct = response.data.is_correct
               if (correct){
-                 this.getQuestion()
-                 this.input_number= ""
+                  this.checking = 2
+                  this.getQuestion()
+                  this.input_number= ""
+                  this.current_task = ""
+              }else{
+                this.checking = 1
               }
             })
             .catch(error =>{
               if (error.response.status === 401){
                 this.$router.push("/signIn")
               }
-              alert(error);
-              console.log(error)
+              // alert(error);
+              // console.log(error)
             })
       }
     },
+    // game over event triggered if timer for the game is expired (~5 minutes) or last question is answered
     gameIsOver(){
-      //alert("Game is over")
       clearInterval(this.peopleScoreInterval)
-      // this.$router.push("/statistics")
       this.$router.push({name: "statistics", params: {room_id: this.room_id}})
     },
+    // Function which is responsible for getting progress of the competitors
     updatePeopleScore(){
       axios.get("/api/get_rr_progress/" + this.room_id.toString() + "/")
           .then(response => {
             this.user_list = response.data
-            console.log(this.user_list)
+            // console.log(this.user_list)
           })
           .catch(error => {
             if (error.response.status === 401) {
               clearInterval(this.peopleTimer)
               this.$router.push("/signIn")
             }
-            alert(error);
-            console.log(error)
+            // alert(error);
+            // console.log(error)
           })
     },
-  }
+  },
+  destroyed() {
+    if (this.peopleScoreInterval !== null)
+      clearInterval(this.peopleScoreInterval)
+    if (this.gameTimer !== null)
+      clearTimeout(this.gameTimer)
+  },
+  beforeRouteLeave (to, from , next) {
+    if (to.name !== "statistics"){
+      const answer = window.confirm('Do you really want to leave? Your rating will decrease!')
+    if (answer) {
+      next()
+    } else {
+      next(false)
+    }
+    }else{
+      next()
+    }
+},
 }
 </script>
 

@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-^urg11&xd4vk5aj!1(&-p6%pck!1k4pnv5jk2d!8u3y#(gm-*v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.8.105', '127.0.0.1']
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
@@ -92,7 +92,9 @@ MIDDLEWARE = [
 # CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOWED_ORIGINS = ['http://127.0.0.1:8080', 'http://127.0.0.1:8000',
                         'http://localhost:8080', 'http://localhost:8000',
-                        'http://127.0.0.1:8081', 'http://localhost:8081']
+                        'http://127.0.0.1:8081', 'http://localhost:8081',
+                        'http://192.168.8.105:8080', 'http://192.168.8.105:8081',
+                        'http://192.168.8.105:8000']
 
 ROOT_URLCONF = 'Arithmetic_PvP_backend.urls'
 

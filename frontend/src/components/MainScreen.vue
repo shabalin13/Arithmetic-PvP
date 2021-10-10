@@ -22,8 +22,6 @@
 </template>
 
 <script>
-//var color = 0
-// import axios from 'axios'
 import Header from "./Header"
 
 export default {
@@ -34,21 +32,10 @@ export default {
   components: {
     Header
   },
-  data: function () {
-    return {}
-  },
-  methods: {},
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-/*@import "../assets/static/styles/style.css";*/
-#main_screen_div {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-}
+
 </style>
