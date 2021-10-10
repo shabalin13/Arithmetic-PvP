@@ -77,15 +77,29 @@ Play our game if you want to:
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+1) Download the Node.js from [source](https://nodejs.org/en/download/)
+2) Clone the repo
+```
+git clone https://github.com/shabalin13/Arithmetic-PvP.git
+```
+3) Go to the backend directory (Arithmetic-PvP/Arithmetic_PvP_backend)
+4) Make sure you have already installed Django, otherwise
+```
+pip install django
+```
+5) Start the local server
+```
+python3 manage.py runserver
+```
+6) Go to the frontend directory (Arithmetic-PvP/frontend)
+7) Install NPM packages
+```
+npm install
+```
+8) Start Vue.js
+```
+npm run serve
+```
 
 ### Installation
 
@@ -104,7 +118,49 @@ This is an example of how to list things you need to use the software and how to
 _Please refer to the [Documentation](https://docs.google.com/document/d/11nH57RBb3P8kg8YbvVq6oROE2ZD4-rsxhh4cOgugfFU/edit?usp=sharing)_
 
 
+## Requirements
 
+All development documentation can be found here [Requirements](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Requirements.pdf)
+
+### Content of the Requirements
+
+1.  Glossary
+2.  Business Goals and Objectives
+3.  Roles and responsibilities
+4.  Functional requirements
+5.  User Stories
+6.  Non-Functional Requirements
+7.  Software Development plan
+
+
+## Design
+
+### Diagrams
+
+* [Class Diagram]()
+* [Sequence Diagram]()
+* [Use Case Diagram]()
+* [Database Diagram]()
+
+### SOLID principles and Design patterns
+
+
+
+## Architecture
+
+All diagrams about architecture of application can be found by following links below
+
+* [Static View]()
+* [Dynamic View]()
+
+## Demo
+
+Можно вставить GIF 
+
+## Code
+
+*  Static analyzers (Lint)
+*  Test coverage
 
 
 <!-- CONTACTS -->
