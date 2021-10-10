@@ -74,7 +74,7 @@ Play our game if you want to:
 
 
 
-<!-- GETTING STARTED -->
+
 ## Getting Started
 
 1) Download the Node.js from [source](https://nodejs.org/en/download/)
@@ -100,17 +100,6 @@ Play our game if you want to:
     ```
     npm run serve
     ```
-
-### Installation
-
-1. Clone the repo
-   ```sh
-   git clone https://github.com/shabalin13/Arithmetic-PvP.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
 
 ## Requirements
 
