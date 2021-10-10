@@ -169,7 +169,7 @@ You can see video demostration of our app on [YouTube](https://www.youtube.com/w
 
 ## Code
 
-*  Static analyzers (Lint)
+*  Static analyzers(Lint)
 *  Test coverage
 
 
