@@ -39,15 +39,31 @@
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
     </li>
     <li>
-      <a href="#usage">Usage</a>
+      <a href="#requirements">Requirements</a>
     </li>
-    <li><a href="#contacts">Contact</a></li>
+    <li>
+      <a href="#design">Design</a>
+      <ul>
+        <li><a href="#diagrams">Diagrams</a></li>
+      </ul>
+      <ul>
+        <li><a href="#solid-principles-and-design-patterns">SOLID principles and Design patterns</a></li>
+      </ul>
+    </li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li>
+       <a href="#demo">Demo</a>
+      <ul>
+        <li><a href="#demo-screens">Demo screens</a></li>
+      </ul>
+      <ul>
+        <li><a href="#demonstration">Demonstration</a></li>
+      </ul>
+    </li>
+    <li><a href="#code">Code</a></li>
+    <li><a href="#contacts">Contacts</a></li>
   </ol>
 
 
@@ -79,44 +95,27 @@ Play our game if you want to:
 
 1) Download the Node.js from [source](https://nodejs.org/en/download/)
 2) Clone the repo
-```
-git clone https://github.com/shabalin13/Arithmetic-PvP.git
-```
+    ```
+    git clone https://github.com/shabalin13/Arithmetic-PvP.git
+    ```
 3) Go to the backend directory (Arithmetic-PvP/Arithmetic_PvP_backend)
-4) Make sure you have already installed Django, otherwise
-```
-pip install django
-```
+4) Install all Requirements
+    ```
+    pip install -r requirements.txt
+    ```
 5) Start the local server
-```
-python3 manage.py runserver
-```
+    ```
+    python3 manage.py runserver
+    ```
 6) Go to the frontend directory (Arithmetic-PvP/frontend)
 7) Install NPM packages
-```
-npm install
-```
+    ```
+    npm install
+    ```
 8) Start Vue.js
-```
-npm run serve
-```
-
-### Installation
-
-1. Clone the repo
-   ```sh
-   git clone https://github.com/shabalin13/Arithmetic-PvP.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
-
-<!-- USAGE -->
-## Usage
-
-_Please refer to the [Documentation](https://docs.google.com/document/d/11nH57RBb3P8kg8YbvVq6oROE2ZD4-rsxhh4cOgugfFU/edit?usp=sharing)_
-
+    ```
+    npm run serve
+    ```
 
 ## Requirements
 
@@ -140,11 +139,15 @@ All development documentation can be found here [Requirements](https://github.co
 * [Class Diagram]()
 * [Sequence Diagram]()
 * [Use Case Diagram]()
-* [Database Diagram]()
+* [Database Diagram](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Database_diagram.png)
 
 ### SOLID principles and Design patterns
 
-
+* Single responsibility - 
+* Open-closed - 
+* Liskov substitution - we did not use this principle in our project.
+* Interface segregation - 
+* Dependency inversion - 
 
 ## Architecture
 
@@ -155,11 +158,18 @@ All diagrams about architecture of application can be found by following links b
 
 ## Demo
 
-Можно вставить GIF 
+### Demo screens
+
+![Demo](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Demo-screens.png)
+
+### Demonstration
+
+You can see video demonstration of our app on [YouTube](https://www.youtube.com/watch?v=YBOpn10ter0)
+
 
 ## Code
 
-*  Static analyzers (Lint)
+*  Here is the link of our linter worlflow: [lint.yml](https://github.com/shabalin13/Arithmetic-PvP/actions/workflows/linter.yml)
 *  Test coverage
 
 
