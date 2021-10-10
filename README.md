@@ -104,6 +104,20 @@ This is an example of how to list things you need to use the software and how to
 _Please refer to the [Documentation](https://docs.google.com/document/d/11nH57RBb3P8kg8YbvVq6oROE2ZD4-rsxhh4cOgugfFU/edit?usp=sharing)_
 
 
+## Requirements
+
+All development documentation can be found here [link]
+
+#### Content of the Requirements
+
+1.  Glossary
+2.  Business Goals and Objectives
+3.  Roles and responsibilities
+4.  Functional requirements
+5.  User Stories
+6.  Non-Functional Requirements
+7.  Software Development plan
+
 
 
 
