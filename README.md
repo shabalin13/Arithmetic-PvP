@@ -144,8 +144,8 @@ All development documentation can be found here [Requirements](https://github.co
 
 * *Single responsibility* - All classes have only one responsibility (only one purpose).
 * *Open-closed* - There are many examples of using open/closed principle in our project. For example, permissions for views are easily modifiable changing only one line before the function. Another example is the room and task constructors. Constructors for these models are implemented inside model managers and one can easily add new constructor. We will definitely use it when creating new task generators.
-* *Liskov substitution* - 
-* *Interface segregation* - Large interfaces are splitted into smaller ones. Implementing classes concerned only about the methods that are of interest to them.
+* *Liskov substitution* - This principle is applicable in Models.
+* *Interface segregation* - Large interfaces are splitted into smaller ones. Implementing classes concerned only about the methods that are of interest to them. There is no request that are used rarely or not used at all. So there is nothing to segregate in our case.
 * *Dependency inversion* - All classes use other classes through interfaces.
 
 ## Architecture
