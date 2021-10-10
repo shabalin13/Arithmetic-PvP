@@ -11,10 +11,10 @@
   <p align="center">
     Multiplayer verbal counting game
     <br />
-    <a href="https://github.com/shabalin13/Arithmetic-PvP"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/shabalin13/Arithmetic-PvP/tree/main/Documentation"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/shabalin13/Arithmetic-PvP">View Demo</a>
+    <a href="#demo">View Demo</a>
     ·
     <a href="https://github.com/shabalin13/Arithmetic-PvP/issues">Report Bug</a>
     ·
