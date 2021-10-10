@@ -169,7 +169,7 @@ You can see video demostration of our app on [YouTube](https://www.youtube.com/w
 
 ## Code
 
-*  Static analyzers(Lint)
+*  Here is the link of our linter worlflow: [lint.yml](https://github.com/shabalin13/Arithmetic-PvP/actions/workflows/linter.yml)
 *  Test coverage
 
 
