@@ -124,7 +124,8 @@ export default {
     }
   },
   destroyed() {
-    clearInterval(this.topPlayersTimer)
+    if (this.topPlayersTimer !== null)
+      clearInterval(this.topPlayersTimer)
   }
 }
 </script>

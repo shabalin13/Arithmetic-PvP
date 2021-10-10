@@ -120,6 +120,7 @@ export default {
       peopleScoreInterval: null,
       user_list: [],
       checking: -1,
+      gameTimer: null
     }
   },
   created() {
@@ -134,7 +135,7 @@ export default {
     let result = myDate.getTime();
     let timeLeft = (result - Date.now());
     // console.log("Time left: " + timeLeft.toString())
-    setTimeout(this.gameIsOver, timeLeft)
+    this.gameTimer = setTimeout(this.gameIsOver, timeLeft)
     this.peopleScoreInterval = setInterval(this.updatePeopleScore, 1000)
 
     if (this.room_id !== undefined && this.end_time !== undefined){
@@ -282,7 +283,25 @@ export default {
             // console.log(error)
           })
     },
-  }
+  },
+  destroyed() {
+    if (this.peopleScoreInterval !== null)
+      clearInterval(this.peopleScoreInterval)
+    if (this.gameTimer !== null)
+      clearTimeout(this.gameTimer)
+  },
+  beforeRouteLeave (to, from , next) {
+    if (to.name !== "statistics"){
+      const answer = window.confirm('Do you really want to leave? Your rating will decrease!')
+    if (answer) {
+      next()
+    } else {
+      next(false)
+    }
+    }else{
+      next()
+    }
+},
 }
 </script>
 

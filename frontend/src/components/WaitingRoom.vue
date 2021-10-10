@@ -13,6 +13,8 @@
           <h5 class="fw-light pb-1">Player, share this link with your friends.</h5>
 
           <h5 class="fw-light pb-1">Happy and successful game!</h5>
+
+          <h5 class="fw-light pb-1" v-if="timeLeft !== null">Time left: {{ timeLeft }}s</h5>
         </div>
 
 
@@ -58,9 +60,11 @@ export default {
     return {
       room_id: null,
       start_time: null,
+      start_time_ms: null,
       players: [],
       peopleTimer: null,
       startGameTimeout: null,
+      timeLeft: null,
       end_time: null,
       users_list: []
     }
@@ -75,6 +79,7 @@ export default {
       this.peopleTimer = setInterval(this.updateNewPeople, 1000)
       let myDate = new Date(this.start_time);
       let result = myDate.getTime();
+      this.start_time_ms = result
       // console.log("Time of the start: " + result.toString());
       let timeLeft = (result - Date.now());
       // console.log("Time left: " + timeLeft.toString())
@@ -99,6 +104,10 @@ export default {
             // alert(error);
             // console.log(error)
           })
+
+      let myDate = new Date();
+      let result = myDate.getTime();
+      this.timeLeft = ((this.start_time_ms - result) / 1000) | 0
     },
     // Start the game event triggered, if it's time to start (~1 min left after room creation (determined by the server)) or here already 4 people and they can press the button
     startTheGame(event){
@@ -112,7 +121,27 @@ export default {
         })
       }
     }
-  }
+  },
+  destroyed() {
+    if (this.startGameTimeout !== null){
+      clearTimeout(this.startGameTimeout)
+    }
+    if (this.peopleTimer !== null){
+      clearInterval(this.peopleTimer)
+    }
+  },
+  beforeRouteLeave (to, from , next) {
+    if (to.name !== "game"){
+      const answer = window.confirm('Do you really want to leave? Your rating will decrease!')
+    if (answer) {
+      next()
+    } else {
+      next(false)
+    }
+    }else{
+      next()
+    }
+},
 }
 </script>
 
