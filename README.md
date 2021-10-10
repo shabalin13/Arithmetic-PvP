@@ -53,7 +53,15 @@
       </ul>
     </li>
     <li><a href="#architecture">Architecture</a></li>
-    <li><a href="#demo">Demo</a></li>
+    <li>
+       <a href="#demo">Demo</a>
+      <ul>
+        <li><a href="#demo-screens">Demo screens</a></li>
+      </ul>
+      <ul>
+        <li><a href="#demonstration">Demonstration</a></li>
+      </ul>
+    </li>
     <li><a href="#code">Code</a></li>
     <li><a href="#contacts">Contacts</a></li>
   </ol>
@@ -150,7 +158,14 @@ All diagrams about architecture of application can be found by following links b
 
 ## Demo
 
-![Demo]()
+### Demo screens
+
+![Demo](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Demo-screens.png)
+
+### Demonstration
+
+You can see video demostration of our app on [YouTube](https://www.youtube.com/watch?v=YBOpn10ter0)
+
 
 ## Code
 
