@@ -4,6 +4,8 @@ from django.utils import timezone
 
 
 def exit_ranked_rooms():
+    """This function finds and deletes all expired rating rooms.
+    It also updated stats for users that where in these rooms"""
     def calculate_avg_speed(player, player_in_room):
         exit_time = min(room.end_time, player_in_room.last_activity)
         try:
