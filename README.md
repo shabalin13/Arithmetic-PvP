@@ -108,7 +108,7 @@ _Please refer to the [Documentation](https://docs.google.com/document/d/11nH57RB
 
 All development documentation can be found here [Requirements](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Requirements.pdf)
 
-#### Content of the Requirements
+### Content of the Requirements
 
 1.  Glossary
 2.  Business Goals and Objectives
@@ -119,6 +119,34 @@ All development documentation can be found here [Requirements](https://github.co
 7.  Software Development plan
 
 
+## Design
+
+### Diagrams
+
+* [Class Diagram]()
+* [Sequence Diagram]()
+* [Use Case Diagram]()
+* [Database Diagram]()
+
+### SOLID principles and Design patterns
+
+
+
+## Architecture
+
+All diagrams about architecture of application can be found by following links below
+
+* [Static View]()
+* [Dynamic View]()
+
+## Demo
+
+Можно вставить GIF 
+
+## Code
+
+*  Static analyzers (Lint)
+*  Test coverage
 
 
 <!-- CONTACTS -->
