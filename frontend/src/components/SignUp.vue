@@ -184,7 +184,10 @@ export default {
       report_message: "",
       showLoading: false
     }
-  }, methods: {
+  },
+  // Register on the system (send activation message to the email)
+  methods: {
+    // Register on the system (send activation message to the email)
     submitForm() {
       this.showBottom = false
       if (this.password === this.password2) {
@@ -214,7 +217,9 @@ export default {
         this.showBottomAlert()
       }
 
-    }, showPasswords() {
+    },
+    // Show the hidden passwords
+    showPasswords() {
       const passwordField1 = document.querySelector('#floatingPassword1')
       const passwordField2 = document.querySelector('#floatingPassword2')
       if (this.see) {
@@ -225,16 +230,18 @@ export default {
         passwordField2.setAttribute('type', 'text')
       }
       this.see = !this.see
-    }, showBottomAlert() {
+    },
+    // Show the bottom alert in case of some error
+    showBottomAlert() {
       this.showBottom = true
       setTimeout(function () {
         this.showBottom = false
       }, 3000)
     }
-  }, beforeCreate() {
+  },
+  beforeCreate() {
     document.title = "Sign Up"
   }
-
 }
 </script>
 

@@ -70,7 +70,6 @@ export default {
   data(){
     return{
       room_id: null,
-      // users_top: [],
       sorted_user_top: [],
       first_person: null,
       second_person: null,
@@ -81,12 +80,11 @@ export default {
     }
   },
   methods: {
+    // get the user top by current game
     getTop(){
       axios.get("/api/get_rr_stats/" + this.room_id.toString() + "/")
           .then(response => {
-            // this.users_top = response.data
-            // console.log(this.users_top)
-            console.log(response.data)
+            // console.log(response.data)
             this.formTable(response.data)
           })
           .catch(error => {
@@ -94,10 +92,11 @@ export default {
               // clearInterval(this.peopleTimer)
               this.$router.push("/signIn")
             }
-            alert(error);
-            console.log(error)
+            // alert(error);
+            // console.log(error)
           })
     },
+    // prepare the given data from the server (sort by places and compute the average speeds)
     formTable(user_top){
       this.sorted_user_top = user_top.sort(function (a,b){return a.place - b.place})
       document.getElementById("first_place_player").innerText = this.sorted_user_top[0].player.user.username
@@ -108,23 +107,23 @@ export default {
         document.getElementById("third_place_player").innerText = this.sorted_user_top[2].player.user.username
       }
       for (let i = 0; i < this.sorted_user_top.length; i ++){
-        var myDate1 = new Date(this.sorted_user_top[i].start_time);
-        var myDate2 = new Date(this.sorted_user_top[i].last_activity);
-        var result1 = myDate1.getTime();
-        console.log("Start time: " + result1.toString())
-        var result2 = myDate2.getTime();
-        console.log("Last activity time: " + result2.toString())
+        let myDate1 = new Date(this.sorted_user_top[i].start_time);
+        let myDate2 = new Date(this.sorted_user_top[i].last_activity);
+        let result1 = myDate1.getTime();
+        // console.log("Start time: " + result1.toString())
+        let result2 = myDate2.getTime();
+        // console.log("Last activity time: " + result2.toString())
         this.sorted_user_top[i]['avg_speed'] = ((this.sorted_user_top[i].task_index) * 1000) / (result2 - result1)
       }
     }
-  }, created() {
+  },
+  created() {
     this.room_id = this.$router.currentRoute.params.room_id
-    // this.start_time = this.$router.currentRoute.params.start_time
-    // this.last_activities = this.$router.currentRoute.params.last_activities
     if (this.room_id !== undefined){
       this.topPlayersTimer = setInterval(this.getTop, 1000)
     }
-  }, destroyed() {
+  },
+  destroyed() {
     clearInterval(this.topPlayersTimer)
   }
 }

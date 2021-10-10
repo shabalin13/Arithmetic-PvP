@@ -69,27 +69,26 @@ export default {
     this.room_id = this.$router.currentRoute.params.room_id
     this.start_time = this.$router.currentRoute.params.start_time
     this.end_time = this.$router.currentRoute.params.end_time
-    console.log(this.room_id)
-    console.log(this.start_time)
 
     if (this.room_id !== undefined && this.start_time !== undefined && this.end_time !== undefined) {
 
       this.peopleTimer = setInterval(this.updateNewPeople, 1000)
-      var myDate = new Date(this.start_time);
-      var result = myDate.getTime();
-      console.log("Time of the start: " + result.toString());
-      var timeLeft = (result - Date.now())
-      console.log("Time left: " + timeLeft.toString())
+      let myDate = new Date(this.start_time);
+      let result = myDate.getTime();
+      // console.log("Time of the start: " + result.toString());
+      let timeLeft = (result - Date.now());
+      // console.log("Time left: " + timeLeft.toString())
       this.startGameTimeout = setTimeout(this.startTheGame, timeLeft, "")
       this.updateNewPeople()
 
     }
   },
   methods: {
+    // Check the newest people in the room and fill the table
     updateNewPeople() {
       axios.get("/api/get_nicknames/" + this.room_id.toString() + "/")
           .then(response => {
-            console.log(response)
+            // console.log(response)
             this.users_list = response.data
           })
           .catch(error => {
@@ -97,21 +96,20 @@ export default {
               clearInterval(this.peopleTimer)
               this.$router.push("/signIn")
             }
-            alert(error);
-            console.log(error)
+            // alert(error);
+            // console.log(error)
           })
     },
+    // Start the game event triggered, if it's time to start (~1 min left after room creation (determined by the server)) or here already 4 people and they can press the button
     startTheGame(event){
       if (this.room_id !== undefined && this.start_time !== undefined && this.end_time !== undefined && (event === "" || (event === "click" && this.users_list.length === 4))) {
-        console.log("Game will start in a second")
+        // console.log("Game will start in a second")
         clearInterval(this.peopleTimer)
         clearTimeout(this.startGameTimeout)
         this.$router.push({
           name: "game",
           params: {room_id: this.room_id, end_time: this.end_time, start_time: this.start_time}
         })
-      }else{
-        // this.$router.push("/")
       }
     }
   }

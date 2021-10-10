@@ -120,14 +120,13 @@
 </template>
 
 <script>
-// import { CollapseTransition } from "@ivanv/vue-collapse-transition"
 import axios from "axios";
 
 export default {
   name: "Header",
   data() {
     return {
-      isOpen: false, // closed by default
+      isOpen: false,
       smallScreen: window.innerWidth < 800,
       isAuthorized: false,
       first_name: "Ivan",
@@ -135,19 +134,21 @@ export default {
     }
   },
   components: {
-    // CollapseTransition,
-  }, methods: {
-    isMobile() {
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    }, isSmall() {
+
+  },
+  methods: {
+    // Check the size of the window
+    isSmall() {
       this.smallScreen = window.innerWidth < 800
       return this.smallScreen
     },
+    // Window resize listener
     // eslint-disable-next-line no-unused-vars
     myEventHandler(e) {
       this.smallScreen = window.innerWidth < 800;
     }
-  }, created() {
+  },
+  created() {
       window.addEventListener("resize", this.myEventHandler);
       axios.get("/api/get_user_info/")
         .then(response => {
@@ -160,9 +161,7 @@ export default {
           console.log(error)
           this.isAuthorized = false
         })
-  }, destroyed() {
-      //window.removeEventListener("resize", this.myEventHandler);
-  }
+  },
 }
 </script>
 
@@ -170,6 +169,5 @@ export default {
 ::v-deep .dropdown-menu{
     background-color: #292b2c;;
 }
-/*@import "../assets/static/styles/style.css";*/
-/*@import "https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css";*/
+
 </style>
