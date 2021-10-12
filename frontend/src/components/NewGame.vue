@@ -148,9 +148,73 @@
   </b-overlay>-->
   <b-overlay class="body-con" :show="show">
     <Header></Header>
+  <div style="height: 100%; width: 100%;">
+    <div class="main-con" :aria-hidden="show ? 'true' : null" style=" height: 100%; justify-content: center; background-size: cover;
+    align-items: center; background-color: #292b2c">
+      <carousel :per-page="1" :mouse-drag="false" :autoplay="true" :autoplayHoverPause="true" :loop="true" :speed="500" style="flex-shrink: 0;" v-bind:style="[smallScreen ? {'width': '100%'} : {'width': '50%'}]" @page-change="onPageChange">
+        <slide>
+          <div class="col my-2">
+                <div class="card rounded-3 carousel_slide_back" id="slide1_back">
+                  <div class="card-body" style="height: 18rem; background-color: rgba(204, 204, 204, 0.2);">
+                    <div style="position: absolute; bottom: 0">
+                      <h4 class="my-3 fw-normal" style="color: black;" >Campaign</h4>
+                      <p style="color: black">Play different levels from easiest to hardest ones</p>
+                    </div>
 
-    <div class="main-con" :aria-hidden="show ? 'true' : null">
-      <div class="d-md-flex flex-md-column my-md-3 ps-md-3">
+                    <button type="button" class="bg-transparent stretched-link"
+                            style="border: none; color: transparent"></button>
+                  </div>
+                </div>
+              </div>
+        </slide>
+        <slide>
+          <div class="col my-2" @click="createRankedRoom">
+                <div class="card rounded-3 carousel_slide_back" id="slide2_back">
+                  <div class="card-body" style="height: 18rem; background-color: rgba(204, 204, 204, 0.2);">
+                    <div style="position: absolute; top: 0">
+                      <h4 class="my-3 fw-normal" style="color:white;">Rating room</h4>
+                      <p style="color: white">Compete with other players and update your rating</p>
+                    </div>
+                    <button type="button" class="bg-transparent stretched-link"
+                            style="border: none; color: transparent"></button>
+                  </div>
+                </div>
+              </div>
+        </slide>
+        <slide>
+           <div class="col my-2" onclick="location.href='#';">
+                <div class="card rounded-3 carousel_slide_back" id="slide3_back">
+                  <div class="card-body rounded-3" style="height: 18rem; background-color: rgba(204, 204, 204, 0.2);">
+                    <div style="position: absolute; bottom: 0">
+                      <h4 class="my-3 fw-normal" style="color: black">Private room</h4>
+                      <p style="color: black">Create a room and send an invitation link to friends</p>
+                    </div>
+
+                    <button type="button" class="bg-transparent stretched-link"
+                            style="border: none; color: transparent">
+                    </button>
+                  </div>
+                </div>
+              </div>
+        </slide>
+        <slide>
+          <div class="col my-2" onclick="location.href='#';">
+                <div class="card rounded-3 carousel_slide_back" id="slide4_back">
+                  <div class="card-body rounded-3" style="height: 18rem; background-color: rgba(204, 204, 204, 0.2);">
+                    <div style="position: absolute; top: 0">
+                      <h4 style="color: white" class="my-3 fw-normal">Open room</h4>
+                      <p style="color: white">Create an open room to meet new gamers and get experience</p>
+                    </div>
+                    <button type="button" class="bg-transparent stretched-link"
+                            style="border: none; color: transparent">
+                    </button>
+                  </div>
+                </div>
+              </div>
+        </slide>
+      </carousel>
+
+<!--      <div class="d-md-flex flex-md-column my-md-3 ps-md-3">
         <div class="me-md-3 pt-3 px-3  px-md-5 text-center overflow-hidden">
           <div class="p-3">
             <h2 class="display-5">Choose the mode</h2>
@@ -314,8 +378,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
     </div>
+  </div>
 
   </b-overlay>
 
@@ -325,14 +390,23 @@
 <script>
 import Header from "./Header";
 import axios from "axios";
+// documentation https://github.com/SSENSE/vue-carousel
+import { Carousel, Slide } from 'vue-carousel';
 
 export default {
   name: "NewGame",
-  components: {Header},
+  components: {
+    Header,
+    Carousel,
+    Slide
+  },
   data() {
     return {
       show: false,
-      smallScreen: window.innerWidth < 810
+      smallScreen: window.innerWidth < 810,
+      slide: 0,
+      sliding: null,
+      currentSlide: 0
     }
   },
   created() {
@@ -368,6 +442,17 @@ export default {
             alert(error);
             console.log(error)
           })
+    },
+    // eslint-disable-next-line no-unused-vars
+    onSlideStart(slide) {
+        this.sliding = true
+    },
+    // eslint-disable-next-line no-unused-vars
+    onSlideEnd(slide) {
+        this.sliding = false
+    },
+    onPageChange(pageNum) {
+      this.currentSlide = pageNum
     }
   }
 }
@@ -375,4 +460,23 @@ export default {
 
 <style scoped>
 
+.carousel_slide_back{
+  background-size: cover;
+}
+
+#slide1_back{
+  background: url("../assets/static/images/alternative_campaign_game_mode_back.jpg") center right no-repeat #eee;
+}
+
+#slide2_back{
+  background: url('../assets/static/images/alternative_rating_game_mode_back.jpg') no-repeat center #eee;
+}
+
+#slide3_back{
+  background: url('../assets/static/images/alternative_private_game_mode_back.jpg') no-repeat center #eee;
+}
+
+#slide4_back{
+  background: url('../assets/static/images/alternative_public_room_game_mode_back.jpg') no-repeat center #eee;
+}
 </style>
