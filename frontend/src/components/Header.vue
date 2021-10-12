@@ -18,7 +18,7 @@
         </a>
       </div>
 
-      <div v-show="!smallScreen">
+      <div v-if="!smallScreen">
          <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                     <li>
                         <a href="/newGame" class="nav-link text-light">
@@ -64,9 +64,7 @@
                     </li>
                 </ul>
       </div>
-
-      <div class="ms-auto" v-show="smallScreen">
-
+      <div class="ms-auto" v-else>
         <div>
           <b-dropdown variant="link" toggle-class="text-decoration-none" class="justify-content-center" right no-caret >
             <template #button-content>
@@ -110,7 +108,6 @@
 
           </b-dropdown>
         </div>
-
       </div>
 
     </nav>
