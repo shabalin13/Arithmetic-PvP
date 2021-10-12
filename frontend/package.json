@@ -13,8 +13,10 @@
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
     "vue": "^2.6.14",
+    "vue-carousel": "^0.18.0",
     "vue-router": "^3.5.2",
-    "vue-toast-notification": "^2.0.1"
+    "vue-toast-notification": "^2.0.1",
+    "vue-typed-js": "^0.1.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
