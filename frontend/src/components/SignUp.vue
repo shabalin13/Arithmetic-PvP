@@ -308,7 +308,7 @@ body {
 
 .input-text,
 textarea {
-    background-color: #e7d6d6;
+    background-color: #dedede;
     border-radius: 50px !important;
     padding: 12px 15px 12px 15px !important;
     width: 100%;
