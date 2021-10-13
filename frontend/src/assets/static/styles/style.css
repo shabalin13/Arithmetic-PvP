@@ -92,3 +92,20 @@ a:hover .links {
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
+
+
+
+.fade_community-enter-active {
+    transition: opacity 2s;
+    /*transition: all 3s ease;*/
+}
+
+.fade_community-leave-active{
+    /*transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);*/
+}
+
+.fade_community-enter, .fade_community-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+    transform: translateX(100);
+
+}
