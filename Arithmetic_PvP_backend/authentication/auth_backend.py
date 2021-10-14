@@ -6,19 +6,14 @@ from django.contrib.auth.backends import ModelBackend, UserModel
 
 class EmailBackend(ModelBackend):
     def authenticate(self, request, username=None, password=None, **kwargs):
-        logging.warning(f"Some one is login with the following credentials:\n\n{username}\n{password}")
-        user_model = get_user_model()
-        try:
-            user = user_model.objects.get(email=username)
-        except UserModel.DoesNotExist:
-            try:
-                user = user_model.objects.get(username=username)
-            except UserModel.DoesNotExist:
-                return None
-            else:
-                if user.check_password(password):
-                    return user
+        # logging.warning(f"Some one is login with the following credentials:\n\n{username}\n{password}")
+        if '@' in username:
+            kwargs = {'email': username}
         else:
+            kwargs = {'username': username}
+        try:
+            user = get_user_model().objects.get(**kwargs)
             if user.check_password(password):
                 return user
-        return None
+        except User.DoesNotExist:
+            return None
