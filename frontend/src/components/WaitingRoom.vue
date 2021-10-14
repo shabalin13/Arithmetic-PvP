@@ -3,22 +3,22 @@
   <div class="body-con">
     <Header></Header>
 
-    <div class="main-con">
+    <div class="main-con" style="background-color: #292b2c">
 
       <div class="container pt-3 mt-3">
 
-        <h1 class="pb-3 text-uppercase text-center">Waiting for the rest of the participants</h1>
+        <h1 class="pb-3 text-uppercase text-center text-white">Waiting for the rest of the participants</h1>
 
         <div class="pb-3">
-          <h5 class="fw-light pb-1">Player, share this link with your friends.</h5>
+<!--          <h5 class="fw-light pb-1">Player, share this link with your friends.</h5>-->
 
-          <h5 class="fw-light pb-1">Happy and successful game!</h5>
+          <h5 class="fw-light pb-1 text-white">Happy and successful game!</h5>
 
-          <h5 class="fw-light pb-1" v-if="timeLeft !== null">Time left: {{ timeLeft }}s</h5>
+          <h5 class="fw-light pb-1 text-white" v-if="timeLeft !== null">Time left: {{ timeLeft }}s</h5>
         </div>
 
 
-        <h6 class="fst-italic">Joined players:</h6>
+        <h6 class="fst-italic text-white">Joined players:</h6>
 
       </div>
 
@@ -66,7 +66,7 @@ export default {
       startGameTimeout: null,
       timeLeft: null,
       end_time: null,
-      users_list: []
+      users_list: [{username: 'TroHaN'}]
     }
   },
   created() {

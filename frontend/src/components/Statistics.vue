@@ -39,7 +39,7 @@
             <tr>
               <th class="border-0" scope="col">#</th>
               <th class="border-0" scope="col">Nickname</th>
-              <th class="border-0" scope="col">Avg speed(eq/s)</th>
+              <th class="border-0" scope="col">Avg speed(eq/min)</th>
 <!--              <th class="border-0" scope="col">Total accuracy</th>-->
             </tr>
             </thead>
@@ -113,7 +113,7 @@ export default {
         // console.log("Start time: " + result1.toString())
         let result2 = myDate2.getTime();
         // console.log("Last activity time: " + result2.toString())
-        this.sorted_user_top[i]['avg_speed'] = ((this.sorted_user_top[i].task_index) * 1000) / (result2 - result1)
+        this.sorted_user_top[i]['avg_speed'] = ((this.sorted_user_top[i].task_index) * 60000) / (result2 - result1)
       }
     }
   },
