@@ -155,7 +155,7 @@
         <slide>
           <div class="col my-2">
                 <div class="card rounded-3 carousel_slide_back align-items-center" id="slide1_back" style="background-color: #40DAE3; height: 50vh;">
-                    <img src="../assets/static/images/alternative_campaign_game_mode_back2.png" height="256" width="256"/>
+                    <img class="slide_image" src="../assets/static/images/alternative_campaign_game_mode_back2.png" height="256" width="256"/>
                     <div style="position: absolute; bottom: 0" class="align-items-center">
                       <h4 class="text-center">Campaign</h4>
                       <p class="text-center text-black mr-1 ml-1">Play different levels from easiest to hardest ones</p>
@@ -169,7 +169,7 @@
         <slide>
           <div class="col my-2" @click="createRankedRoom">
                 <div class="card rounded-3 carousel_slide_back align-items-center" id="slide2_back" style="background-color: #255918; height: 50vh;">
-                  <img src="../assets/static/images/alternative_rating_game_mode_back2.png" height="256" width="256"/>
+                  <img class="slide_image" src="../assets/static/images/alternative_rating_game_mode_back2.png" height="256" width="256"/>
                     <div style="position: absolute; bottom: 0" class="align-items-center">
                       <h4 class="text-center text-white">Rating room</h4>
                       <p class="text-center text-white mr-1 ml-1">Compete with other players and update your rating</p>
@@ -182,7 +182,7 @@
         <slide>
            <div class="col my-2" onclick="location.href='#';">
                 <div class="card rounded-3 carousel_slide_back align-items-center" id="slide3_back" style="background-color: #6b001a; height: 50vh;">
-                  <img src="../assets/static/images/alternative_private_game_mode_back2.png" height="256" width="256"/>
+                  <img class="slide_image" src="../assets/static/images/alternative_private_game_mode_back2.png" height="256" width="256"/>
                     <div style="position: absolute; bottom: 0" class="align-items-center">
                       <h4 class="text-center" style="color: white">Private room</h4>
                       <p style="color: white" class="text-center mr-1 ml-1">Create a room and send an invitation link to friends</p>
@@ -197,7 +197,7 @@
         <slide>
           <div class="col my-2" onclick="location.href='#';">
                 <div class="card rounded-3 carousel_slide_back align-items-center" id="slide4_back" style="background-color: #e1b107; height: 50vh;">
-                  <img src="../assets/static/images/alternative_public_game_mode_back2.png" height="256" width="256"/>
+                  <img class="slide_image" src="../assets/static/images/alternative_public_game_mode_back2.png" height="256" width="256"/>
                     <div style="position: absolute; bottom: 0" class="align-items-center">
                       <h4 class="text-center">Open room</h4>
                       <p class="text-center mr-1 ml-1">Create an open room to meet new gamers and get experience</p>
@@ -470,4 +470,11 @@ export default {
 #slide4_back{
   background: url('../assets/static/images/alternative_public_room_game_mode_back.jpg') no-repeat center #eee;
 }*/
+
+@media screen and (max-width: 450px) and (max-height: 720px){
+  .slide_image{
+    height: 200px;
+    width: 200px;
+  }
+}
 </style>
