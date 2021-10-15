@@ -60,6 +60,10 @@
             <button type="button" class="btn btn-success w-100">Settings</button>
           </div>
 
+          <div class="link4 flex-fill p-3">
+            <button type="button" class="btn btn-danger w-100" @click="logout()">Logout</button>
+          </div>
+
         </div>
 
         <div class="col-6 user-stats d-flex flex-column">
@@ -132,6 +136,7 @@
 <script>
 import Header from "@/components/Header";
 import axios from "axios";
+import store from "../vuex/store";
 
 export default {
   name: "User",
@@ -175,6 +180,16 @@ export default {
             alert(error);
             console.log(error)
           })
+    },
+    logout(){
+      if(confirm("Do you really want to logout?")){
+        axios.defaults.headers.common['Authorization'] = ''
+        store.state.access_token = ''
+        store.state.refresh_token = ''
+        localStorage.setItem("access_token", '')
+        localStorage.setItem("refresh_token", '')
+        this.$router.push("/")
+      }
     }
   }
 }
