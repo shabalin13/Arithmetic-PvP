@@ -208,6 +208,19 @@
                 </div>
               </div>
         </slide>
+        <slide>
+          <div class="col my-2" onclick="location.href = '/endless';">
+                <div class="card rounded-3 carousel_slide_back align-items-center" id="slide5_back" style="background-color: #000000; height: 50vh;">
+                  <img class="slide_image" src="../assets/static/images/endless.png" height="256" width="256"/>
+                    <div style="position: absolute; bottom: 0" class="align-items-center">
+                      <h4 class="text-center text-white">Endless mode</h4>
+                      <p class="text-center text-white mr-1 ml-1">Check how fast and smart you are?</p>
+                    </div>
+                    <button type="button" class="bg-transparent stretched-link"
+                            style="border: none; color: transparent"></button>
+                </div>
+              </div>
+        </slide>
       </carousel>
 
 <!--      <div class="d-md-flex flex-md-column my-md-3 ps-md-3">
