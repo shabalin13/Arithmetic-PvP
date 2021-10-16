@@ -57,12 +57,12 @@ export default {
   },
   created() {
     // Getting necessary params from previous page (waiting room) or from cookies
-    this.room_id = (this.$router.currentRoute.params.room_id || this.$cookies.get("lrid")) ?? undefined
-    this.end_time = (this.$router.currentRoute.params.end_time || this.$cookies.get("et")) ?? undefined
-    this.start_time = (this.$router.currentRoute.params.start_time || this.$cookies.get("st")) ?? undefined
+    this.room_id = this.$router.currentRoute.params.room_id || this.$cookies.get("lrid")
+    this.end_time = this.$router.currentRoute.params.end_time || this.$cookies.get("et")
+    this.start_time = this.$router.currentRoute.params.start_time || this.$cookies.get("st")
 
     // if following data is not defined -> redirects to main page
-    if (this.room_id !== undefined && this.end_time !== undefined && this.start_time !== undefined){
+    if (this.room_id !== null && this.end_time !== null && this.start_time !== null){
 
       // save this data in cookies in case of some errors, accidentally reloading/exiting
       this.$cookies.set("lrid", this.room_id, "5min")
@@ -196,17 +196,5 @@ export default {
 </script>
 
 <style scoped>
-
-#hide_show_keyboard{
-  display: block;
-}
-
-@media screen and (max-width: 801px){
-
-  #hide_show_keyboard{
-    display: none;
-  }
-}
-
 
 </style>

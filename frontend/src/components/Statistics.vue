@@ -118,9 +118,11 @@ export default {
     }
   },
   created() {
-    this.room_id = this.$router.currentRoute.params.room_id
-    if (this.room_id !== undefined){
+    this.room_id = this.$router.currentRoute.params.room_id || this.$cookies.get("lrid")
+    if (this.room_id !== null){
       this.topPlayersTimer = setInterval(this.getTop, 1000)
+    }else{
+      this.$router.push("/")
     }
   },
   destroyed() {

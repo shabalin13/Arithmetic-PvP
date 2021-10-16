@@ -20,7 +20,7 @@ export default {
   },
   created() {
     this.getAccess()
-    setInterval(this.getAccess, 30000)
+    setInterval(this.getAccess, 60000)
   },
   beforeCreate() {
     document.title = "ArithmeticPvP"

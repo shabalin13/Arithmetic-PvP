@@ -174,4 +174,15 @@ export default {
 
 <style scoped>
 
+#hide_show_keyboard{
+  display: block;
+}
+
+@media screen and (max-width: 801px){
+
+  #hide_show_keyboard{
+    display: none;
+  }
+}
+
 </style>

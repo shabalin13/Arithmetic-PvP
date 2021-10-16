@@ -66,26 +66,40 @@ export default {
       startGameTimeout: null,
       timeLeft: null,
       end_time: null,
-      users_list: [{username: 'TroHaN'}]
+      users_list: [],
+      gameExpired: false
     }
   },
   created() {
-    this.room_id = this.$router.currentRoute.params.room_id
-    this.start_time = this.$router.currentRoute.params.start_time
-    this.end_time = this.$router.currentRoute.params.end_time
+    this.room_id = this.$router.currentRoute.params.room_id || this.$cookies.get("lrid")
+    this.start_time = this.$router.currentRoute.params.start_time || this.$cookies.get("st")
+    this.end_time = this.$router.currentRoute.params.end_time || this.$cookies.get("et")
 
-    if (this.room_id !== undefined && this.start_time !== undefined && this.end_time !== undefined) {
+    if (this.room_id !== null && this.start_time !== null && this.end_time !== null) {
 
-      this.peopleTimer = setInterval(this.updateNewPeople, 1000)
       let myDate = new Date(this.start_time);
       let result = myDate.getTime();
       this.start_time_ms = result
       // console.log("Time of the start: " + result.toString());
       let timeLeft = (result - Date.now());
       // console.log("Time left: " + timeLeft.toString())
-      this.startGameTimeout = setTimeout(this.startTheGame, timeLeft, "")
-      this.updateNewPeople()
-
+      if (timeLeft > 0){
+        this.peopleTimer = setInterval(this.updateNewPeople, 1000)
+        this.startGameTimeout = setTimeout(this.startTheGame, timeLeft, "")
+        this.updateNewPeople()
+      }else{
+        this.$cookies.remove("lrid")
+        this.$cookies.remove("st")
+        this.$cookies.remove("et")
+        this.gameExpired = true
+        this.$router.push("/")
+      }
+    }else{
+        this.$cookies.remove("lrid")
+        this.$cookies.remove("st")
+        this.$cookies.remove("et")
+        this.gameExpired = true
+        this.$router.push("/")
     }
   },
   methods: {
@@ -131,13 +145,13 @@ export default {
     }
   },
   beforeRouteLeave (to, from , next) {
-    if (to.name !== "game"){
+    if (to.name !== "game" && !this.gameExpired){
       const answer = window.confirm('Do you really want to leave? Your rating will decrease!')
-    if (answer) {
-      next()
-    } else {
-      next(false)
-    }
+      if (answer) {
+        next()
+      } else {
+        next(false)
+      }
     }else{
       next()
     }

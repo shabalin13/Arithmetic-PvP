@@ -419,8 +419,12 @@ export default {
       this.show = true
       axios.put("/api/ranked_room/join/")
           .then(response => {
-            console.log(response)
-            console.log(response.data.id)
+            // console.log(response)
+            // console.log(response.data.id)
+            this.$cookies.set('lrid', response.data.id, "2min")
+            this.$cookies.set("st", response.data.start_time, "2min")
+            this.$cookies.set("et", response.data.end_time, "2min")
+
             this.$router.push({
               name: "waitingRoom",
               params: {
