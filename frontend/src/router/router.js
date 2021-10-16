@@ -10,6 +10,7 @@ import Game from "@/components/Game";
 import Activation from "../components/Activation";
 import Statistics from "../components/Statistics";
 import User from "../components/User";
+import Endless from "../components/Endless";
 Vue.use(Router)
 
 
@@ -58,6 +59,10 @@ let router = new Router({
         path: "/activate/:userId/:token",
         component: Activation,
         props: true
+    }, {
+        name: "endless",
+        path: "/endless",
+        component: Endless
     }
     ],
     mode: 'history'
