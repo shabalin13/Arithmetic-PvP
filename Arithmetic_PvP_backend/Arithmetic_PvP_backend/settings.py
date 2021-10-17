@@ -45,15 +45,19 @@ EMAIL_HOST_PASSWORD = 'KamilHuesos_210_forever'
 EMAIL_PORT = 587
 
 DJOSER = {
-    'PASSWORD_RESET_CONFIRM_URL': '/password/reset/confirm/{uid}/{token}',
+    'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
     'ACTIVATION_URL': 'activate/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL': True,
+    'LOGOUT_ON_PASSWORD_CHANGE': True,
     'SERIALIZERS': {
-        'user_create': 'authentication.serializers.UserRegistrationSerializer'
+        'user_create': 'authentication.serializers.UserRegistrationSerializer',
+        'password_reset': 'authentication.serializers.MySendEmailResetSerializer',
     },
     'EMAIL': {
             'activation': 'authentication.email_verif.ActivationEmail',
+            'password_reset': 'authentication.email_verif.MyPasswordResetEmail',
     }
+
 }
 
 AUTHENTICATION_BACKENDS = ['authentication.auth_backend.EmailBackend']

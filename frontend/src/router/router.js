@@ -11,6 +11,7 @@ import Activation from "../components/Activation";
 import Statistics from "../components/Statistics";
 import User from "../components/User";
 import Endless from "../components/Endless";
+import PasswordChange from "../components/PasswordChange";
 Vue.use(Router)
 
 
@@ -63,6 +64,11 @@ let router = new Router({
         name: "endless",
         path: "/endless",
         component: Endless
+    }, {
+        name: "passwordReset",
+        path: "/password/reset/confirm/:uid/:token",
+        component: PasswordChange,
+        props: true
     }
     ],
     mode: 'history'
