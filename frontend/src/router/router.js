@@ -12,6 +12,7 @@ import Statistics from "../components/Statistics";
 import User from "../components/User";
 import Endless from "../components/Endless";
 import PasswordChange from "../components/PasswordChange";
+import CampaignLevels from "../components/CampaignLevels";
 Vue.use(Router)
 
 
@@ -69,6 +70,10 @@ let router = new Router({
         path: "/password/reset/confirm/:uid/:token",
         component: PasswordChange,
         props: true
+    }, {
+        name: "campaignLevels",
+        path: "/levels",
+        component: CampaignLevels
     }
     ],
     mode: 'history'
