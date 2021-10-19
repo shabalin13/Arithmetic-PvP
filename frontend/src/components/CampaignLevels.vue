@@ -6,13 +6,13 @@
 <div class="main-timeline">
 
                         <!-- start experience section-->
-                        <div v-for="item in levels" v-bind:key="item" class="timeline">
+                        <div v-for="(item, index) in levels" v-bind:key="index" class="timeline">
                             <div class="icon"></div>
                             <div class="date-content">
-                                <div class="date-outer" v-b-hover="v => handleHover(v, item)">
+                                <div class="date-outer" v-b-hover="v => handleHover(v, index)" @click="runLevel(item)">
                                     <span class="date">
-                                        <span class="month" v-bind:id="'spanLevelNum' + item" v-bind:style="[hovered === item ? {color: 'white'} : {}]">{{ item }}</span>
-                                        <span class="year" v-bind:id="'spanLevelTitle' + item" v-bind:style="[hovered === item ? {color: 'white'} : {}]">Level</span>
+                                        <span class="month" v-bind:id="'spanLevelNum' + index" v-bind:style="[hovered === index ? {color: 'white'} : {}]">{{ index + 1 }}</span>
+                                        <span class="year" v-bind:id="'spanLevelTitle' + index" v-bind:style="[hovered === index ? {color: 'white'} : {}]">Level</span>
                                     </span>
                                 </div>
                             </div>
@@ -95,6 +95,7 @@
 
 <script>
 import Header from "./Header";
+import {levels} from "../assets/static/js/func"
 
 export default {
   name: "CampaignConstructor",
@@ -112,7 +113,18 @@ export default {
       }else{
         this.hovered = -1
       }
+    },
+    runLevel(level){
+      let current_level = levels[level]
+      this.$router.push({
+          name: "campaignGame",
+          params: {level: current_level}
+        })
     }
+  },
+  created() {
+    this.levels = Object.keys(levels)
+    console.log(this.levels)
   }
 }
 </script>
@@ -196,7 +208,7 @@ body{
 
 .main-timeline .date-content:before {
     content: "";
-    width: 36.5%;
+    width: 35%;
     height: 2px;
     background: #000000;
     margin: auto 0;
@@ -234,7 +246,7 @@ body{
 }
 
 .date-outer:hover:after{
-  cursor: pointer;
+  /*cursor: pointer;*/
   background: black;
   position: absolute;
   top: -6px;
@@ -321,12 +333,12 @@ body{
 }
 
 @media only screen and (max-width: 991px) {
-    /*.main-timeline .date-content {
-        margin-top: 35px
-    }*/
-    /*.main-timeline .date-content:before {
+    /*.main-timeline .date-content {*/
+    /*    margin-top: 35px*/
+    /*}*/
+    .main-timeline .date-content:before {
         width: 22.5%
-    }*/
+    }
     .main-timeline .timeline-content {
         padding: 10px 0 10px 30px
     }

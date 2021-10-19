@@ -36,6 +36,9 @@
 <script>
 import Screen from "./Screen";
 import Keyboard from "./Keyboard";
+import {generateQuestion2} from "../assets/static/js/func"
+
+
 export default {
   name: "Endless",
   components: {Keyboard, Screen},
@@ -52,13 +55,14 @@ export default {
       current_task: "1 + 1 = ",
       timeReduceTimer: null,
       input_number: "",
-      checking: -1
+      checking: -1,
+      tasks_on_each_level: 20,
+      // level: prompt("Enter the level(from 0 to 5 inclusively)"),
+      kind: 0,
+      level: 0
     }
   },
   methods: {
-    getQuestion(){
-
-    },
     reduceTime(){
       this.remainingTime -= 0.5
       if (this.remainingTime === 0){
@@ -80,11 +84,21 @@ export default {
       this.submitAnswer()
     },
     submitAnswer() {
-      if (this.input_number === this.answer){
+      if (this.input_number === this.answer.toString()){
         this.checking = 2
         this.input_number = ""
-        this.remainingTime = this.overTime
         this.solved += 1
+        if (this.solved % this.tasks_on_each_level === 0 && this.solved !== 0){
+          if (this.kind % 2 === 1){
+              this.level += 1
+              alert("Next Level")
+          }
+          this.kind = Math.abs(1 - this.kind)
+        }
+        let generation = generateQuestion2(this.kind,this.level)
+        this.current_task = generation["task"]
+        this.answer = generation["answer"]
+        this.remainingTime = this.overTime
         this.checking = -1
       }else{
         this.checking = 1
@@ -93,6 +107,9 @@ export default {
   }, created() {
     this.overTime = this.maxTime + 0.5
     this.timeReduceTimer = setInterval(this.reduceTime, 500)
+    let generated = generateQuestion2(this.kind, this.level)
+    this.current_task = generated["task"]
+    this.answer = generated["answer"]
   }
 }
 </script>

@@ -153,7 +153,7 @@
     align-items: center; background-color: #292b2c">
       <carousel :per-page="1" :mouse-drag="false" :autoplay="true" :autoplayHoverPause="true" :loop="true" :speed="1000" style="flex-shrink: 0;" v-bind:style="[smallScreen ? {'width': '100%'} : {'width': '75%'}]" @page-change="onPageChange" class="h-75">
         <slide>
-          <div class="col my-2">
+          <div class="col my-2" onclick="location.href='/levels';">
                 <div class="card rounded-3 carousel_slide_back align-items-center" id="slide1_back" style="background-color: #40DAE3; height: 50vh;">
                     <img class="slide_image" src="../assets/static/images/alternative_campaign_game_mode_back2.png" height="256" width="256"/>
                     <div style="position: absolute; bottom: 0" class="align-items-center">

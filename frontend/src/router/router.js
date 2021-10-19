@@ -13,6 +13,7 @@ import User from "../components/User";
 import Endless from "../components/Endless";
 import PasswordChange from "../components/PasswordChange";
 import CampaignLevels from "../components/CampaignLevels";
+import CampaignGame from "../components/CampaignGame";
 Vue.use(Router)
 
 
@@ -74,6 +75,10 @@ let router = new Router({
         name: "campaignLevels",
         path: "/levels",
         component: CampaignLevels
+    }, {
+        name: "campaignGame",
+        path: "/campaign",
+        component: CampaignGame
     }
     ],
     mode: 'history'
