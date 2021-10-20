@@ -5,7 +5,7 @@
          <div class="d-flex flex-column main-con" :aria-hidden="showLoading ? 'true' : null">
         <div class="m-5 p-5 text-center">
             <h1 class="my-5">Congrats, you have successfully activated your account via Email!</h1>
-            <button class="btn btn-lg btn-dark center" type="submit">Go to Main Page</button>
+            <button class="btn btn-lg btn-dark center" type="submit" onclick="window.location.href='/'">Go to Main Page</button>
         </div>
           <b-alert
       v-model="showBottom"
@@ -29,11 +29,15 @@
           return{
             showBottom: false,
             report_message: "",
-            showLoading: true
+            showLoading: false
           }
         },
         created() {
-          axios.get('activate/' + this.userId + "/" + this.token + "")
+          this.activate()
+        },
+        methods: {
+          activate(){
+            axios.get('activate/' + this.userId + "/" + this.token + "")
             .then(response => {
               console.log(response)
               this.showLoading = false
@@ -46,8 +50,8 @@
                 this.$router.push("/")
               }, 3000)
             })
+          }
         },
-        methods: {},
         props: ['userId', 'token']
      }
 </script>

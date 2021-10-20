@@ -1,6 +1,8 @@
 <template>
 
-  <div class="wrapper" style="background: #292b2c">
+  <div class="wrapper flex-fill" style="background: #008cff">
+    <div id="overlay">
+    </div>
     <Header></Header>
     <div class="container">
 <div class="main-timeline">
@@ -26,67 +28,6 @@
                                 </p>
                             </div>-->
                         </div>
-                        <!-- end experience section-->
-
-<!--                         start experience section
-                        <div class="timeline">
-                            <div class="icon"></div>
-                            <div class="date-content">
-                                <div class="date-outer">
-                                    <span class="date">
-                                            <span class="month">2</span>
-                                    <span class="year">Level</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="timeline-content">
-                                <h5 class="title">Product Designer</h5>
-                                <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed efficitur ex sit amet massa scelerisque scelerisque. Aliquam erat volutpat. Aenean interdum finibus efficitur. Praesent dapibus dolor felis, eu ultrices elit molestie.
-                                </p>
-                            </div>
-                        </div>
-                         end experience section
-
-                         start experience section
-                        <div class="timeline">
-                            <div class="icon"></div>
-                            <div class="date-content">
-                                <div class="date-outer">
-                                    <span class="date">
-                                            <span class="month">3</span>
-                                    <span class="year">Level</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="timeline-content">
-                                <h5 class="title">Web Designer</h5>
-                                <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed efficitur ex sit amet massa scelerisque scelerisque. Aliquam erat volutpat. Aenean interdum finibus efficitur. Praesent dapibus dolor felis, eu ultrices elit molestie.
-                                </p>
-                            </div>
-                        </div>
-                         end experience section
-
-                         start experience section
-                        <div class="timeline">
-                            <div class="icon"></div>
-                            <div class="date-content">
-                                <div class="date-outer">
-                                    <span class="date">
-                                            <span class="month">4</span>
-                                    <span class="year">Level</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="timeline-content">
-                                <h5 class="title">Graphic Designer</h5>
-                                <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed efficitur ex sit amet massa scelerisque scelerisque. Aliquam erat volutpat. Aenean interdum finibus efficitur. Praesent dapibus dolor felis, eu ultrices elit molestie.
-                                </p>
-                            </div>
-                        </div>
-                         end experience section-->
 
                     </div>
 </div>
@@ -95,15 +36,18 @@
 
 <script>
 import Header from "./Header";
-import {levels} from "../assets/static/js/func"
+// import {levels} from "../assets/static/js/func"
+import axios from "axios";
 
 export default {
   name: "CampaignConstructor",
   components: {Header},
   data(){
     return{
-      levels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-      hovered: -1
+      levels: [],
+      hovered: -1,
+      bgHiddenLevels: 'red',
+      windowWidth: 0
     }
   },
   methods: {
@@ -115,16 +59,54 @@ export default {
       }
     },
     runLevel(level){
-      let current_level = levels[level]
       this.$router.push({
           name: "campaignGame",
-          params: {level: current_level}
+          params: {level: level}
         })
+    },
+    getLevelStats(){
+      // this.turnOnLoading()
+      axios.get('api/get_level_info/')
+        .then(response => {
+          console.log(response)
+          this.levels = []
+          for (let i = 0; i < response.data.length; i++){
+            if (response.data[i].time === -1){
+              if (i === 0){
+                this.levels.push(response.data[i])
+                break
+              }else{
+                if (response.data[i - 1].time !== -1){
+                  this.levels.push(response.data[i])
+                  break
+                }
+              }
+            }else{
+              this.levels.push(response.data[i])
+            }
+          }
+          // this.levels = response.data
+          this.turnOffLoading()
+        })
+        .catch(error => {
+          console.log(error)
+          this.turnOffLoading()
+          this.$router.push("/signIn")
+        })
+    },
+    turnOnLoading() {
+      document.getElementById("overlay").style.display = "block";
+    },
+    turnOffLoading() {
+      document.getElementById("overlay").style.display = "none";
     }
   },
   created() {
-    this.levels = Object.keys(levels)
-    console.log(this.levels)
+    this.getLevelStats()
+    this.windowWidth = window.innerWidth
+  },
+  mounted() {
+    this.turnOnLoading()
   }
 }
 </script>
@@ -136,6 +118,10 @@ export default {
 body{
     background-color: #f7f7f7;
     margin-top:20px;
+}
+
+.container{
+  margin-top: 1px;
 }
 
 .main-timeline {
@@ -259,7 +245,8 @@ body{
 
 .main-timeline .date-outer:before {
     /*should be change on hover*/
-    background: rgba(115, 101, 101, 0.3);
+    background: rgba(73, 210, 157, 0.6);
+    /*background: var(--bgHiddenLevels);*/
     border: 2px solid #232323;
     position: absolute;
     top: -6px;
@@ -351,6 +338,11 @@ body{
 }
 
 @media only screen and (max-width: 767px) {
+
+    .container{
+      margin-top: 10px;
+    }
+
     .main-timeline:before {
         margin: 0;
         left: 7px
@@ -396,6 +388,21 @@ body{
     .main-timeline .title {
         margin-bottom: 10px
     }
+}
+
+
+#overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: wait; /* Add a pointer on hover */
 }
 
 </style>

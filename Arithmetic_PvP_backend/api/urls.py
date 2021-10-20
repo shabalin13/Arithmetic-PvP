@@ -13,7 +13,9 @@ urlpatterns = [
     path('ranked_room/submit_task/<int:room_pk>/<int:answer>/', views.submit_answer_rr),
 
 
-    path('get_user_info/', views.get_user_info)
+    path('get_user_info/', views.get_user_info),
+    path('get_level_info/', views.get_info_about_levels),
+    path('submit_level_info/', views.submit_level_info)
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

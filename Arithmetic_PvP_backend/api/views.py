@@ -1,3 +1,5 @@
+import json
+
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
@@ -5,11 +7,10 @@ from django.db.models import Count
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
 
-
 from django.contrib.auth.models import User, AbstractUser
-from .models import Player, Room, Task, PlayerInRoom
+from .models import Player, Room, Task, PlayerInRoom, SinglePlayerModeLevelsStatistics
 from .serializers import RoomSerializer, TaskSerializer, UsernameSerializer, PlayerNameSerializer, \
-    PlayerInRoomProgressSerializer, PlayerInRoomResultsSerializer, PlayerSerializer
+    PlayerInRoomProgressSerializer, PlayerInRoomResultsSerializer, PlayerSerializer, SingleModelStatisticsSerialize
 from .cron import exit_ranked_rooms
 
 BRONZE_END = 999
@@ -146,3 +147,48 @@ def delete_expired_rooms(request):
 def get_user_info(request):
     user = request.user
     return Response({"name": user.first_name, "surname": user.last_name})
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def get_info_about_levels(request):
+    if request.method == 'GET':
+        user = request.user
+        if user.is_active:
+            player = get_object_or_404(Player, user=user)
+            levels_stats = SinglePlayerModeLevelsStatistics.objects.filter(player=player)
+            return Response(SingleModelStatisticsSerialize(levels_stats, many=True).data)
+        else:
+            return Response(status=401)
+
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def submit_level_info(request):
+    if request.method == 'POST':
+        user = request.user
+        if user.is_active:
+            body = json.loads(request.body)
+            level_index = body['index']
+            time = body['session_id']
+            time += 15324
+            time *= 2
+            player = get_object_or_404(Player, user=user)
+            level_info = SinglePlayerModeLevelsStatistics.objects.get(player=player, index=level_index)
+            if level_index > 1:
+                prev_level = SinglePlayerModeLevelsStatistics.objects.get(player=player, index=level_index - 1)
+                if prev_level.time == -1:
+                    return Response(status=404)
+
+            if level_info.time == - 1:
+                level_info.time = time
+                level_info.save()
+                return Response(data={'changed': True})
+            else:
+                if level_info.time > time:
+                    level_info.time = time
+                    level_info.save()
+                    return Response(data={'changed': True})
+            return Response(data={'changed': False})
+
+        return Response(status=401)

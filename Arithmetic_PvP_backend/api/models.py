@@ -75,3 +75,9 @@ class PlayerInRoom(models.Model):
     task_index = models.IntegerField(default=0)
     attempts = models.IntegerField(default=0)
     last_activity = models.DateTimeField(default=timezone.now)
+
+
+class SinglePlayerModeLevelsStatistics(models.Model):
+    player = models.ForeignKey(Player, on_delete=models.CASCADE)
+    index = models.IntegerField(default=1)
+    time = models.IntegerField(default=-1)

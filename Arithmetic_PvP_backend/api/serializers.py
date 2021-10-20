@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Player, Room, Task, PlayerInRoom
+from .models import Player, Room, Task, PlayerInRoom, SinglePlayerModeLevelsStatistics
 from django.contrib.auth.models import User
 
 
@@ -67,3 +67,10 @@ class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
         fields = ['content', 'index']
+
+
+class SingleModelStatisticsSerialize(serializers.ModelSerializer):
+    class Meta:
+        model = SinglePlayerModeLevelsStatistics
+        fields = ['index', 'time']
+

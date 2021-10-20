@@ -26,7 +26,7 @@
 
 // max - 18
 
-const levels = {
+const levels_conf = {
   level1 : {
     num_vars: 2,
     vars: {
@@ -309,7 +309,7 @@ level21 : {
 
 
 
-export {generateQuestion2, levels, generateQuestion}
+export {generateQuestion2, levels_conf, generateQuestion}
 
 // eslint-disable-next-line no-unused-vars
 function generateQuestion2(kind, level){
