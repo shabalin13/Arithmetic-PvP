@@ -2,6 +2,13 @@
   <div class="body-con wrapper">
     <Header></Header>
 
+    <div v-if="showModal" style="display: flex;
+    flex-direction: column">
+    <transition name="modal">
+        <EndlessCustomizationModel @runEndlessMode="(...args)=>runEndlessMode(...args)"></EndlessCustomizationModel>
+    </transition>
+  </div>
+
     <div class="main-con">
       <div class="progress_bars px-4 my-3">
 
@@ -36,12 +43,13 @@
 <script>
 import Screen from "./Screen";
 import Keyboard from "./Keyboard";
-import {generateQuestion2} from "../assets/static/js/func"
+import {generateQuestion, levels_conf, getRandomInt} from "../assets/static/js/func"
+import EndlessCustomizationModel from "./EndlessCustomizationModel";
 
 
 export default {
   name: "Endless",
-  components: {Keyboard, Screen},
+  components: {Keyboard, Screen, EndlessCustomizationModel},
   data(){
     return{
       health: 3,
@@ -56,10 +64,9 @@ export default {
       timeReduceTimer: null,
       input_number: "",
       checking: -1,
-      tasks_on_each_level: 20,
-      // level: prompt("Enter the level(from 0 to 5 inclusively)"),
-      kind: 0,
-      level: 0
+      showModal: false,
+      possible_expression_types: []
+
     }
   },
   methods: {
@@ -88,32 +95,52 @@ export default {
         this.checking = 2
         this.input_number = ""
         this.solved += 1
-        if (this.solved % this.tasks_on_each_level === 0 && this.solved !== 0){
-          if (this.kind % 2 === 1){
-              this.level += 1
-              alert("Next Level")
-          }
-          this.kind = Math.abs(1 - this.kind)
-        }
-        let generation = generateQuestion2(this.kind,this.level)
-        this.current_task = generation["task"]
-        this.answer = generation["answer"]
-        this.remainingTime = this.overTime
-        this.checking = -1
+        this.getQuestion()
       }else{
         this.checking = 1
       }
+    },
+    getQuestion(){
+      let choice = getRandomInt(0, 3)
+      let level_ = levels_conf[this.possible_expression_types[choice]]
+      console.log(level_)
+      let generation = generateQuestion(level_)
+      this.current_task = generation["task"]
+      this.answer = generation["answer"]
+      this.remainingTime = this.overTime
+      this.checking = -1
+    },
+    runEndlessMode(args){
+      console.log(args)
+      this.showModal = false
+      this.maxTime = parseInt(args.time)
+      this.overTime = this.maxTime + 0.5
+      if (args.diff === "easy"){
+        this.possible_expression_types = ['level1', 'level2', 'level3']
+      }else if (args.diff === "norm"){
+        this.possible_expression_types = ['level4', 'level5', 'level6']
+      }else if (args.diff === "hard"){
+        this.possible_expression_types = ['level7', 'level8', 'level8']
+      }else{
+        this.possible_expression_types = ['level10', 'level11', 'level12']
+      }
+      this.getQuestion()
+      this.timeReduceTimer = setInterval(this.reduceTime, 500)
+
+      // alert(diff + "" + time)
     }
   }, created() {
-    this.overTime = this.maxTime + 0.5
+    this.showModal = true
+    /*this.overTime = this.maxTime + 0.5
     this.timeReduceTimer = setInterval(this.reduceTime, 500)
     let generated = generateQuestion2(this.kind, this.level)
     this.current_task = generated["task"]
-    this.answer = generated["answer"]
+    this.answer = generated["answer"]*/
   }
 }
 </script>
 
 <style scoped>
+
 
 </style>
