@@ -18,11 +18,23 @@
                       </form>
                     </div>
                 </div>
+    <div class="toast" id="resetPasswordToast" style="position: fixed; top: 0; right: 0; z-index: 9">
+    <div class="toast-header">
+        <strong class="me-auto"><i class="bi bi-shield"></i>  Password reset</strong>
+        <small>Support</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+    </div>
+    <div class="toast-body">
+        <p>{{ report }}</p>
+    </div>
+</div>
+
             </div>
 </template>
 
 <script>
 import axios from "axios";
+// import 'bootstrap'
 
 export default {
   name: "ForgotPassword",
@@ -30,21 +42,37 @@ export default {
     return{
       username: "",
       email: "",
+      report: ""
     }
   },
   methods:{
     submitForm(){
+      this.$emit('showLoading')
       const formData = {
         username: this.username,
         email: this.email
       }
       axios.post("api/v1/users/reset_password/", formData)
           .then(response => {
-            // this.showLoading = false
+            this.$emit('stopLoading')
+            let toast_el = document.getElementById("resetPasswordToast")
+            // eslint-disable-next-line no-undef
+            let toast = new bootstrap.Toast(toast_el);
+            toast.show()
             console.log(response)
-
+            this.report = "Check your email and complete registration!"
           }).catch(error => {
             console.log(error)
+            this.$emit('stopLoading')
+            let toast_el = document.getElementById("resetPasswordToast")
+            // eslint-disable-next-line no-undef
+            let toast = new bootstrap.Toast(toast_el);
+            toast.show()
+            if (error.response.status === 400){
+              this.report = "User doesn't exist"
+            }else if (error.response.status === 500){
+              this.report = "Server Maintenance"
+            }
           })
 
     }
@@ -52,16 +80,11 @@ export default {
 }
 </script>
 
+<style scoped src="../assets/static/styles/authorization_styles.css">
+
+</style>
+
 <style scoped>
-
-body {
-    color: #000;
-    overflow-x: hidden;
-    height: 100%;
-    /*background-image: linear-gradient(to right, #D500F9, #FFD54F);*/
-    background-repeat: no-repeat
-}
-
 input,
 textarea {
     background-color: #dedede;
@@ -74,107 +97,6 @@ textarea {
     font-size: 16px !important;
     color: #000 !important;
     font-weight: 400
-}
-
-input:focus,
-textarea:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    border: 1px solid #D500F9 !important;
-    outline-width: 0;
-    font-weight: 400
-}
-
-button:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    outline-width: 0
-}
-
-.card {
-    border-radius: 0;
-    border: none
-}
-
-.card1 {
-    width: 50%;
-    padding: 40px 30px 10px 30px
-}
-
-.heading {
-    margin-bottom: 60px !important
-}
-
-::placeholder {
-    color: #000 !important;
-    opacity: 1
-}
-
-:-ms-input-placeholder {
-    color: #000 !important
-}
-
-::-ms-input-placeholder {
-    color: #000 !important
-}
-
-.form-control-label {
-    font-size: 12px;
-    margin-left: 15px
-}
-
-.msg-info {
-    padding-left: 15px;
-    margin-bottom: 30px
-}
-
-.btn-color {
-    border-radius: 50px;
-    color: #fff;
-    background-image: linear-gradient(to right, #292b2c, #000000);
-    padding: 15px;
-    cursor: pointer;
-    border: none !important;
-    margin-top: 40px
-}
-
-.btn-color:hover {
-    color: #fff;
-    background-image: linear-gradient(to right, #292b2c, #292b2c);
-}
-
-#logo_hidden{
-  display: none;
-}
-
-a {
-    color: #000
-}
-
-a:hover {
-    color: #000
-}
-
-.bottom {
-    width: 100%;
-    margin-top: 50px !important
-}
-
-.sm-text {
-    font-size: 15px
-}
-
-@media screen and (max-width: 992px) {
-    .card1 {
-        width: 100%;
-        padding: 40px 30px 10px 30px
-    }
-
-    #logo_hidden{
-      display: block;
-    }
 }
 
 </style>

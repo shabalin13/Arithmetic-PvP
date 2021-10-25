@@ -25,6 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-^urg11&xd4vk5aj!1(&-p6%pck!1k4pnv5jk2d!8u3y#(gm-*v'
+# For testing purpose
+FRONTEND_ADDRESS = '127.0.0.1:8080'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -56,8 +58,8 @@ DJOSER = {
     'EMAIL': {
             'activation': 'authentication.email_verif.ActivationEmail',
             'password_reset': 'authentication.email_verif.MyPasswordResetEmail',
-    }
-
+    },
+    'FRONTEND_ADDRESS': FRONTEND_ADDRESS,
 }
 
 AUTHENTICATION_BACKENDS = ['authentication.auth_backend.EmailBackend']

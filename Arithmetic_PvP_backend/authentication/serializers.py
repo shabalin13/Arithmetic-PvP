@@ -39,11 +39,6 @@ class MyUserFunctionsMixin:
             if user.has_usable_password():
                 return user
         except User.DoesNotExist:
-            pass
-        if (
-            settings.PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND
-            or settings.USERNAME_RESET_SHOW_EMAIL_NOT_FOUND
-        ):
             self.fail("user_not_found")
 
 

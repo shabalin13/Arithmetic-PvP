@@ -81,6 +81,7 @@ export default {
             localStorage.setItem("refresh_token", '')
             this.$router.push("/")
             this.showLoading = false
+            this.reportMessage = "Successfully activated"
           })
           .catch(error => {
             console.log(error)

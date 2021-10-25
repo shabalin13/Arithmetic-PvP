@@ -42,7 +42,7 @@
                 </div>
             </div>
             <transition name="fade">
-              <ForgotPassword v-if="forgotPasswordPage"></ForgotPassword>
+              <ForgotPassword v-if="forgotPasswordPage" @showLoading="showLoading=true" @stopLoading="showLoading=false"></ForgotPassword>
             </transition>
         </div>
     </div>
@@ -118,15 +118,11 @@ export default {
 </script>
 
 
-<style scoped>
+<style scoped src="../assets/static/styles/authorization_styles.css">
 
-body {
-    color: #000;
-    overflow-x: hidden;
-    height: 100%;
-    /*background-image: linear-gradient(to right, #D500F9, #FFD54F);*/
-    background-repeat: no-repeat
-}
+</style>
+
+<style scoped>
 
 input,
 textarea {
@@ -140,121 +136,6 @@ textarea {
     font-size: 16px !important;
     color: #000 !important;
     font-weight: 400
-}
-
-input:focus,
-textarea:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    border: 1px solid #D500F9 !important;
-    outline-width: 0;
-    font-weight: 400
-}
-
-button:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    outline-width: 0
-}
-
-.card {
-    border-radius: 0;
-    border: none
-}
-
-.card1 {
-    width: 50%;
-    padding: 40px 30px 10px 30px
-}
-
-.heading {
-    margin-bottom: 60px !important
-}
-
-::placeholder {
-    color: #000 !important;
-    opacity: 1
-}
-
-:-ms-input-placeholder {
-    color: #000 !important
-}
-
-::-ms-input-placeholder {
-    color: #000 !important
-}
-
-.form-control-label {
-    font-size: 12px;
-    margin-left: 15px
-}
-
-.msg-info {
-    padding-left: 15px;
-    margin-bottom: 30px
-}
-
-.btn-color {
-    border-radius: 50px;
-    color: #fff;
-    background-image: linear-gradient(to right, #292b2c, #000000);
-    padding: 15px;
-    cursor: pointer;
-    border: none !important;
-    margin-top: 40px
-}
-
-.btn-color:hover {
-    color: #fff;
-    background-image: linear-gradient(to right, #292b2c, #292b2c);
-}
-
-.btn-white {
-    border-radius: 50px;
-    color: black;
-    background-color: #fff;
-    padding: 8px 40px;
-    cursor: pointer;
-    border: 2px solid black !important
-}
-
-.btn-white:hover {
-    color: #fff;
-    background-image: linear-gradient(to right, #292b2c, #292b2c)
-}
-
-#logo_hidden{
-  display: none;
-}
-
-a {
-    color: #000
-}
-
-a:hover {
-    color: #000
-}
-
-.bottom {
-    width: 100%;
-    margin-top: 50px !important
-}
-
-.sm-text {
-    font-size: 15px
-}
-
-@media screen and (max-width: 992px) {
-    .card1 {
-        width: 100%;
-        padding: 40px 30px 10px 30px
-    }
-
-    #logo_hidden{
-      display: block;
-    }
 }
 
 </style>

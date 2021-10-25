@@ -95,7 +95,6 @@ export default {
             })
             .catch(error => {
               this.turnOffLoading()
-              // alert(error);
               console.log(error)
               if (error.response.status === 400)
                 if (error.response.data.non_field_errors !== undefined){
@@ -145,15 +144,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped src="../assets/static/styles/authorization_styles.css">
 
-body {
-    color: #000;
-    overflow-x: hidden;
-    height: 100%;
-    /*background-image: linear-gradient(to right, #D500F9, #FFD54F);*/
-    background-repeat: no-repeat
-}
+
+</style>
+
+<style scoped>
 
 .input-text,
 textarea {
@@ -168,159 +164,6 @@ textarea {
     color: #000 !important;
     font-weight: 400
 }
-
-input:focus,
-textarea:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    border: 1px solid black !important;
-    outline-width: 0;
-    font-weight: 400
-}
-
-button:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    outline-width: 0
-}
-
-.card {
-    border-radius: 0;
-    border: none
-}
-
-.card1 {
-    width: 50%;
-    padding: 40px 30px 10px 30px
-}
-
-.card2 {
-    width: 50%;
-    /*background-image: linear-gradient(to right, #FFD54F, #D500F9)*/
-  background-image: linear-gradient(to right, #292b2c, #000000);
-}
-
-#logo {
-    width: 70px;
-    height: 60px
-}
-
-.heading {
-    margin-bottom: 60px !important
-}
-
-::placeholder {
-    color: #000 !important;
-    opacity: 1
-}
-
-:-ms-input-placeholder {
-    color: #000 !important
-}
-
-::-ms-input-placeholder {
-    color: #000 !important
-}
-
-.form-control-label {
-    font-size: 12px;
-    margin-left: 15px
-}
-
-.msg-info {
-    padding-left: 15px;
-    margin-bottom: 30px
-}
-
-.btn-color {
-    border-radius: 50px;
-    color: #fff;
-    background-image: linear-gradient(to right, #292b2c, #000000);
-    padding: 15px;
-    cursor: pointer;
-    border: none !important;
-    margin-top: 40px
-}
-
-.btn-color:hover {
-    color: #fff;
-    background-image: linear-gradient(to right, #292b2c, #292b2c);
-}
-
-.btn-white {
-    border-radius: 50px;
-    color: black;
-    background-color: #fff;
-    padding: 8px 40px;
-    cursor: pointer;
-    border: 2px solid black !important
-}
-
-.btn-white:hover {
-    color: #fff;
-    background-image: linear-gradient(to right, #292b2c, #292b2c)
-}
-
-a {
-    color: #000
-}
-
-a:hover {
-    color: #000
-}
-
-.bottom {
-    width: 100%;
-    margin-top: 50px !important
-}
-
-.sm-text {
-    font-size: 15px
-}
-
-#logo_hidden{
-  display: none;
-}
-
-
-@media screen and (max-width: 992px) {
-    .card1 {
-        width: 100%;
-        padding: 40px 30px 10px 30px
-    }
-
-    .card2 {
-        /*width: 100%*/
-      display: none;
-    }
-
-    .right {
-        margin-top: 100px !important;
-        margin-bottom: 100px !important
-    }
-
-    #logo_hidden{
-      display: block;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .container {
-        padding: 10px !important
-    }
-
-    .card2 {
-        padding: 50px
-    }
-
-    .right {
-        margin-top: 50px !important;
-        margin-bottom: 50px !important
-    }
-}
-
 
 #overlay {
   position: fixed; /* Sit on top of the page content */
