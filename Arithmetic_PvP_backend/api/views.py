@@ -19,6 +19,8 @@ PLATINUM_BEGIN, PLATINUM_END = 2000, 2499
 DIAMOND_BEGIN = 2500
 PlAYERS_IN_RR_NUM = 4
 
+NUM_OF_LEVELS = 21
+
 
 # single responsibility
 @api_view(['PUT'])
@@ -157,6 +159,12 @@ def get_info_about_levels(request):
         if user.is_active:
             player = get_object_or_404(Player, user=user)
             levels_stats = SinglePlayerModeLevelsStatistics.objects.filter(player=player)
+            if levels_stats.count() == 0:
+                for i in range(1, NUM_OF_LEVELS + 1):
+                    level_stats_new = SinglePlayerModeLevelsStatistics(player=player, index=i)
+                    level_stats_new.save()
+                level_stats = SinglePlayerModeLevelsStatistics.objects.filter(player=player)
+
             return Response(SingleModelStatisticsSerialize(levels_stats, many=True).data)
         else:
             return Response(status=401)
@@ -169,12 +177,16 @@ def submit_level_info(request):
         user = request.user
         if user.is_active:
             body = json.loads(request.body)
+            # decode encoded time with 2-side algo
             level_index = body['index']
             time = body['session_id']
             time += 15324
             time *= 2
             player = get_object_or_404(Player, user=user)
+
             level_info = SinglePlayerModeLevelsStatistics.objects.get(player=player, index=level_index)
+
+            # If previous level wasn't completed (some bugs or hackers)
             if level_index > 1:
                 prev_level = SinglePlayerModeLevelsStatistics.objects.get(player=player, index=level_index - 1)
                 if prev_level.time == -1:

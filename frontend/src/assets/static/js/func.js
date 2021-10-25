@@ -290,26 +290,7 @@ level21 : {
 
 }
 
-/*function getLevel(level){
-    return levels[level]
-}*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export {generateQuestion2, levels_conf, generateQuestion}
+export {generateQuestion2, levels_conf, generateQuestion, getRandomInt}
 
 // eslint-disable-next-line no-unused-vars
 function generateQuestion2(kind, level){

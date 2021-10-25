@@ -68,21 +68,24 @@ export default {
       // this.turnOnLoading()
       axios.get('api/get_level_info/')
         .then(response => {
-          console.log(response)
+          // console.log(response)
+          let input_arr = response.data
+          console.log(input_arr)
+          input_arr.sort((a,b) => (a.index > b.index) ? 1 : -1)
           this.levels = []
-          for (let i = 0; i < response.data.length; i++){
-            if (response.data[i].time === -1){
+          for (let i = 0; i < input_arr.length; i++){
+            if (input_arr[i].time === -1){
               if (i === 0){
-                this.levels.push(response.data[i])
+                this.levels.push(input_arr[i])
                 break
               }else{
-                if (response.data[i - 1].time !== -1){
-                  this.levels.push(response.data[i])
+                if (input_arr[i - 1].time !== -1){
+                  this.levels.push(input_arr[i])
                   break
                 }
               }
             }else{
-              this.levels.push(response.data[i])
+              this.levels.push(input_arr[i])
             }
           }
           // this.levels = response.data
@@ -91,7 +94,11 @@ export default {
         .catch(error => {
           console.log(error)
           this.turnOffLoading()
-          this.$router.push("/signIn")
+          if (error.response.status === 401)
+            this.$router.push("/signIn")
+          else
+            alert("Server maintenance")
+            this.$router.push("/newGame")
         })
     },
     turnOnLoading() {
@@ -171,18 +178,15 @@ body{
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    /*background: #ff4f32;*/
     position: absolute;
     top: 0;
     left: 0;
-    /*transition: all 0.33s ease-out 0s*/
 }
 
 .main-timeline .icon:before {
     /*should be change on hover*/
     background: #9c0a0a;
     border: 2px solid #232323;
-    /*left: -3px*/
 }
 
 .main-timeline .date-content {
@@ -228,43 +232,21 @@ body{
     top: 0;
     left: 0;
     right: 0;
-    /*transition: all 0.33s ease-out 0s*/
 }
 
 .date-outer:hover:after{
-  /*cursor: pointer;*/
   background: black;
   position: absolute;
   top: -6px;
   border: 2px solid #ffffff;
 }
 
-/*.date-outer:hover:after .month,.date-outer:hover:after .year{
-  color: white;
-}*/
-
 .main-timeline .date-outer:before {
-    /*should be change on hover*/
     background: rgba(73, 210, 157, 0.6);
-    /*background: var(--bgHiddenLevels);*/
     border: 2px solid #232323;
     position: absolute;
     top: -6px;
-    /*left: -6px*/
 }
-
-/*.main-timeline .date-outer:after {
-    border: 2px solid #c6c6c6;
-    left: 6px
-}*/
-
-/*.main-timeline .timeline:hover .date-outer:before {
-    left: 6px
-}
-
-.main-timeline .timeline:hover .date-outer:after {
-    left: -6px
-}*/
 
 .main-timeline .date {
     width: 100%;
@@ -320,9 +302,6 @@ body{
 }
 
 @media only screen and (max-width: 991px) {
-    /*.main-timeline .date-content {*/
-    /*    margin-top: 35px*/
-    /*}*/
     .main-timeline .date-content:before {
         width: 22.5%
     }
