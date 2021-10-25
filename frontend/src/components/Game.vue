@@ -10,10 +10,11 @@
           <div class="text-truncate"><span class="fw-light">{{ item.player.user.username }}</span></div>
         </div>
         <div class="col-9">
-          <div class="progress flex-fill">
+          <CustomProgressBar v-bind="{'numberOfQuestions': 10, 'parentProgress': item.task_index, 'bckColor': item.player.user.username === 'TroHaN' ? 'red': 'blue', 'skin': item.player.user.username === 'TroHaN' ? 'darth_vader': '', 'user_id': item.player.user.username}" ref="customProgress"></CustomProgressBar>
+<!--          <div class="progress flex-fill">
             <div class="progress-bar progress-bar-striped" role="progressbar"
                  aria-valuemin="0" aria-valuemax="100" v-bind:style="{width: (item.task_index) * 10 + '%'}"></div>
-          </div>
+          </div>-->
         </div>
       </div>
 
@@ -33,13 +34,14 @@
 import Header from "./Header";
 import Keyboard from "./Keyboard";
 import Screen from "./Screen";
+import CustomProgressBar from "./CustomProgressBar";
 import axios from "axios";
 const QUESTIONS = 10
 
 
 export default {
   name: "Game",
-  components: {Screen, Header, Keyboard},
+  components: {Screen, Header, Keyboard, CustomProgressBar},
   data(){
     return{
       room_id: null,
@@ -163,8 +165,13 @@ export default {
     updatePeopleScore(){
       axios.get("/api/get_rr_progress/" + this.room_id.toString() + "/")
           .then(response => {
-            this.user_list = response.data
-            // console.log(this.user_list)
+            this.user_list = response.data.sort((a,b) => (a.id > b.id) ? 1 : -1)
+            let lst = this.$refs.customProgress
+            for (let i =0; i < lst.length; i++){
+              lst[i].increase()
+            }
+            // this.$refs.customProgress[0].increase()
+            console.log(this.user_list)
           })
           .catch(error => {
             if (error.response.status === 401) {
