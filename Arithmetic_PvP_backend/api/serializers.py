@@ -10,13 +10,14 @@ class RoomSerializer(serializers.ModelSerializer):
         fields = ['id', 'create_time', 'start_time', 'end_time', 'tasks_num']
 
 
+# single responsibility
 class UsernameSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username']
 
 
-#
+# single responsibility
 class PlayerNameSerializer(serializers.ModelSerializer):
     user = UsernameSerializer(read_only=True)
 
@@ -25,6 +26,7 @@ class PlayerNameSerializer(serializers.ModelSerializer):
         fields = ['id', 'user']
 
 
+# single responsibility
 class PlayerInRoomProgressSerializer(serializers.ModelSerializer):
     player = PlayerNameSerializer(read_only=True)
 
@@ -33,7 +35,10 @@ class PlayerInRoomProgressSerializer(serializers.ModelSerializer):
         fields = ['id', 'task_index', 'player']
 
 
+# single responsibility
 class PlayerInRoomResultsSerializer(serializers.ModelSerializer):
+    """This serializer automatically counts a place of a user.
+    It also returns when the game was started."""
     player = PlayerNameSerializer(read_only=True)
     place = serializers.SerializerMethodField()
     start_time = serializers.SerializerMethodField()
@@ -53,6 +58,7 @@ class PlayerInRoomResultsSerializer(serializers.ModelSerializer):
         return obj.room.start_time
 
 
+# single responsibility
 class PlayerSerializer(serializers.ModelSerializer):
     user = UsernameSerializer(read_only=True)
 

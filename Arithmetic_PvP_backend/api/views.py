@@ -26,6 +26,9 @@ NUM_OF_LEVELS = 21
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def join_ranked_room(request):
+    """Used to join a rating room.
+    If there is no rating rooms that didn't begin the new one will be created.
+    Returns information about a Room instance player has joined."""
     if request.method == 'PUT':
         player = Player.objects.get(user=request.user)
         room = Room.objects.annotate(players_num=Count('playerinroom')).filter(players_num__lt=PlAYERS_IN_RR_NUM,
@@ -48,16 +51,12 @@ def join_ranked_room(request):
         return Response(RoomSerializer(room).data)
 
 
-# class GetTaskRR(APIView):
-#     permission_classes = [IsAuthenticated, IsInActiveRankedRoom]
-#     def get(self, request, room_pk):
-#         room = get_object_or_404(Room, id=room_pk)
-#         self.permission_classes.P
-
 # single responsibility
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_task_rr(request, room_pk):
+    """Used to get a task.
+    Returns the content of the task to solve."""
     if request.method == 'GET':
         room = get_object_or_404(Room, id=room_pk)
         player = Player.objects.get(user=request.user)
@@ -76,6 +75,8 @@ def get_task_rr(request, room_pk):
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def submit_answer_rr(request, room_pk, answer):
+    """Used to submit an answer for a task.
+    Returns 'is_correct field with the result'"""
     if request.method == 'PUT':
         room = get_object_or_404(Room, id=room_pk)
         player = Player.objects.get(user=request.user)
@@ -97,37 +98,45 @@ def submit_answer_rr(request, room_pk, answer):
             return Response({'is_correct': False})
 
 
+# single responsibility
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_nicknames(request, room_pk):
+    """Used to get nicknames of players that are currently in a room"""
     if request.method == 'GET':
         room = get_object_or_404(Room, pk=room_pk)
-        # users_in_r = User.objects.filter(player__playerinroom__room=room).exclude(pk=request.user.pk)
         users_in_r = User.objects.filter(player__playerinroom__room=room)
         return Response(UsernameSerializer(users_in_r, many=True).data)
 
 
+# single responsibility
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_players_progress(request, room_pk):
+    """Used to get progresses of users that are currently in a room"""
     if request.method == 'GET':
         room = get_object_or_404(Room, id=room_pk)
         players_in_r = PlayerInRoom.objects.filter(room=room)
         return Response(PlayerInRoomProgressSerializer(players_in_r, many=True).data)
 
 
+# singe responsibility
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_player_stats_in_rr(request, room_pk):
+    """Used to get player stats when the game finishes
+    """
     if request.method == 'GET':
         room = get_object_or_404(Room, id=room_pk)
         players_in_r = PlayerInRoom.objects.filter(room=room)
         return Response(PlayerInRoomResultsSerializer(players_in_r, many=True, context={'request': request}).data)
 
 
+# singe responsibility
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_player_overall_stats(request):
+    """Returns player overall stats"""
     if request.method == 'GET':
         user = request.user
         if user.is_active:
@@ -139,14 +148,18 @@ def get_player_overall_stats(request):
 
 @api_view(['DELETE'])
 def delete_expired_rooms(request):
+    """This function is only for testing purposes on non UNIX machines.
+    exit_ranked_rooms() normally should be run by cronjob"""
     if request.method == 'DELETE':
         exit_ranked_rooms()
         return Response({'deleted': 'True'})
 
 
+# singe responsibility
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def get_user_info(request):
+    """Returns users name and surname"""
     user = request.user
     return Response({"name": user.first_name, "surname": user.last_name})
 

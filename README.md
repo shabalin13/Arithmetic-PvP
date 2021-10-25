@@ -11,10 +11,10 @@
   <p align="center">
     Multiplayer verbal counting game
     <br />
-    <a href="https://github.com/shabalin13/Arithmetic-PvP"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/shabalin13/Arithmetic-PvP/tree/main/Documentation"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/shabalin13/Arithmetic-PvP">View Demo</a>
+    <a href="#demo">View Demo</a>
     ·
     <a href="https://github.com/shabalin13/Arithmetic-PvP/issues">Report Bug</a>
     ·
@@ -136,25 +136,24 @@ All development documentation can be found here [Requirements](https://github.co
 
 ### Diagrams
 
-* [Class Diagram]()
-* [Sequence Diagram]()
-* [Use Case Diagram]()
-* [Database Diagram](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Database_diagram.png)
+* [Class Diagram](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Class_diagram.png) for Django Models that are connected to database. So this is core of our backend side. However other parts of our project are not completely based on objects. So class diagram is not useful in our case.
+* [Sequence Diagram](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Sequence_diagram.png)
+* [Use Case Diagram](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Use_case_diagram.png)
 
 ### SOLID principles and Design patterns
 
-* Single responsibility - 
-* Open-closed - 
-* Liskov substitution - we did not use this principle in our project.
-* Interface segregation - 
-* Dependency inversion - 
+* *Single responsibility* - All classes have only one responsibility (only one purpose).
+* *Open-closed* - There are many examples of using open/closed principle in our project. For example, permissions for views are easily modifiable changing only one line before the function. Another example is the room and task constructors. Constructors for these models are implemented inside model managers and one can easily add new constructor. We will definitely use it when creating new task generators.
+* *Liskov substitution* - As an example this principle is applicable in Models.
+* *Interface segregation* - There is no requests that are used rarely or not used at all. So there is nothing to segregate in our case.
+* *Dependency inversion* - All classes use other classes through interfaces.
 
 ## Architecture
 
 All diagrams about architecture of application can be found by following links below
 
-* [Static View]()
-* [Dynamic View]()
+* [Static View](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Static_diagram.png)
+* [Dynamic View](https://github.com/shabalin13/Arithmetic-PvP/blob/main/Documentation/Dynamic_diagram.png)
 
 ## Demo
 
@@ -169,8 +168,10 @@ You can see video demonstration of our app on [YouTube](https://www.youtube.com/
 
 ## Code
 
-*  Here is the link of our linter worlflow: [lint.yml](https://github.com/shabalin13/Arithmetic-PvP/actions/workflows/linter.yml)
-*  Test coverage
+* **Static analyzer results:**
+Here is the link of our linter worlflow: [lint.yml](https://github.com/shabalin13/Arithmetic-PvP/actions/workflows/linter.yml). ([NOTICE]   All file(s) linted successfully with no errors detected)
+* **Testing:**
+At this stage of development, we only performed manual testing. Since our project is still in the development stage, we think that it makes no sense to add tests for code that changes quite often.
 
 
 <!-- CONTACTS -->
