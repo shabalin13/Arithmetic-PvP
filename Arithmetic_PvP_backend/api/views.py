@@ -54,7 +54,7 @@ def join_ranked_room(request):
 # single responsibility
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_task_rr(request, room_pk):
+def get_tasks_rr(request, room_pk):
     """Used to get a task.
     Returns the content of the task to solve."""
     if request.method == 'GET':
@@ -67,8 +67,8 @@ def get_task_rr(request, room_pk):
             return Response({'error': 'This room already expired'})
         if room.start_time > timezone.now():
             return Response({})
-        task = get_object_or_404(Task, room__id=room.pk, index=p_in_r.task_index)
-        return Response(TaskSerializer(task).data)
+        tasks = get_list_or_404(Task, room__id=room.pk)
+        return Response(TaskSerializer(tasks, many=True).data)
 
 
 # single responsibility
@@ -76,7 +76,7 @@ def get_task_rr(request, room_pk):
 @permission_classes([IsAuthenticated])
 def submit_answer_rr(request, room_pk, answer):
     """Used to submit an answer for a task.
-    Returns 'is_correct field with the result'"""
+    Returns 'is_correct' field with the result'"""
     if request.method == 'PUT':
         room = get_object_or_404(Room, id=room_pk)
         player = Player.objects.get(user=request.user)

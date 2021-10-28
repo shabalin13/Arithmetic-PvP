@@ -70,9 +70,14 @@ class PlayerSerializer(serializers.ModelSerializer):
 
 # single responsibility
 class TaskSerializer(serializers.ModelSerializer):
+    ans_len = serializers.SerializerMethodField()
+
     class Meta:
         model = Task
-        fields = ['content', 'index']
+        fields = ['content', 'index', 'ans_len']
+
+    def get_ans_len(self, obj):
+        return len(str(obj.answer))
 
 
 class SingleModelStatisticsSerialize(serializers.ModelSerializer):
