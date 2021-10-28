@@ -9,7 +9,7 @@ urlpatterns = [
     path('get_rr_stats/<int:room_pk>/', views.get_player_stats_in_rr),
     path('get_player_overall_stats/', views.get_player_overall_stats),
     path('ranked_room/join/', views.join_ranked_room),
-    path('ranked_room/get_task/<int:room_pk>/', views.get_tasks_rr),
+    path('ranked_room/get_tasks/<int:room_pk>/', views.get_tasks_rr),
     path('ranked_room/submit_task/<int:room_pk>/<int:answer>/', views.submit_answer_rr),
 
 
